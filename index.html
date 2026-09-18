@@ -946,6 +946,297 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             }
         }
 
+
+        /* ===== Journey Overview · Widget Dashboard ===== */
+        .overview-dashboard {
+            display: grid;
+            gap: 11px;
+            padding: 0 2px;
+        }
+
+        .overview-widget-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 10px 5px 5px;
+        }
+        .overview-widget-eyebrow {
+            font-size: 8px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .18em;
+            color: #9A928A;
+        }
+        .overview-widget-header h2 {
+            margin-top: 6px;
+            font-size: 20px;
+            line-height: 1.18;
+            font-weight: 800;
+            color: #2C3E35;
+        }
+        .overview-widget-header p {
+            margin-top: 4px;
+            font-size: 9px;
+            letter-spacing: .05em;
+            color: #9A928A;
+        }
+        .overview-header-emoji {
+            flex: 0 0 auto;
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            background: #EFECE6;
+            font-size: 25px;
+            box-shadow: inset 0 0 0 1px rgba(44,62,53,.06);
+        }
+
+        .overview-widget {
+            border-radius: 22px;
+            border: 1px solid rgba(44,62,53,.08);
+            box-shadow: 0 8px 24px rgba(44,62,53,.075);
+        }
+        .overview-widget-topline {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .overview-widget-label {
+            font-size: 8px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: .16em;
+        }
+
+        .overview-today-widget {
+            position: relative;
+            overflow: hidden;
+            min-height: 215px;
+            padding: 18px;
+            color: #FFFDF9;
+            background:
+                radial-gradient(circle at 100% 0, rgba(232,147,68,.28), transparent 34%),
+                linear-gradient(145deg, #24372E 0%, #2C3E35 58%, #446352 100%);
+        }
+        .overview-today-widget::after {
+            content: "";
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            right: -58px;
+            bottom: -64px;
+            border-radius: 50%;
+            border: 26px solid rgba(255,255,255,.035);
+            pointer-events: none;
+        }
+        .overview-today-widget .overview-widget-label {
+            color: #D2DCD6;
+        }
+        .overview-today-day {
+            margin-top: 5px;
+            font-size: 12px;
+            font-weight: 800;
+            color: #F2B77D;
+            letter-spacing: .04em;
+        }
+        .overview-live-dot {
+            width: 8px;
+            height: 8px;
+            margin-top: 2px;
+            border-radius: 50%;
+            background: #E89344;
+            box-shadow: 0 0 0 5px rgba(232,147,68,.14);
+        }
+        .overview-today-title {
+            margin-top: 22px;
+            font-size: 23px;
+            line-height: 1.18;
+            font-weight: 800;
+            color: white;
+        }
+        .overview-today-highlights {
+            display: grid;
+            gap: 5px;
+            margin-top: 10px;
+            min-height: 43px;
+            font-size: 11px;
+            line-height: 1.45;
+            color: #DCE4E0;
+        }
+        .overview-today-open {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 42px;
+            margin-top: 18px;
+            padding: 10px 13px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 13px;
+            background: rgba(255,255,255,.11);
+            border: 1px solid rgba(255,255,255,.11);
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            backdrop-filter: blur(5px);
+        }
+        .overview-today-open:active { transform: scale(.985); }
+
+        .overview-progress-widget {
+            padding: 16px;
+            background: #FFFDF9;
+        }
+        .overview-progress-widget .overview-widget-label {
+            color: #9A928A;
+        }
+        .overview-progress-title {
+            margin-top: 5px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #2C3E35;
+        }
+        .overview-progress-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+        .overview-progress-right strong {
+            font-size: 11px;
+            color: #2C3E35;
+        }
+        .overview-progress-right span {
+            font-size: 10px;
+            font-weight: 800;
+            color: #C66914;
+        }
+
+        .overview-route-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 17px;
+            font-size: 8px;
+            font-weight: 700;
+            color: #8E877F;
+        }
+        .overview-route-line {
+            position: relative;
+            height: 6px;
+            margin: 8px 3px 3px;
+            border-radius: 999px;
+            background: #E7E2DB;
+        }
+        .overview-route-fill {
+            position: absolute;
+            inset: 0 auto 0 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg,#2C3E35,#C66914);
+            transition: width .45s ease;
+        }
+        .overview-route-dot {
+            position: absolute;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            margin-top: -5px;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            background: #FFFDF9;
+            border: 2px solid #CFC8BF;
+            z-index: 2;
+        }
+        .overview-route-dot.dot-1 { left:0; }
+        .overview-route-dot.dot-2 { left:33.333%; }
+        .overview-route-dot.dot-3 { left:66.666%; }
+        .overview-route-dot.dot-4 { left:100%; }
+        .overview-route-dot.reached {
+            background: #C66914;
+            border-color: #C66914;
+        }
+
+        .overview-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 9px;
+        }
+        .overview-mini-widget {
+            min-width: 0;
+            min-height: 118px;
+            padding: 14px 7px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            border: 1px solid rgba(44,62,53,.08);
+            background: #FFFDF9;
+            box-shadow: 0 7px 20px rgba(44,62,53,.065);
+        }
+        .overview-mini-widget:active { transform: scale(.97); }
+        .overview-mini-icon {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: #F0EDEA;
+            font-size: 18px;
+        }
+        .overview-mini-widget strong {
+            width: 100%;
+            margin-top: 9px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 13px;
+            line-height: 1.15;
+            color: #2C3E35;
+        }
+        .overview-mini-widget > span:last-child {
+            margin-top: 3px;
+            font-size: 8px;
+            font-weight: 700;
+            color: #928B83;
+        }
+
+        body.dark-mode .overview-widget-header h2,
+        body.dark-mode .overview-progress-title,
+        body.dark-mode .overview-progress-right strong,
+        body.dark-mode .overview-mini-widget strong {
+            color: #F2EEE8;
+        }
+        body.dark-mode .overview-header-emoji,
+        body.dark-mode .overview-progress-widget,
+        body.dark-mode .overview-mini-widget {
+            background: #202B26;
+            border-color: #3A4A42;
+        }
+        body.dark-mode .overview-mini-icon {
+            background: #18211D;
+        }
+        body.dark-mode .overview-route-line {
+            background: #34443B;
+        }
+        body.dark-mode .overview-route-dot {
+            background: #202B26;
+            border-color: #607369;
+        }
+        body.dark-mode .overview-route-dot.reached {
+            background: #F1A15B;
+            border-color: #F1A15B;
+        }
+        body.dark-mode .overview-widget-eyebrow,
+        body.dark-mode .overview-widget-header p,
+        body.dark-mode .overview-progress-widget .overview-widget-label,
+        body.dark-mode .overview-route-labels,
+        body.dark-mode .overview-mini-widget > span:last-child {
+            color: #A9B5AE;
+        }
+
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -2452,71 +2743,92 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 
 
         <!-- ==================== 📊 旅程總覽 ==================== -->
-        <div id="tab-overview" class="tab-content hidden fade-in space-y-6">
-            <div class="taiwan-card rounded-2xl overflow-hidden p-5 space-y-4">
-                <section class="overview-hero">
-                    <div class="overview-hero-emoji" id="overview-day-emoji">🏙️</div>
-                    <div class="relative z-10">
-                        <div class="overview-eyebrow">TAIWAN GRAND TRAVERSE</div>
-                        <h2 class="overview-title">邵奶奶快樂遊台灣👵🏻🏝️</h2>
-                        <p class="overview-date">2026.09.27 — 10.06</p>
-                    </div>
-                </section>
+        <div id="tab-overview" class="tab-content hidden fade-in space-y-4">
+            <div class="overview-dashboard">
 
-                <section class="overview-current">
-                    <div class="flex items-center justify-between gap-3">
-                        <div>
-                            <div class="overview-section-label">CURRENT JOURNEY</div>
-                            <div id="overview-day-badge" class="overview-day-badge">DAY 1</div>
-                        </div>
-                        <button type="button" onclick="openOverviewDay()" class="overview-open-btn">查看 Day 1 →</button>
+                <!-- compact header -->
+                <header class="overview-widget-header">
+                    <div>
+                        <div class="overview-widget-eyebrow">TAIWAN GRAND TRAVERSE</div>
+                        <h2>邵奶奶快樂遊台灣👵🏻🏝️</h2>
+                        <p>2026.09.27 — 10.06</p>
                     </div>
-                    <h3 id="overview-day-title" class="overview-current-title">抵達台灣・台北</h3>
-                    <div id="overview-day-highlights" class="overview-highlights">
+                    <div id="overview-day-emoji" class="overview-header-emoji">🏙️</div>
+                </header>
+
+                <!-- Today widget -->
+                <section class="overview-widget overview-today-widget">
+                    <div class="overview-widget-topline">
+                        <div>
+                            <div class="overview-widget-label">TODAY'S JOURNEY</div>
+                            <div id="overview-day-badge" class="overview-today-day">DAY 1</div>
+                        </div>
+                        <span class="overview-live-dot"></span>
+                    </div>
+
+                    <h3 id="overview-day-title" class="overview-today-title">抵達台灣・台北</h3>
+
+                    <div id="overview-day-highlights" class="overview-today-highlights">
                         <div>✈️ 桃園機場抵達</div>
                         <div>🏙️ 台北夜間自由活動</div>
                     </div>
+
+                    <button type="button" onclick="openOverviewDay()" class="overview-today-open">
+                        <span>查看今日行程</span><span>→</span>
+                    </button>
                 </section>
 
-                <section class="overview-progress-card">
-                    <div class="flex items-center justify-between gap-3">
-                        <div class="overview-section-label">TRIP PROGRESS</div>
-                        <div id="overview-progress-days" class="overview-progress-days">0 / 10 DAYS</div>
+                <!-- Progress widget -->
+                <section class="overview-widget overview-progress-widget">
+                    <div class="overview-widget-topline">
+                        <div>
+                            <div class="overview-widget-label">TRIP PROGRESS</div>
+                            <div class="overview-progress-title">旅程進度</div>
+                        </div>
+                        <div class="overview-progress-right">
+                            <strong id="overview-progress-days">0 / 10 DAYS</strong>
+                            <span id="overview-progress-percent">0%</span>
+                        </div>
                     </div>
-                    <div class="overview-route">
-                        <div class="overview-route-labels">
-                            <span>台北</span><span>台中</span><span>台南</span><span>高雄</span>
-                        </div>
-                        <div class="overview-route-line">
-                            <div id="overview-route-fill" class="overview-route-fill" style="width:0%"></div>
-                            <span class="overview-route-dot dot-1"></span>
-                            <span class="overview-route-dot dot-2"></span>
-                            <span class="overview-route-dot dot-3"></span>
-                            <span class="overview-route-dot dot-4"></span>
-                        </div>
+
+                    <div class="overview-route-labels">
+                        <span>台北</span>
+                        <span>台中</span>
+                        <span>台南</span>
+                        <span>高雄</span>
+                    </div>
+                    <div class="overview-route-line">
+                        <div id="overview-route-fill" class="overview-route-fill" style="width:0%"></div>
+                        <span class="overview-route-dot dot-1"></span>
+                        <span class="overview-route-dot dot-2"></span>
+                        <span class="overview-route-dot dot-3"></span>
+                        <span class="overview-route-dot dot-4"></span>
                     </div>
                 </section>
 
-                <section class="overview-stat-grid">
-                    <button type="button" onclick="switchTab('food')" class="overview-stat">
-                        <div class="overview-stat-icon">🍜</div>
-                        <div id="overview-food-value" class="overview-stat-value">0</div>
-                        <div class="overview-stat-label">台灣胃</div>
+                <!-- Small widgets -->
+                <section class="overview-mini-grid">
+                    <button type="button" onclick="switchTab('food')" class="overview-mini-widget">
+                        <span class="overview-mini-icon">🍜</span>
+                        <strong id="overview-food-value">0</strong>
+                        <span>台灣胃</span>
                     </button>
-                    <button type="button" onclick="switchTab('budget')" class="overview-stat">
-                        <div class="overview-stat-icon">💰</div>
-                        <div id="overview-budget-value" class="overview-stat-value">NT$0</div>
-                        <div class="overview-stat-label">已記帳</div>
+
+                    <button type="button" onclick="switchTab('budget')" class="overview-mini-widget">
+                        <span class="overview-mini-icon">💰</span>
+                        <strong id="overview-budget-value">NT$0</strong>
+                        <span>已記帳</span>
                     </button>
-                    <button type="button" onclick="switchTab('achievements')" class="overview-stat">
-                        <div class="overview-stat-icon">🏆</div>
-                        <div id="overview-ach-value" class="overview-stat-value">0</div>
-                        <div class="overview-stat-label">已解鎖</div>
+
+                    <button type="button" onclick="switchTab('achievements')" class="overview-mini-widget">
+                        <span class="overview-mini-icon">🏆</span>
+                        <strong id="overview-ach-value">0</strong>
+                        <span>已解鎖</span>
                     </button>
                 </section>
+
             </div>
         </div>
-
 
         <!-- ==================== 📌 全程提醒 ==================== -->
         <div id="tab-tips" class="tab-content hidden fade-in space-y-6">
@@ -3017,7 +3329,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = 'html_build_c7263b5225';
+            const BUILD_KEY = 'html_build_5158a3ce42';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -3178,6 +3490,8 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
             if (progressDays) progressDays.textContent = `${displayDay} / 10 DAYS`;
             const pct = Math.max(0, Math.min(100, displayDay * 10));
+            const progressPercent = document.getElementById('overview-progress-percent');
+            if (progressPercent) progressPercent.textContent = `${pct}%`;
             if (routeFill) routeFill.style.width = `${pct}%`;
 
             const thresholds = [1,4,6,7];

@@ -112,51 +112,94 @@
                 <div class="text-center max-w-2xl mx-auto space-y-2">
                     <span class="text-xs bg-[#2C3E35]/10 text-[#2C3E35] px-3 py-1 rounded-md font-bold">GEOGRAPHIC OVERVIEW</span>
                     <h2 class="text-3xl font-bold text-[#2C3E35]">🗺️ 邵奶奶台灣山海縱走・分區地圖</h2>
-                    <p class="text-sm text-gray-600">點擊下方台灣各區域卡片，即可彈出對應的天數與行程選單！</p>
+                    <p class="text-sm text-gray-600">點擊下方台灣各區域卡片，即可在該卡片下方彈出對應的天數與行程選單！</p>
                 </div>
 
                 <!-- 分區卡片網格 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                     <!-- 北台灣 -->
-                    <div onclick="selectRegion('north')" class="bg-gradient-to-br from-[#F0EDEA] to-white border-2 border-[#2C3E35]/30 hover:border-[#2C3E35] p-6 rounded-2xl cursor-pointer shadow-sm hover:shadow-md transition group">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-2xl">🏙️</span>
-                            <span class="text-xs font-bold bg-[#2C3E35] text-white px-2.5 py-1 rounded-lg">Day 1 - Day 3</span>
+                    <div class="space-y-3">
+                        <div onclick="selectRegion('north')" class="bg-gradient-to-br from-[#F0EDEA] to-white border-2 border-[#2C3E35]/30 hover:border-[#2C3E35] p-6 rounded-2xl cursor-pointer shadow-sm hover:shadow-md transition group">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-2xl">🏙️</span>
+                                <span class="text-xs font-bold bg-[#2C3E35] text-white px-2.5 py-1 rounded-lg">Day 1 - Day 3</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#2C3E35] group-hover:text-[#C66914] transition">北台灣：台北都會與北海岸</h3>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">桃園機場抵達、台北夜生活、北海岸（野柳/九份/十分）、故宮與陽明山漫遊。</p>
+                            <div class="mt-4 flex items-center text-xs font-bold text-[#2C3E35] gap-1">
+                                <span>點擊展開北台灣行程 ➔</span>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#2C3E35] group-hover:text-[#C66914] transition">北台灣：台北都會與北海岸</h3>
-                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">桃園機場抵達、台北夜生活、北海岸（野柳/九份/十分）、故宮與陽明山漫遊。</p>
-                        <div class="mt-4 flex items-center text-xs font-bold text-[#2C3E35] gap-1">
-                            <span>點擊展開北台灣行程 ➔</span>
+                        <!-- 北台灣獨立彈出視窗 -->
+                        <div id="region-detail-north" class="hidden bg-[#F0EDEA] p-5 rounded-2xl border border-[#E2DDD5] space-y-3 fade-in">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-sm text-[#2C3E35]">🏙️ 北台灣行程（Day 1 - Day 3）</h4>
+                                <button onclick="closeRegionDetail('north')" class="text-xs bg-white border px-2.5 py-1 rounded-lg hover:bg-gray-100 font-bold">✕ 關閉</button>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="changeDay(1)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 1 台北</button>
+                                <button onclick="changeDay(2)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 2 北海岸</button>
+                                <button onclick="changeDay(3)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 3 故宮陽明</button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 中台灣 -->
-                    <div onclick="selectRegion('central')" class="bg-gradient-to-br from-[#F0EDEA] to-white border-2 border-[#2C3E35]/30 hover:border-[#2C3E35] p-6 rounded-2xl cursor-pointer shadow-sm hover:shadow-md transition group">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-2xl">⛰️</span>
-                            <span class="text-xs font-bold bg-[#2C3E35] text-white px-2.5 py-1 rounded-lg">Day 4 - Day 6</span>
+                    <div class="space-y-3">
+                        <div onclick="selectRegion('central')" class="bg-gradient-to-br from-[#F0EDEA] to-white border-2 border-[#2C3E35]/30 hover:border-[#2C3E35] p-6 rounded-2xl cursor-pointer shadow-sm hover:shadow-md transition group">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-2xl">⛰️</span>
+                                <span class="text-xs font-bold bg-[#2C3E35] text-white px-2.5 py-1 rounded-lg">Day 4 - Day 6</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#2C3E35] group-hover:text-[#C66914] transition">中台灣：日月潭與高山武嶺</h3>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">南投日月潭湖畔風光、九族文化村、高美濕地、挑戰台灣公路之巔「武嶺」後直奔台南。</p>
+                            <div class="mt-4 flex items-center text-xs font-bold text-[#2C3E35] gap-1">
+                                <span>點擊展開中台灣行程 ➔</span>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#2C3E35] group-hover:text-[#C66914] transition">中台灣：日月潭與高山武嶺</h3>
-                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">南投日月潭湖畔風光、九族文化村、高美濕地、挑戰台灣公路之巔「武嶺」後直奔台南。</p>
-                        <div class="mt-4 flex items-center text-xs font-bold text-[#2C3E35] gap-1">
-                            <span>點擊展開中台灣行程 ➔</span>
+                        <!-- 中台灣獨立彈出視窗 -->
+                        <div id="region-detail-central" class="hidden bg-[#F0EDEA] p-5 rounded-2xl border border-[#E2DDD5] space-y-3 fade-in">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-sm text-[#2C3E35]">⛰️ 中台灣行程（Day 4 - Day 6）</h4>
+                                <button onclick="closeRegionDetail('central')" class="text-xs bg-white border px-2.5 py-1 rounded-lg hover:bg-gray-100 font-bold">✕ 關閉</button>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="changeDay(4)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 4 南投日月潭</button>
+                                <button onclick="changeDay(5)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 5 南投➔台中</button>
+                                <button onclick="changeDay(6)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 6 武嶺台南</button>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 南台灣 -->
-                    <div onclick="selectRegion('south')" class="bg-gradient-to-br from-[#F0EDEA] to-white border-2 border-[#2C3E35]/30 hover:border-[#2C3E35] p-6 rounded-2xl cursor-pointer shadow-sm hover:shadow-md transition group">
-                        <div class="flex justify-between items-start mb-3">
-                            <span class="text-2xl">🏝️</span>
-                            <span class="text-xs font-bold bg-[#2C3E35] text-white px-2.5 py-1 rounded-lg">Day 7 - Day 10</span>
+                    <div class="space-y-3">
+                        <div onclick="selectRegion('south')" class="bg-gradient-to-br from-[#F0EDEA] to-white border-2 border-[#2C3E35]/30 hover:border-[#2C3E35] p-6 rounded-2xl cursor-pointer shadow-sm hover:shadow-md transition group">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-2xl">🏝️</span>
+                                <span class="text-xs font-bold bg-[#2C3E35] text-white px-2.5 py-1 rounded-lg">Day 7 - Day 10</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-[#2C3E35] group-hover:text-[#C66914] transition">南台灣：府城古都、墾丁與高雄</h3>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">台南古蹟美食、月世界熱氣球、墾丁海岸包車、夜宿海生館、高雄旗津夕陽與賦歸。</p>
+                            <div class="mt-4 flex items-center text-xs font-bold text-[#2C3E35] gap-1">
+                                <span>點擊展開南台灣行程 ➔</span>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#2C3E35] group-hover:text-[#C66914] transition">南台灣：府城古都、墾丁與高雄</h3>
-                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">台南古蹟美食、月世界熱氣球、墾丁海岸包車、夜宿海生館、高雄旗津夕陽與賦歸。</p>
-                        <div class="mt-4 flex items-center text-xs font-bold text-[#2C3E35] gap-1">
-                            <span>點擊展開南台灣行程 ➔</span>
+                        <!-- 南台灣獨立彈出視窗 -->
+                        <div id="region-detail-south" class="hidden bg-[#F0EDEA] p-5 rounded-2xl border border-[#E2DDD5] space-y-3 fade-in">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-sm text-[#2C3E35]">🏝️ 南台灣行程（Day 7 - Day 10）</h4>
+                                <button onclick="closeRegionDetail('south')" class="text-xs bg-white border px-2.5 py-1 rounded-lg hover:bg-gray-100 font-bold">✕ 關閉</button>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="changeDay(7)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 7 台南</button>
+                                <button onclick="changeDay(8)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 8 屏東墾丁</button>
+                                <button onclick="changeDay(9)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 9 高雄</button>
+                                <button onclick="changeDay(10)" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition">📍 Day 10 賦歸</button>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 東台灣（固定最下方，等你解鎖） -->
+                    <!-- 東台灣（固定，等你解鎖） -->
                     <div class="bg-gradient-to-br from-[#F9F8F6] to-[#EFECE6] border border-[#E2DDD5] p-6 rounded-2xl opacity-80 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start mb-3">
@@ -169,17 +212,6 @@
                         <div class="mt-4 text-xs font-medium text-[#C66914]">
                             <span>✨ 敬請期待未來解鎖</span>
                         </div>
-                    </div>
-                </div>
-
-                <!-- 彈出式分區詳細行程視窗 -->
-                <div id="region-detail-box" class="hidden bg-[#F0EDEA] p-6 rounded-2xl border border-[#E2DDD5] space-y-4 fade-in">
-                    <div class="flex justify-between items-center">
-                        <h4 id="region-title" class="font-bold text-lg text-[#2C3E35]">區域詳細天數</h4>
-                        <button onclick="closeRegionDetail()" class="text-xs bg-white border px-3 py-1.5 rounded-lg hover:bg-gray-100 font-bold">✕ 關閉</button>
-                    </div>
-                    <div id="region-buttons-container" class="flex flex-wrap gap-2 pt-2">
-                        <!-- 動態產生天數按鈕 -->
                     </div>
                 </div>
             </div>
@@ -1419,55 +1451,27 @@
             }
         }
 
-        // 台灣地圖分區點擊互動（彈出式卡片）
+        // 台灣地圖分區點擊互動（各自獨立在卡片下方彈出）
         function selectRegion(region) {
             triggerSingleEmojiRain();
-            const detailBox = document.getElementById('region-detail-box');
-            const regionTitle = document.getElementById('region-title');
-            const container = document.getElementById('region-buttons-container');
-            container.innerHTML = '';
-
-            let title = '';
-            let days = [];
-
-            if (region === 'north') {
-                title = '🏙️ 北台灣行程（Day 1 - Day 3）';
-                days = [
-                    { day: 1, label: '📍 Day 1 台北' },
-                    { day: 2, label: '📍 Day 2 北海岸' },
-                    { day: 3, label: '📍 Day 3 故宮陽明' }
-                ];
-            } else if (region === 'central') {
-                title = '⛰️ 中台灣行程（Day 4 - Day 6）';
-                days = [
-                    { day: 4, label: '📍 Day 4 南投日月潭' },
-                    { day: 5, label: '📍 Day 5 南投➔台中' },
-                    { day: 6, label: '📍 Day 6 武嶺台南' }
-                ];
-            } else if (region === 'south') {
-                title = '🏝️ 南台灣行程（Day 7 - Day 10）';
-                days = [
-                    { day: 7, label: '📍 Day 7 台南' },
-                    { day: 8, label: '📍 Day 8 屏東墾丁' },
-                    { day: 9, label: '📍 Day 9 高雄' },
-                    { day: 10, label: '📍 Day 10 賦歸' }
-                ];
-            }
-
-            regionTitle.innerText = title;
-            detailBox.classList.remove('hidden');
-
-            days.forEach(item => {
-                const btn = document.createElement('button');
-                btn.className = 'px-4 py-2.5 rounded-xl text-xs font-bold bg-[#2C3E35] text-white shadow hover:bg-[#C66914] transition';
-                btn.innerText = item.label;
-                btn.onclick = () => changeDay(item.day);
-                container.appendChild(btn);
+            // 先關閉所有分區彈出視窗
+            ['north', 'central', 'south'].forEach(r => {
+                const box = document.getElementById('region-detail-' + r);
+                if (box) box.classList.add('hidden');
             });
+
+            // 展開點擊的對應分區
+            const targetBox = document.getElementById('region-detail-' + region);
+            if (targetBox) {
+                targetBox.classList.remove('hidden');
+            }
         }
 
-        function closeRegionDetail() {
-            document.getElementById('region-detail-box').classList.add('hidden');
+        function closeRegionDetail(region) {
+            const targetBox = document.getElementById('region-detail-' + region);
+            if (targetBox) {
+                targetBox.classList.add('hidden');
+            }
         }
 
         function changeDay(dayNum) {
@@ -1633,4 +1637,3 @@
     </script>
 </body>
 </html>
-

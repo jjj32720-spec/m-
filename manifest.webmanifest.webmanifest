@@ -1,0 +1,19 @@
+{
+  "name": "SYD’s Taiwan Grand Traverse App 2026",
+  "short_name": "SYD Taiwan",
+  "description": "邵奶奶快樂遊台灣 10 日山海縱走手札",
+  "start_url": "./index.html#map",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F5F0",
+  "theme_color": "#2C3E35",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "9C521840-44ED-4BD0-9A5F-24940BEA15D1.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>邵奶奶快樂遊台灣 10 日山海縱走手札 | 2026.09.27 - 10.06</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -896,7 +896,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
         body.dark-mode .overview-stat-label,
         body.dark-mode .overview-section-label { color:#A9B5AE; }
 
-        /* Bottom nav auto-hide while scrolling; tap page to reveal again */
+        /* Bottom nav auto-hide while scrolling; reveal when scrolling stops */
         #mobile-bottom-nav {
             transition: transform .24s ease, opacity .20s ease !important;
         }
@@ -915,7 +915,52 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             -webkit-user-drag:auto !important;
         }
 
-    </style>
+    
+        .overview-progress-card{padding:15px;border:1px solid #E2DDD5;border-radius:17px;background:#F9F8F6}
+        .overview-progress-days{font-size:12px;font-weight:800;color:#C66914;letter-spacing:.04em}
+        .overview-route{margin-top:13px}
+        .overview-route-labels{display:flex;justify-content:space-between;font-size:9px;font-weight:700;color:#7E776F}
+        .overview-route-line{position:relative;height:6px;margin:8px 2px 0;border-radius:999px;background:#E5DFD7}
+        .overview-route-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:inherit;background:linear-gradient(90deg,#2C3E35,#C66914);transition:width .45s ease}
+        .overview-route-dot{position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;border-radius:999px;background:#FFFDF9;border:2px solid #BFB7AE;transform:translateX(-50%);z-index:2;transition:.25s}
+        .overview-route-dot.dot-1{left:0}.overview-route-dot.dot-2{left:33.333%}.overview-route-dot.dot-3{left:66.666%}.overview-route-dot.dot-4{left:100%}
+        .overview-route-dot.reached{background:#C66914;border-color:#C66914}
+        body.dark-mode .overview-progress-card{background:#202B26;border-color:#3A4A42}
+        body.dark-mode .overview-route-labels{color:#A9B5AE}
+        body.dark-mode .overview-route-line{background:#34443B}
+        body.dark-mode .overview-route-dot{background:#202B26;border-color:#607369}
+        body.dark-mode .overview-route-dot.reached{background:#F1A15B;border-color:#F1A15B}
+
+
+        /* Installed / standalone mode */
+        @media (display-mode: standalone) {
+            body {
+                padding-top: env(safe-area-inset-top);
+                overscroll-behavior-y: none;
+            }
+            nav {
+                padding-top: max(env(safe-area-inset-top), 0px);
+            }
+            #mobile-bottom-nav {
+                padding-bottom: max(env(safe-area-inset-bottom), 0px);
+            }
+        }
+
+</style>
+
+    <!-- Add to Home Screen / PWA -->
+    <meta name="theme-color" content="#2C3E35">
+    <meta name="color-scheme" content="light dark">
+    <meta name="application-name" content="SYD Taiwan">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="SYD Taiwan">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="9C521840-44ED-4BD0-9A5F-24940BEA15D1.png">
+    <link rel="icon" type="image/png" href="9C521840-44ED-4BD0-9A5F-24940BEA15D1.png">
+    
+    <link rel="manifest" href="manifest.webmanifest">
+
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
 
@@ -2349,8 +2394,8 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                                 </div>
                             </div>
                         </section>
-                        <p class="mt-2 text-[9px] text-[#BFC9C3]">🔍 點按證書放大・長按圖片可儲存</p>
                         <p class="mt-3 text-[10px] text-[#D1D8D2] tracking-wide">東台灣 等待下一次解鎖 🔒</p>
+                        <p class="mt-2 text-[9px] text-[#BFC9C3]">🔍 點按證書放大・長按圖片可儲存</p>
                     </div>
                 </div>
 </div>
@@ -2430,6 +2475,25 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     <div id="overview-day-highlights" class="overview-highlights">
                         <div>✈️ 桃園機場抵達</div>
                         <div>🏙️ 台北夜間自由活動</div>
+                    </div>
+                </section>
+
+                <section class="overview-progress-card">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="overview-section-label">TRIP PROGRESS</div>
+                        <div id="overview-progress-days" class="overview-progress-days">0 / 10 DAYS</div>
+                    </div>
+                    <div class="overview-route">
+                        <div class="overview-route-labels">
+                            <span>台北</span><span>台中</span><span>台南</span><span>高雄</span>
+                        </div>
+                        <div class="overview-route-line">
+                            <div id="overview-route-fill" class="overview-route-fill" style="width:0%"></div>
+                            <span class="overview-route-dot dot-1"></span>
+                            <span class="overview-route-dot dot-2"></span>
+                            <span class="overview-route-dot dot-3"></span>
+                            <span class="overview-route-dot dot-4"></span>
+                        </div>
                     </div>
                 </section>
 
@@ -2953,7 +3017,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = 'html_build_111ff81e4a';
+            const BUILD_KEY = 'html_build_c7263b5225';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -3050,10 +3114,31 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             return count;
         }
 
-        function refreshJourneyOverview() {
-            const day = Math.min(10,Math.max(1,Number(currentDayNum)||1));
-            const data = OVERVIEW_DAY_DATA[day] || OVERVIEW_DAY_DATA[1];
 
+        function getTaiwanDateParts() {
+            const parts = new Intl.DateTimeFormat('en-CA', {
+                timeZone: 'Asia/Taipei',
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            }).formatToParts(new Date());
+            const obj = {};
+            parts.forEach(p => { if (p.type !== 'literal') obj[p.type] = p.value; });
+            return { year:Number(obj.year), month:Number(obj.month), day:Number(obj.day) };
+        }
+
+        function getRealTripDay() {
+            const tw = getTaiwanDateParts();
+            const todayUTC = Date.UTC(tw.year, tw.month - 1, tw.day);
+            const startUTC = Date.UTC(2026, 8, 27);
+            const endUTC = Date.UTC(2026, 9, 6);
+            if (todayUTC < startUTC) return { status:'before', day:0 };
+            if (todayUTC > endUTC) return { status:'after', day:10 };
+            return { status:'during', day:Math.floor((todayUTC - startUTC)/86400000)+1 };
+        }
+
+        function refreshJourneyOverview() {
+            const trip = getRealTripDay();
             const emoji = document.getElementById('overview-day-emoji');
             const badge = document.getElementById('overview-day-badge');
             const title = document.getElementById('overview-day-title');
@@ -3062,70 +3147,89 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             const food = document.getElementById('overview-food-value');
             const budget = document.getElementById('overview-budget-value');
             const ach = document.getElementById('overview-ach-value');
+            const progressDays = document.getElementById('overview-progress-days');
+            const routeFill = document.getElementById('overview-route-fill');
+            const routeDots = document.querySelectorAll('#tab-overview .overview-route-dot');
 
-            if(emoji) emoji.textContent = data.emoji;
-            if(badge) badge.textContent = `DAY ${day}`;
-            if(title) title.textContent = data.title;
-            if(highlights) highlights.innerHTML = data.highlights.map(x=>`<div>${x}</div>`).join('');
-            if(btn) btn.textContent = `查看 Day ${day} →`;
+            let displayDay = trip.day;
+
+            if (trip.status === 'before') {
+                if (emoji) emoji.textContent = '🧳';
+                if (badge) badge.textContent = 'UPCOMING · DAY 1';
+                if (title) title.textContent = '旅程尚未開始';
+                if (highlights) highlights.innerHTML = '<div>📅 2026.09.27 正式出發</div><div>✈️ 第一站：桃園機場 → 台北</div>';
+                if (btn) { btn.textContent = '查看 Day 1 →'; btn.dataset.day = '1'; }
+                displayDay = 0;
+            } else if (trip.status === 'after') {
+                if (emoji) emoji.textContent = '🏆';
+                if (badge) badge.textContent = 'TRIP COMPLETE';
+                if (title) title.textContent = '西台灣十日旅程完成';
+                if (highlights) highlights.innerHTML = '<div>👵🏻🏝️ 北・中・南正式通關</div><div>🔒 東台灣 等待下一次解鎖</div>';
+                if (btn) { btn.textContent = '查看 Day 10 →'; btn.dataset.day = '10'; }
+                displayDay = 10;
+            } else {
+                const data = OVERVIEW_DAY_DATA[trip.day] || OVERVIEW_DAY_DATA[1];
+                if (emoji) emoji.textContent = data.emoji;
+                if (badge) badge.textContent = `DAY ${trip.day}`;
+                if (title) title.textContent = data.title;
+                if (highlights) highlights.innerHTML = data.highlights.map(x => `<div>${x}</div>`).join('');
+                if (btn) { btn.textContent = `查看 Day ${trip.day} →`; btn.dataset.day = String(trip.day); }
+            }
+
+            if (progressDays) progressDays.textContent = `${displayDay} / 10 DAYS`;
+            const pct = Math.max(0, Math.min(100, displayDay * 10));
+            if (routeFill) routeFill.style.width = `${pct}%`;
+
+            const thresholds = [1,4,6,7];
+            routeDots.forEach((dot,i) => dot.classList.toggle('reached', displayDay >= thresholds[i]));
 
             const foodCount = typeof getFoodCheckedCount === 'function' ? getFoodCheckedCount() : 0;
-            if(food) food.textContent = foodCount;
+            if (food) food.textContent = foodCount;
 
             const expense = getOverviewExpenseTotal();
-            if(budget) budget.textContent = expense >= 10000
+            if (budget) budget.textContent = expense >= 10000
                 ? `NT$${(expense/1000).toFixed(expense%1000===0?0:1)}K`
                 : `NT$${expense.toLocaleString()}`;
 
-            if(ach) ach.textContent = getOverviewAchievementCount();
+            if (ach) ach.textContent = getOverviewAchievementCount();
         }
 
         function openOverviewDay() {
-            changeDay(Math.min(10,Math.max(1,Number(currentDayNum)||1)));
+            const btn = document.querySelector('#tab-overview .overview-open-btn');
+            const day = Number(btn?.dataset?.day || 1);
+            changeDay(Math.min(10, Math.max(1, day)));
         }
 
-        // Hide bottom nav whenever the page is actively scrolled.
-        // It stays hidden until the user taps once on the page.
-        let mobileNavWasHiddenByScroll = false;
-        let mobileNavScrollStartY = window.scrollY;
+        // Hide bottom nav while the page is actively scrolling.
+        // Show it again automatically shortly after scrolling stops.
+        let mobileNavScrollTimer = null;
+        let mobileNavLastY = window.scrollY;
 
         function hideMobileBottomNavForScroll() {
             const nav = document.getElementById('mobile-bottom-nav');
             if (!nav) return;
             nav.classList.add('mobile-nav-hidden');
-            mobileNavWasHiddenByScroll = true;
         }
 
         function revealMobileBottomNav() {
             const nav = document.getElementById('mobile-bottom-nav');
             if (!nav) return;
             nav.classList.remove('mobile-nav-hidden');
-            mobileNavWasHiddenByScroll = false;
         }
 
-        let mobileNavScrollTicking = false;
         window.addEventListener('scroll', () => {
-            if (mobileNavScrollTicking) return;
-            mobileNavScrollTicking = true;
-            requestAnimationFrame(() => {
-                const y = window.scrollY;
-                if (Math.abs(y - mobileNavScrollStartY) > 6) {
-                    hideMobileBottomNavForScroll();
-                    mobileNavScrollStartY = y;
-                }
-                mobileNavScrollTicking = false;
-            });
-        }, {passive:true});
+            const currentY = window.scrollY;
 
-        document.addEventListener('pointerdown', (e) => {
-            if (!mobileNavWasHiddenByScroll) return;
+            if (Math.abs(currentY - mobileNavLastY) > 3) {
+                hideMobileBottomNavForScroll();
+                mobileNavLastY = currentY;
+            }
 
-            // A tap on ordinary page content reveals the nav.
-            // Ignore touches inside modal/bottom sheets so they keep their own interactions.
-            if (e.target.closest('#imageModal, #mobile-day-sheet, #mobile-more-sheet')) return;
-
-            revealMobileBottomNav();
-        }, {passive:true});
+            clearTimeout(mobileNavScrollTimer);
+            mobileNavScrollTimer = setTimeout(() => {
+                revealMobileBottomNav();
+            }, 260);
+        }, { passive:true });
 
         function selectRegion(region) {
             triggerSingleEmojiRain();
@@ -4553,14 +4657,14 @@ function updateAchievementWall() {
         <button onclick="closeMobileSheets()" class="w-9 h-9 rounded-full bg-[#F0EDEA] text-[#2C3E35] font-bold">✕</button>
     </div>
     <div class="px-4 space-y-2">
-        <button onclick="toggleDarkMode()" class="mobile-more-item">
-            <span id="dark-mode-icon">🌙</span>
-            <span id="dark-mode-label">深色模式</span>
-            <span>›</span>
-        </button>
         <button onclick="mobileMoreTo('overview')" class="mobile-more-item">
             <span>📊</span>
             <span>旅程總覽</span>
+            <span>›</span>
+        </button>
+        <button onclick="toggleDarkMode()" class="mobile-more-item">
+            <span id="dark-mode-icon">🌙</span>
+            <span id="dark-mode-label">深色模式</span>
             <span>›</span>
         </button>
         <button onclick="mobileMoreTo('sos')" class="mobile-more-item">

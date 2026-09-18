@@ -644,7 +644,7 @@
                         <span class="summary-arrow text-xs text-gray-500 font-medium">收合 ▲</span>
                     </summary>
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
-                        <p><b>高鐵＋台灣好行【建議】：</b>台北搭高鐵至台中 (約50-70分) ➔ 高鐵台中站 14:10 搭台灣好行 6670 至日月潭 (約1.5小時)。</p>
+                        <p><b>高鐵＋台灣好行【建議】：</b>台北搭高鐵至台中 (50-70分) ➔ 高鐵台中站 14:10 搭台灣好行 6670 至日月潭 (約1.5小時)。</p>
                     </div>
                     <!-- Google Maps 快捷按鈕 -->
                     <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
@@ -850,9 +850,9 @@
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] flex items-center justify-between">
                         <p><b>想見你！莫奶奶冰店 🍧</b></p>
-                        <!-- 《想見你》音樂彩蛋按鈕 -->
-                        <button id="last-dance-btn" onclick="toggleLastDance()" class="flex items-center gap-1.5 bg-[#C66914] text-white px-3 py-1.5 rounded-full text-xs font-bold hover:bg-[#B05B11] shadow transition">
-                            <span id="play-icon">🎵</span> <span id="play-text">播放 Last Dance</span>
+                        <!-- 《想見你》音樂彩蛋按鈕（純錄音帶符號 📼，無文字說明） -->
+                        <button id="last-dance-btn" onclick="toggleLastDance()" class="flex items-center justify-center bg-[#C66914] text-white w-10 h-10 rounded-full text-base hover:bg-[#B05B11] shadow transition" title="Last Dance">
+                            <span id="play-icon">📼</span>
                         </button>
                     </div>
                 </details>
@@ -1509,16 +1509,15 @@
         let currentDayNum = 1;
         let currentTabId = 'map';
 
-        // 彩蛋：播放 Last Dance 音樂控制
+        // 彩蛋：播放 Last Dance 音樂控制（從第4秒開始播放）
         function toggleLastDance() {
             const audio = document.getElementById('bgm-audio');
-            const playText = document.getElementById('play-text');
             const playIcon = document.getElementById('play-icon');
             const btn = document.getElementById('last-dance-btn');
 
             if (audio.paused) {
+                audio.currentTime = 4; // 從四秒後開始播放
                 audio.play().then(() => {
-                    playText.textContent = '暫停 Last Dance';
                     playIcon.textContent = '⏸️';
                     playIcon.classList.add('spinning');
                     btn.classList.remove('bg-[#C66914]');
@@ -1529,8 +1528,7 @@
                 });
             } else {
                 audio.pause();
-                playText.textContent = '播放 Last Dance';
-                playIcon.textContent = '🎵';
+                playIcon.textContent = '📼';
                 playIcon.classList.remove('spinning');
                 btn.classList.remove('bg-rose-600');
                 btn.classList.add('bg-[#C66914]');
@@ -1739,5 +1737,4 @@
         });
     </script>
 </body>
-</html>
 </html>

@@ -99,11 +99,12 @@
             
             <button onclick="switchTab('tips')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-tips">📌 全程提醒</button>
             <button onclick="switchTab('food')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-food">🍜 美食清單</button>
-            <button onclick="switchTab('sos')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-sos">💰 交通急救包</button>
+            <button onclick="switchTab('budget')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-budget">💰 預算與記帳</button>
+            <button onclick="switchTab('sos')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-sos">📦 交通急救包</button>
         </div>
     </nav>
 
-    <!-- 子選單導覽列 -->
+    <!-- 子選單導覽列（只在 Day 畫面顯示） -->
     <div id="sub-nav-container" class="bg-[#EFECE6] border-b border-[#E2DDD5] py-2 px-4 shadow-inner">
         <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1 items-center" id="sub-nav-buttons">
             <!-- 動態載入 -->
@@ -206,7 +207,7 @@
                         </div>
                     </div>
 
-                    <!-- 東台灣（固定，等你解鎖） -->
+                    <!-- 東台灣 -->
                     <div class="bg-gradient-to-br from-[#F9F8F6] to-[#EFECE6] border border-[#E2DDD5] p-6 rounded-2xl opacity-80 flex flex-col justify-between">
                         <div>
                             <div class="flex justify-between items-start mb-3">
@@ -300,11 +301,30 @@
                         <p><b>方案2｜計程車：</b>桃園機場直接搭乘計程車前往市中心住宿（約NT$1,200～1,700／車）。</p>
                         <p class="text-xs text-gray-500">總車程：桃園機場 ➔ 台北市區約 40～75 分鐘。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/Taoyuan+International+Airport/Taipei+Station/" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（桃園機場 ➔ 台北市區）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 1) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=桃園國際機場" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                ✈️ 桃園機場
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=台北車站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏢 台北車站
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=捷運中山站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏬 中山商圈
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=台北101" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏙️ 信義區
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=圓山花博公園" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                ⛩️ 圓山
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=西門町" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🛍️ 西門町
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -415,11 +435,27 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p>白天全程以 Klook 預訂之一日遊專車巴士為主，免去山路轉車煩惱。晚上返回台北車站後使用捷運／計程車移動。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/search/%E9%87%8e%E6%AA%柳+九份+十分" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（北海岸／九份／十分路線）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 2) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=野柳地質公園" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏖️ 野柳
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=水湳洞陰陽海" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🌊 陰陽海
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=黃金瀑布" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                ✨ 黃金瀑布
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=九份老街" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏮 九份老街
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=十分老街" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏮 十分老街
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -532,11 +568,27 @@
                         <p><b>市區移動：</b>台北捷運＋步行。<b>東門 ➔ 故宮：</b>捷運至士林站，轉公車／計程車。<b>士林 ➔ 屋頂上：</b>建議計程車／接送上山。</p>
                         <p class="text-xs text-gray-500">車程參考：東門至故宮約40-60分；故宮至士林站約15-25分；士林至屋頂上約20-30分。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E5%9C%8B%E7%AB%8B%E6%95%85%E5%AE%宮%E5%8D%9A%E7%89%A9%E9%99%A2/%E5%BD%8e%E9%BC%8E%E5%B1%B1%E5%B1%8B%E9%A0%82%E4%B8%8A" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（故宮 ➔ 陽明山屋頂上）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 3) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=阜杭豆漿" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🥣 阜杭豆漿
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=中正紀念堂" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏛️ 中正紀念堂
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=永康商圈" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🥟 永康商圈
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=國立故宮博物院" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🏛️ 故宮博物院
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=屋頂上+陽明山" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#2C3E35] hover:text-white transition shadow-sm">
+                                🌃 陽明山屋頂上
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -646,11 +698,24 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p><b>高鐵＋台灣好行【建議】：</b>台北搭高鐵至台中 (50-70分) ➔ 高鐵台中站 14:10 搭台灣好行 6670 至日月潭 (約1.5小時)。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E9%AB%98%E9%90%B5%E5%8F%B0%E4%B8%AD%E7%AB%99/%E6%97%A5%E6%9C%88%E6%BD%AD%E6%B0%B4%E7%A4%BE" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（高鐵台中站 ➔ 日月潭水社）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 4) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Cookinn+Taiwan" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🍳 Cookinn
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=高鐵台中站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🚄 高鐵台中站
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=日月潭水社碼頭" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🌊 日月潭水社
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=伊達邵碼頭" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🍡 伊達邵
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -762,11 +827,24 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p><b>日月潭 ⇄ 九族：</b>去程車、回程纜車。<b>日月潭 ➔ 台中：</b>台灣好行 6670。<b>台中 ➔ 高美濕地：</b>自駕（約40-50分）。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E5%8F%B0%E4%B8%AD%E5%B9%B2%E5%9F%8E%E7%AB%99/%E9%AB%98%E7%BE%8E%E6%BF%95%E5%9C%b0" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（台中干城 ➔ 高美濕地）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 5) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=九族文化村" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🎡 九族文化村
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=台中干城站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🏢 台中干城站
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=高美濕地" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🌅 高美濕地
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=春水堂" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🧋 春水堂
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -850,9 +928,9 @@
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] flex items-center justify-between">
                         <p><b>想見你！莫奶奶冰店 🍧</b></p>
-                        <!-- 《想見你》音樂彩蛋按鈕（純錄音帶符號 📼🎵，無文字說明） -->
+                        <!-- 《想見你》音樂彩蛋按鈕（純返回符號 🔙，無文字說明） -->
                         <button id="last-dance-btn" onclick="toggleLastDance()" class="flex items-center justify-center bg-[#C66914] text-white w-10 h-10 rounded-full text-base hover:bg-[#B05B11] shadow transition" title="Last Dance">
-                            <span id="play-icon">📼🎵</span>
+                            <span id="play-icon">🔙</span>
                         </button>
                     </div>
                 </details>
@@ -885,11 +963,27 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p>全程自駕。台中 ⇄ 武嶺單程約2.5-3小時；台中 ➔ 麻豆約2小時；麻豆至台南市區約30-40分鐘。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E5%8F%B0%E4%B8%AD/%E6%AD%A6%E5%B6%岭" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（台中 ➔ 武嶺）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 6) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=武嶺" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                ⛰️ 武嶺
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=宮原眼科" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🍧 宮原眼科
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=麻豆龍泉冰店" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🍧 龍泉冰店
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=正統鹿耳門聖母廟" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                ⛩️ 鹿耳門聖母廟
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=漁光島" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🌅 漁光島
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -1001,11 +1095,24 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p>台南市區 ➔ 四草 ➔ 安平 ➔ 性格咖啡 ➔ 田寮月世界自駕（月世界至高雄市區後續轉大眾交通）。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E5%8F%B0%E5%8D%97%E5%B8%82%E5%8C%BA/%E7%94%B0%E5%BB%cc%E6%9C%88%E4%B8%96%E7%95%00" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（台南 ➔ 田寮月世界）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 7) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=四草綠色隧道" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🛶 四草綠色隧道
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=安平古堡" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🏰 安平古堡
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=性格咖啡" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                ☕️ 性格咖啡
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=田寮月世界" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🎈 月世界熱氣球
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -1112,11 +1219,24 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p><b>左營 ➔ 墾丁：</b>台灣好行9189墾丁快線 (10:00 發車，左營至恆春約2小時05分)。<b>墾丁區域：</b>包車約4小時（景點選3-4個）。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E9%AB%98%E9%90%B5%E5%B7%A6%E7%87%9F%E7%AB%99/%E5%9C%8B%E7%AB%8B%E6%B5%B7%E6%B4%8B%E7%94%9F%E7%89%A9%E5%8D%9A%E7%89%A9%E9%A6%86" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（左營站 ➔ 海生館）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 8) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=高鐵左營站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🚄 高鐵左營站
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=後壁湖生魚片" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🍣 後壁湖
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=龍磐公園" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🌾 龍磐公園
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=國立海洋生物博物館" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🐠 海生館
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -1224,11 +1344,24 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p><b>海生館 ➔ 高雄：</b>墾丁快線（建議12:01班次）。<b>左營 ➔ 住宿 ➔ 西子灣：</b>高雄捷運紅橘線。<b>鼓山 ➔ 旗津：</b>旗鼓渡輪（刷悠遊卡NT$30）。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E8%A5%BF%E5%AD%90%E7%81%e3%b9%ba/%E6%97%87%E6%d2%a5%e7%a0%b2%E5%8f%b0" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（西子灣 ➔ 旗津）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 9) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=西子灣" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🌅 西子灣
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=鼓山渡輪站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                ⛴️ 鼓山渡輪站
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=旗津老街" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🍢 旗津老街
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=旗后砲台" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🏯 旗后砲台
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -1326,11 +1459,18 @@
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
                         <p>美麗島站搭乘高雄捷運紅線往小港方向直達，約15-20分鐘（全程不需轉線）。</p>
                     </div>
-                    <!-- Google Maps 快捷按鈕 -->
-                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60">
-                        <a href="https://www.google.com/maps/dir/%E7%BE%8E%E9%ba%97%E5%b3%b6%E7%AB%99/%E9%AB%98%E9%99%84%E9%9A%8b%E5%9C%8b%E9%9A%9B%E6%A9%9F%E5%A0%b4" target="_blank" class="inline-flex items-center gap-2 bg-[#2C3E35] text-white px-4 py-2 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow-sm">
-                            🗺️ 開啟 Google Maps 導航（美麗島站 ➔ 高雄小港機場）
-                        </a>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 10) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=美麗島站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🚇 美麗島站
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=高雄國際機場" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                ✈️ 高雄小港機場
+                            </a>
+                        </div>
                     </div>
                 </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -1457,7 +1597,92 @@
             </div>
         </div>
 
-        <!-- ==================== 💰 交通急救包 ==================== -->
+        <!-- ==================== 💰 預算與記帳頁面 ==================== -->
+        <div id="tab-budget" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#C66914] space-y-6">
+                <div>
+                    <span class="text-xs bg-[#C66914]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">BUDGET & EXPENSES</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">💰 旅遊預算統整、隨手記帳與換匯</h2>
+                    <p class="text-sm text-gray-600 mt-1">在這裡管理您的行程花費，並可隨時進行台幣與人民幣／港幣即時換算！</p>
+                </div>
+
+                <!-- 1. 換匯計算機 (台幣 ⇄ 人民幣/港幣) -->
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-4 border border-[#E2DDD5]">
+                    <h3 class="font-bold text-base text-[#2C3E35] flex items-center gap-2">
+                        <span>💱 實用換匯計算機</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">台幣 (TWD)</label>
+                            <input type="number" id="twd-input" oninput="convertCurrency('twd')" placeholder="輸入台幣金額" class="w-full bg-white border border-[#E2DDD5] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C66914]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">人民幣 (CNY，參考匯率 4.5 TWD = 1 CNY)</label>
+                            <input type="number" id="cny-input" oninput="convertCurrency('cny')" placeholder="輸入人民幣金額" class="w-full bg-white border border-[#E2DDD5] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C66914]">
+                        </div>
+                    </div>
+                    <div class="text-xs text-gray-500 pt-1">
+                        💡 提示：匯率可依當日實際銀行掛牌隨時調整試算。
+                    </div>
+                </div>
+
+                <!-- 2. 預估花費統整摘要 -->
+                <div class="bg-[#F9F8F6] p-5 rounded-xl border border-[#E2DDD5] space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">📊 10日行程預估花費清單（參考）</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
+                            <div class="text-gray-500">機票與交通</div>
+                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 6,500</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
+                            <div class="text-gray-500">9晚住宿費</div>
+                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 18,000</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
+                            <div class="text-gray-500">包車、票券與活動</div>
+                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 5,500</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
+                            <div class="text-gray-500">美食與伴手禮</div>
+                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 10,000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. 隨手記帳功能 -->
+                <div class="bg-white p-5 rounded-xl border border-[#E2DDD5] space-y-4 shadow-sm">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-base text-[#2C3E35]">📝 隨手記帳本</h3>
+                        <div class="text-sm font-bold text-[#C66914]" id="total-expense">總計支出：NT$ 0</div>
+                    </div>
+
+                    <!-- 新增記帳表單 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <input type="text" id="expense-item" placeholder="項目名稱 (例如：珍珠奶茶)" class="bg-[#F0EDEA] border border-[#E2DDD5] rounded-xl px-3 py-2 text-xs focus:outline-none">
+                        <input type="number" id="expense-cost" placeholder="金額 (NT$)" class="bg-[#F0EDEA] border border-[#E2DDD5] rounded-xl px-3 py-2 text-xs focus:outline-none">
+                        <button onclick="addExpense()" class="bg-[#2C3E35] text-white rounded-xl py-2 text-xs font-bold hover:bg-[#C66914] transition shadow-sm">＋ 新增記帳</button>
+                    </div>
+
+                    <!-- 記帳明細列表 -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="border-b border-[#E2DDD5] text-gray-500">
+                                    <th class="py-2">項目</th>
+                                    <th class="py-2">金額 (NT$)</th>
+                                    <th class="py-2 text-right">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expense-table-body">
+                                <!-- 動態載入 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== 📦 交通急救包 ==================== -->
         <div id="tab-sos" class="tab-content hidden fade-in space-y-6">
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#2C3E35] space-y-4">
                 <span class="text-xs bg-[#2C3E35]/20 text-[#2C3E35] px-3 py-1 rounded-md font-bold">TRANSIT SOS</span>
@@ -1509,7 +1734,7 @@
         let currentDayNum = 1;
         let currentTabId = 'map';
 
-        // 彩蛋：播放 Last Dance 音樂控制（從第4秒開始播放）
+        // 彩蛋：播放 Last Dance 音樂控制（從第4秒開始播放，圖示改為 🔙）
         function toggleLastDance() {
             const audio = document.getElementById('bgm-audio');
             const playIcon = document.getElementById('play-icon');
@@ -1528,7 +1753,7 @@
                 });
             } else {
                 audio.pause();
-                playIcon.textContent = '📼🎵';
+                playIcon.textContent = '🔙';
                 playIcon.classList.remove('spinning');
                 btn.classList.remove('bg-rose-600');
                 btn.classList.add('bg-[#C66914]');
@@ -1552,27 +1777,20 @@
             }
         }
 
-        // 台灣地圖分區點擊互動（各自獨立在卡片下方彈出）
+        // 台灣地圖分區點擊互動
         function selectRegion(region) {
             triggerSingleEmojiRain();
-            // 先關閉所有分區彈出視窗
             ['north', 'central', 'south'].forEach(r => {
                 const box = document.getElementById('region-detail-' + r);
                 if (box) box.classList.add('hidden');
             });
-
-            // 展開點擊的對應分區
             const targetBox = document.getElementById('region-detail-' + region);
-            if (targetBox) {
-                targetBox.classList.remove('hidden');
-            }
+            if (targetBox) targetBox.classList.remove('hidden');
         }
 
         function closeRegionDetail(region) {
             const targetBox = document.getElementById('region-detail-' + region);
-            if (targetBox) {
-                targetBox.classList.add('hidden');
-            }
+            if (targetBox) targetBox.classList.add('hidden');
         }
 
         function changeDay(dayNum) {
@@ -1601,11 +1819,15 @@
                 mapBtn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
             }
 
-            const subNavContainer = document.getElementById('sub-nav-buttons');
+            // 只有點選 Day 時才顯示子選單
+            const subNavContainer = document.getElementById('sub-nav-container');
+            subNavContainer.style.display = 'block';
             subNavContainer.innerHTML = `
-                <button onclick="switchTab('d${dayNum}-time')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-time">🕒 行程時間軸</button>
-                <button onclick="switchTab('d${dayNum}-trans')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-trans">🚗 交通方式與住宿</button>
-                <button onclick="switchTab('d${dayNum}-link')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-link">🔗 參考連結</button>
+                <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1 items-center" id="sub-nav-buttons">
+                    <button onclick="switchTab('d${dayNum}-time')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-time">🕒 行程時間軸</button>
+                    <button onclick="switchTab('d${dayNum}-trans')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-trans">🚗 交通方式與住宿</button>
+                    <button onclick="switchTab('d${dayNum}-link')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-link">🔗 參考連結</button>
+                </div>
             `;
         }
 
@@ -1616,13 +1838,15 @@
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(el => el.classList.add('hidden'));
 
-            const specialBtns = ['tips', 'food', 'sos'];
+            const specialBtns = ['tips', 'food', 'budget', 'sos'];
             specialBtns.forEach(id => {
                 const btn = document.getElementById('btn-' + id);
                 if(btn) btn.classList.remove('ring-4', 'ring-[#E89344]');
             });
 
             const mapBtn = document.getElementById('btn-map');
+            const subNavContainer = document.getElementById('sub-nav-container');
+
             if (tabId === 'map') {
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
@@ -1632,12 +1856,17 @@
                     btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
                     btn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                 });
-                document.getElementById('sub-nav-buttons').innerHTML = `<span class="text-xs text-gray-500 px-2 py-1">🗺️ 目前檢視：台灣地圖區域導覽</span>`;
-            } else {
+                subNavContainer.style.display = 'none'; // 地圖頁隱藏子選單
+            } else if (specialBtns.includes(tabId)) {
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
                     mapBtn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                 }
+                document.querySelectorAll('.day-main-btn').forEach(btn => {
+                    btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
+                    btn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
+                });
+                subNavContainer.style.display = 'none'; // 📌 全程提醒、🍜 美食清單、💰 預算與記帳、📦 交通急救包 隱藏子選單
             }
 
             const target = document.getElementById('tab-' + tabId);
@@ -1657,17 +1886,16 @@
                         updateDayMenuUI(dayNum);
                     }
                 }
-            }
-
-            const subBtns = document.querySelectorAll('.sub-btn');
-            subBtns.forEach(btn => {
-                btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-sm');
-                btn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
-            });
-            const activeSub = document.getElementById('btn-' + tabId);
-            if(activeSub) {
-                activeSub.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
-                activeSub.classList.add('bg-[#2C3E35]', 'text-white', 'shadow-sm');
+                const subBtns = document.querySelectorAll('.sub-btn');
+                subBtns.forEach(btn => {
+                    btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-sm');
+                    btn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
+                });
+                const activeSub = document.getElementById('btn-' + tabId);
+                if(activeSub) {
+                    activeSub.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
+                    activeSub.classList.add('bg-[#2C3E35]', 'text-white', 'shadow-sm');
+                }
             }
 
             if(specialBtns.includes(tabId)) {
@@ -1678,6 +1906,78 @@
             if (shouldScroll) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
+        }
+
+        // 換匯計算機邏輯 (1 CNY = 4.5 TWD 參考匯率)
+        function convertCurrency(type) {
+            const twdInput = document.getElementById('twd-input');
+            const cnyInput = document.getElementById('cny-input');
+            const rate = 4.5; // 4.5台幣 = 1人民幣
+
+            if (type === 'twd') {
+                const val = parseFloat(twdInput.value);
+                if (isNaN(val)) {
+                    cnyInput.value = '';
+                } else {
+                    cnyInput.value = (val / rate).toFixed(2);
+                }
+            } else if (type === 'cny') {
+                const val = parseFloat(cnyInput.value);
+                if (isNaN(val)) {
+                    twdInput.value = '';
+                } else {
+                    twdInput.value = (val * rate).toFixed(2);
+                }
+            }
+        }
+
+        // 隨手記帳功能邏輯
+        let expenses = JSON.parse(localStorage.getItem('travel_expenses')) || [];
+
+        function renderExpenses() {
+            const tbody = document.getElementById('expense-table-body');
+            const totalEl = document.getElementById('total-expense');
+            tbody.innerHTML = '';
+            let total = 0;
+
+            expenses.forEach((item, index) => {
+                total += item.cost;
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-[#E2DDD5]/60 hover:bg-[#F9F8F6]';
+                tr.innerHTML = `
+                    <td class="py-2.5 font-medium text-[#2C3E35]">${item.name}</td>
+                    <td class="py-2.5 font-bold text-[#C66914]">NT$ ${item.cost.toLocaleString()}</td>
+                    <td class="py-2.5 text-right">
+                        <button onclick="deleteExpense(${index})" class="text-gray-400 hover:text-rose-600 font-bold px-2 py-1 rounded">刪除</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            totalEl.textContent = `總計支出：NT$ ${total.toLocaleString()}`;
+            localStorage.setItem('travel_expenses', JSON.stringify(expenses));
+        }
+
+        function addExpense() {
+            const nameInput = document.getElementById('expense-item');
+            const costInput = document.getElementById('expense-cost');
+            const name = nameInput.value.trim();
+            const cost = parseFloat(costInput.value);
+
+            if (!name || isNaN(cost) || cost <= 0) {
+                alert('請輸入有效的項目名稱與金額！');
+                return;
+            }
+
+            expenses.push({ name, cost });
+            nameInput.value = '';
+            costInput.value = '';
+            renderExpenses();
+        }
+
+        function deleteExpense(index) {
+            expenses.splice(index, 1);
+            renderExpenses();
         }
 
         function openImageModal(imgSrc, title) {
@@ -1691,7 +1991,7 @@
             document.getElementById('imageModal').classList.add('hidden');
         }
 
-        // 美食 Checkbox LocalStorage 記憶與 details 動態箭頭狀態監聽
+        // 網頁載入初始化
         window.addEventListener('DOMContentLoaded', () => {
             // 1. 還原美食勾選狀態
             const checkboxes = document.querySelectorAll('#food-checklist input[type="checkbox"]');
@@ -1706,7 +2006,10 @@
                 });
             });
 
-            // 2. 動態綁定所有 details 的展開/收合文字變化（即時連動）
+            // 2. 渲染記帳清單
+            renderExpenses();
+
+            // 3. details 箭頭動態連動
             const allDetails = document.querySelectorAll('details');
             allDetails.forEach(det => {
                 const arrowSpan = det.querySelector('.summary-arrow');

@@ -1523,7 +1523,7 @@
                 <div class="space-y-3 text-sm" id="food-checklist">
                     <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
                         <input type="checkbox" data-id="food-1" class="w-5 h-5 accent-[#C66914]">
-                        <span><b>阜杭豆漿</b>（厚燒餅夾蛋、鹹豆漿）— 台北早餐必吃</span>
+                        <span><b>阜杭豆漿</b>（厚燒餅夾蛋、鹹豆漿）— 台北早餐</span>
                     </label>
                     <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
                         <input type="checkbox" data-id="food-2" class="w-5 h-5 accent-[#C66914]">
@@ -1602,15 +1602,13 @@
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#C66914] space-y-6">
                 <div>
                     <span class="text-xs bg-[#C66914]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">BUDGET & EXPENSES</span>
-                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">💰 旅遊預算統整、隨手記帳與換匯</h2>
-                    <p class="text-sm text-gray-600 mt-1">在這裡管理您的行程花費，並可隨時進行台幣與人民幣／港幣即時換算！</p>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">💰 行程預算統整、隨手記帳與換匯</h2>
+                    <p class="text-sm text-gray-600 mt-1">根據目前 10 日行程之確定門票、住宿、租車及交通費用進行詳細統整！</p>
                 </div>
 
-                <!-- 1. 換匯計算機 (台幣 ⇄ 人民幣/港幣) -->
+                <!-- 1. 換匯計算機 (台幣 ⇄ 人民幣) -->
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-4 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35] flex items-center gap-2">
-                        <span>💱 實用換匯計算機</span>
-                    </h3>
+                    <h3 class="font-bold text-base text-[#2C3E35]">💱 實用換匯計算機</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-semibold text-gray-600 mb-1">台幣 (TWD)</label>
@@ -1621,44 +1619,66 @@
                             <input type="number" id="cny-input" oninput="convertCurrency('cny')" placeholder="輸入人民幣金額" class="w-full bg-white border border-[#E2DDD5] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#C66914]">
                         </div>
                     </div>
-                    <div class="text-xs text-gray-500 pt-1">
-                        💡 提示：匯率可依當日實際銀行掛牌隨時調整試算。
-                    </div>
                 </div>
 
-                <!-- 2. 預估花費統整摘要 -->
+                <!-- 2. 行程確定花費統整明細 -->
                 <div class="bg-[#F9F8F6] p-5 rounded-xl border border-[#E2DDD5] space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">📊 10日行程預估花費清單（參考）</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
-                            <div class="text-gray-500">機票與交通</div>
-                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 6,500</div>
+                    <h3 class="font-bold text-base text-[#2C3E35]">📊 依目前行程統整之確定預估花費</h3>
+                    <div class="space-y-2 text-xs text-gray-700">
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5] flex justify-between items-center">
+                            <span>🏨 <b>9晚住宿費用</b>（台北、日月潭、台中、台南、高雄、海生館）</span>
+                            <span class="font-bold text-[#C66914]">約 NT$ 24,000</span>
                         </div>
-                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
-                            <div class="text-gray-500">9晚住宿費</div>
-                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 18,000</div>
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5] flex justify-between items-center">
+                            <span>🚗 <b>租車與包車費用</b>（台中自駕租車 2 天、北海岸一日遊、墾丁包車）</span>
+                            <span class="font-bold text-[#C66914]">約 NT$ 9,500</span>
                         </div>
-                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
-                            <div class="text-gray-500">包車、票券與活動</div>
-                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 5,500</div>
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5] flex justify-between items-center">
+                            <span>🚆 <b>火車／高鐵與大眾交通</b>（高鐵台北-台中、台灣好行、墾丁快線、捷運、渡輪、機場捷運）</span>
+                            <span class="font-bold text-[#C66914]">約 NT$ 4,200</span>
                         </div>
-                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5]">
-                            <div class="text-gray-500">美食與伴手禮</div>
-                            <div class="text-base font-bold text-[#C66914] mt-1">約 NT$ 10,000</div>
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5] flex justify-between items-center">
+                            <span>🎟️ <b>景點門票與手作體驗</b>（故宮、九族文化村+纜車、Cookinn DIY、四草綠色隧道、海生館夜宿）</span>
+                            <span class="font-bold text-[#C66914]">約 NT$ 11,800</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-[#E2DDD5] flex justify-between items-center bg-[#F0EDEA]">
+                            <span class="font-bold text-[#2C3E35]">💎 行程表定確定總支出預估</span>
+                            <span class="font-bold text-base text-[#C66914]">約 NT$ 49,500</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. 隨手記帳功能 -->
+                <!-- 3. 隨手記帳功能與分類圓餅圖 -->
                 <div class="bg-white p-5 rounded-xl border border-[#E2DDD5] space-y-4 shadow-sm">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-bold text-base text-[#2C3E35]">📝 隨手記帳本</h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                        <h3 class="font-bold text-base text-[#2C3E35]">📝 隨手記帳本與類別分析</h3>
                         <div class="text-sm font-bold text-[#C66914]" id="total-expense">總計支出：NT$ 0</div>
                     </div>
 
+                    <!-- 圓餅圖與比例視覺化區域 -->
+                    <div class="bg-[#F9F8F6] p-4 rounded-xl border border-[#E2DDD5] flex flex-col md:flex-row items-center justify-around gap-4">
+                        <div id="pie-chart-container" class="relative w-36 h-36 rounded-full flex items-center justify-center bg-gray-200 shadow-inner" style="background: conic-gradient(#E2DDD5 0deg 360deg);">
+                            <div class="absolute w-20 h-20 bg-white rounded-full flex flex-col items-center justify-center text-center shadow">
+                                <span class="text-[10px] text-gray-500">分類佔比</span>
+                                <span class="text-xs font-bold text-[#2C3E35]" id="chart-center-text">100%</span>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2 text-xs w-full md:w-auto" id="category-legend">
+                            <!-- 動態生成圖例 -->
+                        </div>
+                    </div>
+
                     <!-- 新增記帳表單 -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                        <input type="text" id="expense-item" placeholder="項目名稱 (例如：珍珠奶茶)" class="bg-[#F0EDEA] border border-[#E2DDD5] rounded-xl px-3 py-2 text-xs focus:outline-none">
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+                        <input type="text" id="expense-item" placeholder="項目名稱 (例如：珍奶)" class="bg-[#F0EDEA] border border-[#E2DDD5] rounded-xl px-3 py-2 text-xs focus:outline-none">
+                        <select id="expense-category" class="bg-[#F0EDEA] border border-[#E2DDD5] rounded-xl px-3 py-2 text-xs focus:outline-none">
+                            <option value="餐飲美食">🍜 餐飲美食</option>
+                            <option value="交通車資">🚗 交通車資</option>
+                            <option value="住宿花費">🏨 住宿花費</option>
+                            <option value="景點門票">🎟️ 景點門票</option>
+                            <option value="購物伴手禮">🛍️ 購物伴手禮</option>
+                            <option value="其他">📦 其他</option>
+                        </select>
                         <input type="number" id="expense-cost" placeholder="金額 (NT$)" class="bg-[#F0EDEA] border border-[#E2DDD5] rounded-xl px-3 py-2 text-xs focus:outline-none">
                         <button onclick="addExpense()" class="bg-[#2C3E35] text-white rounded-xl py-2 text-xs font-bold hover:bg-[#C66914] transition shadow-sm">＋ 新增記帳</button>
                     </div>
@@ -1669,6 +1689,7 @@
                             <thead>
                                 <tr class="border-b border-[#E2DDD5] text-gray-500">
                                     <th class="py-2">項目</th>
+                                    <th class="py-2">分類</th>
                                     <th class="py-2">金額 (NT$)</th>
                                     <th class="py-2 text-right">操作</th>
                                 </tr>
@@ -1686,7 +1707,7 @@
         <div id="tab-sos" class="tab-content hidden fade-in space-y-6">
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#2C3E35] space-y-4">
                 <span class="text-xs bg-[#2C3E35]/20 text-[#2C3E35] px-3 py-1 rounded-md font-bold">TRANSIT SOS</span>
-                <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">💰 交通班次與急救包總覽</h2>
+                <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">📦 交通班次與急救包總覽</h2>
                 <div class="space-y-4 text-sm text-gray-700">
                     <div class="bg-[#F0EDEA] p-4 rounded-xl">
                         <h4 class="font-bold text-[#2C3E35] mb-1">🚆 高鐵轉乘日月潭</h4>
@@ -1734,22 +1755,22 @@
         let currentDayNum = 1;
         let currentTabId = 'map';
 
-        // 彩蛋：播放 Last Dance 音樂控制（從第4秒開始播放，圖示改為 🔙）
+        // 彩蛋：播放 Last Dance 音樂控制
         function toggleLastDance() {
             const audio = document.getElementById('bgm-audio');
             const playIcon = document.getElementById('play-icon');
             const btn = document.getElementById('last-dance-btn');
 
             if (audio.paused) {
-                audio.currentTime = 4; // 從四秒後開始播放
+                audio.currentTime = 4;
                 audio.play().then(() => {
                     playIcon.textContent = '⏸️';
                     playIcon.classList.add('spinning');
                     btn.classList.remove('bg-[#C66914]');
                     btn.classList.add('bg-rose-600');
                 }).catch(err => {
-                    console.log("播放失敗或檔案路徑需確認：", err);
-                    alert("音樂播放失敗，請確認檔案名稱與位置是否正確 (China_Blue_-_Last_Dance_(mp3.pm).mp3)。");
+                    console.log("播放失敗：", err);
+                    alert("音樂播放失敗，請確認檔案名稱是否正確。");
                 });
             } else {
                 audio.pause();
@@ -1777,7 +1798,6 @@
             }
         }
 
-        // 台灣地圖分區點擊互動
         function selectRegion(region) {
             triggerSingleEmojiRain();
             ['north', 'central', 'south'].forEach(r => {
@@ -1819,7 +1839,6 @@
                 mapBtn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
             }
 
-            // 只有點選 Day 時才顯示子選單
             const subNavContainer = document.getElementById('sub-nav-container');
             subNavContainer.style.display = 'block';
             subNavContainer.innerHTML = `
@@ -1856,7 +1875,7 @@
                     btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
                     btn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                 });
-                subNavContainer.style.display = 'none'; // 地圖頁隱藏子選單
+                subNavContainer.style.display = 'none';
             } else if (specialBtns.includes(tabId)) {
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -1866,7 +1885,7 @@
                     btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
                     btn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                 });
-                subNavContainer.style.display = 'none'; // 📌 全程提醒、🍜 美食清單、💰 預算與記帳、📦 交通急救包 隱藏子選單
+                subNavContainer.style.display = 'none';
             }
 
             const target = document.getElementById('tab-' + tabId);
@@ -1908,11 +1927,10 @@
             }
         }
 
-        // 換匯計算機邏輯 (1 CNY = 4.5 TWD 參考匯率)
         function convertCurrency(type) {
             const twdInput = document.getElementById('twd-input');
             const cnyInput = document.getElementById('cny-input');
-            const rate = 4.5; // 4.5台幣 = 1人民幣
+            const rate = 4.5;
 
             if (type === 'twd') {
                 const val = parseFloat(twdInput.value);
@@ -1931,21 +1949,50 @@
             }
         }
 
-        // 隨手記帳功能邏輯
-        let expenses = JSON.parse(localStorage.getItem('travel_expenses')) || [];
+        // 隨手記帳功能與圓餅圖邏輯
+        let expenses = JSON.parse(localStorage.getItem('travel_expenses_v2')) || [];
+        const categoryColors = {
+            '餐飲美食': '#E89344',
+            '交通車資': '#2C3E35',
+            '住宿花費': '#4A6B5D',
+            '景點門票': '#C66914',
+            '購物伴手禮': '#D9822B',
+            '其他': '#9CA3AF'
+        };
 
         function renderExpenses() {
             const tbody = document.getElementById('expense-table-body');
             const totalEl = document.getElementById('total-expense');
+            const legendEl = document.getElementById('category-legend');
+            const pieContainer = document.getElementById('pie-chart-container');
+            const centerText = document.getElementById('chart-center-text');
+
             tbody.innerHTML = '';
+            legendEl.innerHTML = '';
+
             let total = 0;
+            let categoryTotals = {
+                '餐飲美食': 0,
+                '交通車資': 0,
+                '住宿花費': 0,
+                '景點門票': 0,
+                '購物伴手禮': 0,
+                '其他': 0
+            };
 
             expenses.forEach((item, index) => {
                 total += item.cost;
+                if (categoryTotals[item.category] !== undefined) {
+                    categoryTotals[item.category] += item.cost;
+                } else {
+                    categoryTotals['其他'] += item.cost;
+                }
+
                 const tr = document.createElement('tr');
                 tr.className = 'border-b border-[#E2DDD5]/60 hover:bg-[#F9F8F6]';
                 tr.innerHTML = `
                     <td class="py-2.5 font-medium text-[#2C3E35]">${item.name}</td>
+                    <td class="py-2.5"><span class="bg-[#F0EDEA] px-2 py-0.5 rounded text-[10px] font-bold text-[#2C3E35]">${item.category}</span></td>
                     <td class="py-2.5 font-bold text-[#C66914]">NT$ ${item.cost.toLocaleString()}</td>
                     <td class="py-2.5 text-right">
                         <button onclick="deleteExpense(${index})" class="text-gray-400 hover:text-rose-600 font-bold px-2 py-1 rounded">刪除</button>
@@ -1955,13 +2002,52 @@
             });
 
             totalEl.textContent = `總計支出：NT$ ${total.toLocaleString()}`;
-            localStorage.setItem('travel_expenses', JSON.stringify(expenses));
+
+            // 繪製圓餅圖 conic-gradient
+            if (total === 0) {
+                pieContainer.style.background = '#E2DDD5';
+                centerText.textContent = '0%';
+                legendEl.innerHTML = '<div class="text-gray-400 text-xs italic col-span-2">尚無記帳資料</div>';
+            } else {
+                let currentAngle = 0;
+                let gradientStops = [];
+                let legendHtml = '';
+
+                for (let cat in categoryTotals) {
+                    let amount = categoryTotals[cat];
+                    if (amount > 0) {
+                        let percentage = (amount / total) * 100;
+                        let angle = (amount / total) * 360;
+                        let nextAngle = currentAngle + angle;
+                        let color = categoryColors[cat];
+
+                        gradientStops.push(`${color} ${currentAngle}deg ${nextAngle}deg`);
+                        currentAngle = nextAngle;
+
+                        legendHtml += `
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full shrink-0" style="background-color: ${color};"></span>
+                                <span class="truncate text-gray-700">${cat} (${percentage.toFixed(0)}%)</span>
+                            </div>
+                        `;
+                    }
+                }
+
+                pieContainer.style.background = `conic-gradient(${gradientStops.join(', ')})`;
+                centerText.textContent = `NT$${total}`;
+                legendEl.innerHTML = legendHtml;
+            }
+
+            localStorage.setItem('travel_expenses_v2', JSON.stringify(expenses));
         }
 
         function addExpense() {
             const nameInput = document.getElementById('expense-item');
+            const catSelect = document.getElementById('expense-category');
             const costInput = document.getElementById('expense-cost');
+
             const name = nameInput.value.trim();
+            const category = catSelect.value;
             const cost = parseFloat(costInput.value);
 
             if (!name || isNaN(cost) || cost <= 0) {
@@ -1969,7 +2055,7 @@
                 return;
             }
 
-            expenses.push({ name, cost });
+            expenses.push({ name, category, cost });
             nameInput.value = '';
             costInput.value = '';
             renderExpenses();
@@ -1991,9 +2077,7 @@
             document.getElementById('imageModal').classList.add('hidden');
         }
 
-        // 網頁載入初始化
         window.addEventListener('DOMContentLoaded', () => {
-            // 1. 還原美食勾選狀態
             const checkboxes = document.querySelectorAll('#food-checklist input[type="checkbox"]');
             checkboxes.forEach(chk => {
                 const id = chk.getAttribute('data-id');
@@ -2006,10 +2090,8 @@
                 });
             });
 
-            // 2. 渲染記帳清單
             renderExpenses();
 
-            // 3. details 箭頭動態連動
             const allDetails = document.querySelectorAll('details');
             allDetails.forEach(det => {
                 const arrowSpan = det.querySelector('.summary-arrow');

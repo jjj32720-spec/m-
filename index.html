@@ -1277,13 +1277,12 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             background: #fff;
         }
         #camera-flash-overlay.flash-active {
-            animation: cameraFlashSequence .34s ease-out forwards;
+            animation: cameraFlashSequence .22s ease-out forwards;
         }
         @keyframes cameraFlashSequence {
-            0%   { opacity: 0; background: #000; }
-            18%  { opacity: .92; background: #000; }
-            32%  { opacity: 1; background: #fff; }
-            58%  { opacity: .98; background: #fff; }
+            0%   { opacity: 0; background: #fff; }
+            18%  { opacity: 1; background: #fff; }
+            52%  { opacity: .96; background: #fff; }
             100% { opacity: 0; background: #fff; }
         }
 
@@ -1657,9 +1656,10 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
                         <div class="flex items-center justify-between gap-3">
-                            <p><b>北台灣經典山海景色＋九份山城＋十分天燈</b></p>
+                            <p><b>北台灣經典山海</b></p>
                             <button type="button" class="highlight-task-button" aria-label="北海岸今日亮點">🏮</button>
                         </div>
+                        <p>・九份山城＋十分天燈</p>
                     </div>
                 </details>
 
@@ -2056,17 +2056,12 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span>✨ 【今日亮點】</span>
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
-                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] space-y-3">
-                        <div>
-                            <div class="flex items-center justify-between gap-3">
-                                <p><b>九族原住民族服裝體驗</b></p>
-                                <button type="button" onclick="triggerCameraFlash()" class="highlight-task-button" aria-label="相機閃光">📸</button>
-                            </div>
-                        </div>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
                         <div class="flex items-center justify-between gap-3">
-                            <p>・台中有條武漢街</p>
-                            <button type="button" class="highlight-task-button" aria-label="武漢街彩蛋">😗</button>
+                            <p><b>九族原住民族服裝體驗</b></p>
+                            <button type="button" onclick="triggerCameraFlash()" class="highlight-task-button" aria-label="相機閃光">📸</button>
                         </div>
+                        <p>・今天的快門可以多按幾下</p>
                     </div>
                 </details>
 
@@ -2079,6 +2074,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <p>・高美濕地日落時間：約 18:15（10/1當日）</p>
                         <p>・木棧道開放時間：依每日潮汐時間滾動調整（通常約 08:00 至日落前，漲潮前 1.5 小時開始封閉）</p>
                         <p>・春水堂必吃：功夫麵、珍奶、奶酥吐司（私心推薦）</p>
+                        <p>・台中有條武漢街</p>
                     </div>
                 </details>
             </div>
@@ -2196,9 +2192,12 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span>✨ 【今日亮點】</span>
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
-                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] flex items-center justify-between">
-                        <p><b>想見你！莫奶奶冰店 🍧</b></p>
-</div>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>想見你！莫奶奶冰店</b></p>
+                        </div>
+                        <p>・有些場景，還是要配一首歌</p>
+                    </div>
                 </details>
 
                 <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
@@ -2588,9 +2587,10 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
                         <div class="flex items-center justify-between gap-3">
-                            <p><b>西子灣與高雄港夕陽 ＆ 旗鼓渡輪港都體驗。</b></p>
+                            <p><b>西子灣與高雄港夕陽</b></p>
                             <button type="button" class="highlight-task-button" aria-label="港都今日亮點">🌅</button>
                         </div>
+                        <p>・搭上旗鼓渡輪，把港都留到最後一晚</p>
                     </div>
                 </details>
 
@@ -2706,9 +2706,10 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
                         <div class="flex items-center justify-between gap-3">
-                            <p><b>無正式景點，以輕鬆準時搭機、平安返回香港為完美收尾。</b></p>
+                            <p><b>旅程最後一頁</b></p>
                             <button type="button" class="highlight-task-button" aria-label="返程今日亮點">✈️</button>
                         </div>
+                        <p>・輕鬆準時搭機，平安回家</p>
                     </div>
                 </details>
 

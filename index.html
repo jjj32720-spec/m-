@@ -3580,7 +3580,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260921-test-r2';
+            const BUILD_KEY = '20260921-test-r3';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -3709,6 +3709,25 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         function secretIsRevealed(id) {
             if (window.__TEST_SECRET_MODE === 'locked') return false;
             if (window.__TEST_SECRET_MODE === 'unlocked') return true;
+
+            // 測試版：如果有選擇模擬旅程日期，就依模擬日期判斷解鎖，
+            // 不再使用手機目前的真實日期。
+            if (Number.isInteger(window.__TEST_TRIP_DAY)) {
+                if (window.__TEST_TRIP_DAY === 0) return false;   // 旅程前
+                if (window.__TEST_TRIP_DAY === 11) return true;  // 旅程後
+
+                const revealDay = {
+                    ximenCraft: 1,
+                    theTop: 3,
+                    dessertDIY: 4,
+                    hairWash: 7,
+                    aquariumNight: 8
+                };
+
+                const targetDay = revealDay[id];
+                if (targetDay) return window.__TEST_TRIP_DAY >= targetDay;
+            }
+
             const item = SECRET_ITINERARIES[id];
             if (!item) return true;
             return Date.now() >= new Date(item.revealAt).getTime();
@@ -5416,7 +5435,7 @@ function updateAchievementWall() {
 <div id="test-console" class="hidden" aria-label="測試版控制台">
     <div class="text-[10px] tracking-[0.18em] font-bold text-[#C66914]">PRIVATE TEST BUILD</div>
     <div class="font-bold mt-1">功能測試控制台</div>
-    <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">測試資料使用獨立儲存空間，不會覆蓋正式版紀錄。</p>
+    <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">測試資料使用獨立儲存空間，不會覆蓋正式版紀錄。模擬 Day 會同步推進時間鎖；選「旅程後」會全部解鎖。</p>
 
     <div class="mt-3 text-[11px] font-bold">🔒 驚喜行程狀態</div>
     <div class="test-row">
@@ -5471,6 +5490,9 @@ function setTestSecretMode(mode, btn) {
 
 function setTestTripDay(value) {
     window.__TEST_TRIP_DAY = value === '' ? null : Number(value);
+
+    // 日期切換後，首頁與所有時間鎖都立即重新計算
+    if (typeof updateSecretItineraries === 'function') updateSecretItineraries();
     if (typeof refreshJourneyOverview === 'function') refreshJourneyOverview();
 }
 

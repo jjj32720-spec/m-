@@ -276,6 +276,15 @@
             font-weight: 700;
         }
 
+        .secret-lock-copy {
+            color: #B85F16;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+        }
+        body.dark-mode .secret-lock-copy {
+            color: #F1A15B;
+        }
+
         body.dark-mode {
             background-color: #111714;
             color: #EAE7E0;
@@ -1724,6 +1733,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                             <p><b>跟我吃飯</b></p>
                             <button type="button" onclick="triggerHeartExplosion()" class="flex items-center justify-center bg-[#C66914] text-white w-10 h-10 rounded-full text-base hover:bg-[#B05B11] shadow transition shrink-0" aria-label="愛心彩蛋">❤️</button>
                         </div>
+                        <p>・伸手也能 touch the sky</p>
                     </div>
                 </details>
 
@@ -1855,7 +1865,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p><b>特別安排少奶奶專屬的烹飪行程 🍰</b></p>
+                        <p>・你嘴上說很累其實早就準備</p>
                     </div>
                 </details>
 
@@ -2246,7 +2256,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] space-y-1">
-                        <p>・台式洗髮鬆一下 💆‍♀️</p>
+                        <p>・一鍵格式化把消息清零</p>
                         <p>・咖啡店客製拉花 ☕️</p>
                     </div>
                 </details>
@@ -2374,7 +2384,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p data-secret-key="d8-highlight"><b>夜宿海生館（與海洋生物共眠的兩天一夜深度體驗）。</b></p>
+                        <p>・傳說中你為愛甘心被擱淺</p>
                     </div>
                 </details>
 
@@ -3413,24 +3423,24 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         };
 
         const SECRET_TEXTS = {
-            'd3-time': { id:'theTop', locked:'<b>18:00-19:30</b> 🔒 伸手也能 touch the sky' },
+            'd3-time': { id:'theTop', locked:'<b>18:00-19:30</b> <span class="secret-lock-copy">🔒 今晚有約</span>' },
             'd3-transport': { id:'theTop', locked:'<b>市區移動：</b>台北捷運＋步行。<b>東門 ➔ 故宮：</b>捷運至士林站，轉公車／計程車。<b>士林 ➔ 晚間目的地：</b>交通方式將於解鎖後顯示。' },
             'd3-transport-time': { id:'theTop', locked:'車程參考：東門至故宮約40-60分；故宮至士林站約15-25分。晚間最後一段將於解鎖後顯示。' },
 
             'd4-badge': { id:'dessertDIY', locked:'9/30（三）｜台北 → 日月潭' },
             'd4-title': { id:'dessertDIY', locked:'第四天：台北出發・日月潭湖景' },
             'd4-route': { id:'dessertDIY', locked:'台北住宿 ➔ 🔒 上午安排 ➔ 台北車站 ➔ 高鐵台中站 ➔ 日月潭／水社 ➔ 遊湖船 ➔ 伊達邵 ➔ 日月潭湖景住宿' },
-            'd4-time': { id:'dessertDIY', locked:'<b>09:30-11:30</b> 🔒 你嘴上說很累其實早就準備' },
+            'd4-time': { id:'dessertDIY', locked:'<b>09:30-11:30</b> <span class="secret-lock-copy">🔒 上午任務</span>' },
 
             'd7-route': { id:'hairWash', locked:'台南住宿 ➔ 四草綠色隧道 ➔ 安平區 ➔ 🔒 下午安排 ➔ 性格咖啡 ➔ 愛・月熱氣球節 ➔ 高雄美麗島住宿' },
-            'd7-time': { id:'hairWash', locked:'<b>13:00-14:00</b> 🔒 一鍵格式化把消息清零' },
+            'd7-time': { id:'hairWash', locked:'<b>13:00-14:00</b> <span class="secret-lock-copy">🔒 中場休息</span>' },
             'd7-intro': { id:'hairWash', locked:'<b>🔒 下午安排：</b>內容將在接近出發時間揭曉。' },
 
             'd8-region-summary': { id:'aquariumNight', locked:'台南古蹟美食、月世界熱氣球、墾丁海岸包車、🔒 特別住宿安排、高雄旗津夕陽與賦歸。' },
             'd8-badge': { id:'aquariumNight', locked:'10/4（日）｜高雄 → 墾丁包車 → 🔒 今晚安排' },
             'd8-title': { id:'aquariumNight', locked:'第八天：墾丁海岸包車與今晚特別安排' },
             'd8-route': { id:'aquariumNight', locked:'高雄住宿 ➔ 美麗島站 ➔ 高鐵左營站 ➔ 墾丁快線 ➔ 恆春／墾丁 ➔ 包車遊墾丁 ➔ 🔒 今晚目的地' },
-            'd8-time': { id:'aquariumNight', locked:'<b>16:00</b> 🔒 傳說中你為愛甘心被擱淺' },
+            'd8-time': { id:'aquariumNight', locked:'<b>16:00</b> <span class="secret-lock-copy">🔒 今晚不一樣</span>' },
             'd8-intro': { id:'aquariumNight', locked:'<b>🔒 今晚安排：</b>答案會在接近報到時間時揭曉。' },
             'd8-highlight': { id:'aquariumNight', locked:'<b>🔒 傳說中你為愛甘心被擱淺</b>' },
             'd8-note': { id:'aquariumNight', locked:'<b>⚠️ 16:00 有固定安排：</b>包車景點寧願少一個（選3-4個點），不要壓線。' },

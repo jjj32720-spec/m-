@@ -1422,6 +1422,72 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             color: #F1A15B !important;
         }
 
+
+        .secret-time-line,
+        .secret-time-line b,
+        .secret-time-line span {
+            color: #B85F16 !important;
+            font-weight: 700 !important;
+            letter-spacing: .015em;
+        }
+        body.dark-mode .secret-time-line,
+        body.dark-mode .secret-time-line b,
+        body.dark-mode .secret-time-line span {
+            color: #F1A15B !important;
+        }
+
+
+        .secret-unlock-guide {
+            margin-top: 0.75rem;
+            padding: 0.9rem 1rem;
+            border: 1px solid rgba(198,105,20,.22);
+            border-left: 3px solid #C66914;
+            border-radius: 0.85rem;
+            background: #FFF9F3;
+            color: #47534D;
+            font-size: 0.75rem;
+            line-height: 1.65;
+        }
+        .secret-unlock-guide-title {
+            color: #B85F16;
+            font-weight: 800;
+            margin-bottom: 0.35rem;
+        }
+        .secret-unlock-guide b { color: #2C3E35; }
+        .secret-unlock-guide-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.65rem;
+        }
+        .secret-unlock-guide-actions a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.42rem 0.65rem;
+            border: 1px solid rgba(198,105,20,.35);
+            border-radius: 0.65rem;
+            background: #fff;
+            color: #B85F16;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+        body.dark-mode .secret-unlock-guide {
+            background: #2A241D !important;
+            border-color: #7B5531 !important;
+            color: #D7D1C8 !important;
+        }
+        body.dark-mode .secret-unlock-guide-title,
+        body.dark-mode .secret-unlock-guide-actions a {
+            color: #F1A15B !important;
+        }
+        body.dark-mode .secret-unlock-guide b { color: #F3EFE8 !important; }
+        body.dark-mode .secret-unlock-guide-actions a {
+            background: #202B26 !important;
+            border-color: #7B5531 !important;
+        }
+
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -1657,6 +1723,16 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <div><b>14:30 - 16:00</b> 入境、領行李、交通準備</div>
                         <div><b>約 16:00 - 17:15</b> 桃園機場 ➔ 台北住宿</div>
                         <div data-secret-key="d1-time"><b>18:00-19:00</b> 台北手作時研室（登陸少年陪你登陸台北）</div>
+                        <div data-secret-hide="ximenCraft" class="secret-unlock-guide">
+                            <div class="secret-unlock-guide-title">🔓 解鎖後怎麼走</div>
+                            <div>🧵 <b>這是什麼：</b>一小時手作體驗，把喜歡的元素做成這趟台北旅程的紀念。</div>
+                            <div>📍 <b>怎麼去：</b>從住宿往西門町方向前往，出發前直接開導航確認店家位置。</div>
+                            <div>⏰ <b>到場提醒：</b>18:00 開始，抓 10–15 分鐘提早抵達；19:00 結束後再從西門町／中山／圓山／信義區選一～二個續逛。</div>
+                            <div class="secret-unlock-guide-actions">
+                                <a href="https://www.google.com/maps/search/?api=1&query=台北手作時研室" target="_blank">📍 Google Map</a>
+                                <a href="https://www.instagram.com/fancraftlab_tw?stkn=anQweHV2YnR2cnRz" target="_blank">🧵 店家 Instagram</a>
+                            </div>
+                        </div>
                         <div data-secret-key="d1-after"><b>19:00後</b> 西門町／中山／圓山／信義區 四選一～二續逛</div>
                     </div>
                 </div>
@@ -1933,6 +2009,15 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <div><b>14:00-17:00</b> 國立故宮博物院</div>
                         <div><b>17:30</b> 士林捷運站集合</div>
                         <div data-secret-key="d3-time"><b>18:00-19:30</b> 陽明山 The top ➔ 下山</div>
+                        <div data-secret-hide="theTop" class="secret-unlock-guide">
+                            <div class="secret-unlock-guide-title">🔓 解鎖後怎麼走</div>
+                            <div>🌃 <b>這是什麼：</b>陽明山上的景觀餐廳，這一站的重點是晚餐＋台北夜景。</div>
+                            <div>🚕 <b>怎麼去：</b>17:30 在士林捷運站集合後，直接搭計程車／接送上山，車程約 20–30 分鐘。</div>
+                            <div>⏰ <b>到場提醒：</b>山上交通較不穩定，下山也要預留叫車時間。</div>
+                            <div class="secret-unlock-guide-actions">
+                                <a href="https://www.google.com/maps/search/?api=1&query=屋頂上+陽明山" target="_blank">📍 Google Map</a>
+                            </div>
+                        </div>
                         <div><b>20:00後</b> 台北夜間自由活動（中山／圓山／信義區 三選一）</div>
                     </div>
                 </div>
@@ -2066,6 +2151,16 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
                     <div class="space-y-2 text-sm text-gray-700">
                         <div data-secret-key="d4-time"><b>09:30-11:30</b> Cookinn 台灣糕點DIY</div>
+                        <div data-secret-hide="dessertDIY" class="secret-unlock-guide">
+                            <div class="secret-unlock-guide-title">🔓 解鎖後怎麼走</div>
+                            <div>🍰 <b>這是什麼：</b>台灣糕點手作體驗，不是單純去吃甜點，要自己完成今天的作品。</div>
+                            <div>📍 <b>怎麼去：</b>從台北住宿出發，直接開 Google Map 導航到 Cookinn；結束後再前往台北車站搭高鐵。</div>
+                            <div>⏰ <b>到場提醒：</b>09:30 開始，建議 09:15 左右抵達，避免壓縮後面的高鐵時間。</div>
+                            <div class="secret-unlock-guide-actions">
+                                <a href="https://www.google.com/maps/search/?api=1&query=Cookinn+Taiwan" target="_blank">📍 Google Map</a>
+                                <a href="https://cookinn.tw/" target="_blank">🍰 Cookinn 官網</a>
+                            </div>
+                        </div>
                         <div><b>12:30-13:30</b> 台北高鐵 ➔ 台中高鐵</div>
                         <div><b>14:10</b> 高鐵台中站搭台灣好行日月潭線</div>
                         <div><b>15:25-15:30</b> 抵達日月潭／水社，Check-in 自由活動</div>
@@ -2469,6 +2564,15 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <div><b>10:00-11:00</b> 四草綠色隧道</div>
                         <div><b>11:20-12:40</b> 安平古堡、安平老街午餐</div>
                         <div data-secret-key="d7-time"><b>13:00-14:00</b> 東來理髮廳</div>
+                        <div data-secret-hide="hairWash" class="secret-unlock-guide">
+                            <div class="secret-unlock-guide-title">🔓 解鎖後怎麼走</div>
+                            <div>🫧 <b>這是什麼：</b>台式洗髮體驗，這一小時就是坐著休息，把頭髮交給店家處理。</div>
+                            <div>🚕 <b>怎麼去：</b>安平行程結束後直接開導航前往東來理髮廳；如果時間緊，叫車最省事。</div>
+                            <div>⏰ <b>到場提醒：</b>預留約 1 小時，結束後接著去性格咖啡，不要拖到後面的月世界時段。</div>
+                            <div class="secret-unlock-guide-actions">
+                                <a href="https://www.google.com/maps/search/?api=1&query=東來理髮廳+台南" target="_blank">📍 Google Map</a>
+                            </div>
+                        </div>
                         <div><b>14:20-15:00</b> 性格咖啡（客製化拉花）</div>
                         <div><b>16:00-18:00</b> 2026高雄愛・月熱氣球／月世界</div>
                         <div><b>19:30後</b> 高雄美麗島站附近住宿 Check-in 與晚餐</div>
@@ -2603,6 +2707,15 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <div><b>10:00</b> 高鐵左營站搭墾丁快線南下</div>
                         <div><b>12:10-15:40</b> 墾丁包車遊覽（後壁湖生魚片午餐、龍磐公園、鵝鑾鼻燈塔等）</div>
                         <div data-secret-key="d8-time"><b>16:00</b> 國立海洋生物博物館夜宿報到與活動</div>
+                        <div data-secret-hide="aquariumNight" class="secret-unlock-guide">
+                            <div class="secret-unlock-guide-title">🔓 解鎖後怎麼走</div>
+                            <div>🐠 <b>這是什麼：</b>今晚直接住進國立海洋生物博物館，住宿本身就是今天最後一段行程。</div>
+                            <div>🚗 <b>怎麼去：</b>墾丁包車結束後，把海生館當成最後一站直接送達，不用另外轉車。</div>
+                            <div>🧳 <b>到場提醒：</b>大行李已留在高雄住宿，只帶夜宿需要的小行李；16:00 前後依報到安排進館。</div>
+                            <div class="secret-unlock-guide-actions">
+                                <a href="https://www.google.com/maps/search/?api=1&query=國立海洋生物博物館" target="_blank">📍 Google Map</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -3592,7 +3705,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260921-test-r4';
+            const BUILD_KEY = '20260921-test-r6';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -3747,14 +3860,22 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function updateSecretItineraries() {
             document.querySelectorAll('[data-secret-key]').forEach(el => {
-                const cfg = SECRET_TEXTS[el.dataset.secretKey];
+                const key = el.dataset.secretKey;
+                const cfg = SECRET_TEXTS[key];
                 if (!cfg) return;
+
                 if (!el.dataset.secretUnlockedHtml) {
                     el.dataset.secretUnlockedHtml = el.innerHTML;
                 }
+
                 el.innerHTML = secretIsRevealed(cfg.id)
                     ? el.dataset.secretUnlockedHtml
                     : cfg.locked;
+
+                // 時間軸裡的鎖定／解鎖行程，兩種狀態都維持同一套強調樣式
+                if (key.endsWith('-time')) {
+                    el.classList.add('secret-time-line');
+                }
             });
 
             document.querySelectorAll('[data-secret-hide]').forEach(el => {

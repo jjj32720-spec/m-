@@ -1246,7 +1246,48 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             color: #A9B5AE;
         }
 
-</style>
+
+        /* 今日亮點：任務 Emoji 按鍵 */
+        .highlight-task-button {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            border: 0;
+            background: #C66914;
+            color: #fff;
+            font-size: 17px;
+            box-shadow: 0 4px 10px rgba(198,105,20,.20);
+            transition: transform .12s ease, background .18s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .highlight-task-button:active { transform: scale(.92); }
+        body.dark-mode .highlight-task-button { background: #D77B2D; }
+
+        /* 九族相機：按下時模擬快門閃光 */
+        #camera-flash-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000000;
+            pointer-events: none;
+            opacity: 0;
+            background: #fff;
+        }
+        #camera-flash-overlay.flash-active {
+            animation: cameraFlashSequence .34s ease-out forwards;
+        }
+        @keyframes cameraFlashSequence {
+            0%   { opacity: 0; background: #000; }
+            18%  { opacity: .92; background: #000; }
+            32%  { opacity: 1; background: #fff; }
+            58%  { opacity: .98; background: #fff; }
+            100% { opacity: 0; background: #fff; }
+        }
+
+    </style>
 
     <!-- Add to Home Screen / PWA -->
     <meta name="theme-color" content="#2C3E35">
@@ -1865,6 +1906,10 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>少奶奶的特別任務</b></p>
+                            <button type="button" class="highlight-task-button" aria-label="甜點任務">🍰</button>
+                        </div>
                         <p>・你嘴上說很累其實早就準備</p>
                     </div>
                 </details>
@@ -1992,9 +2037,17 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span>✨ 【今日亮點】</span>
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
-                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] space-y-1">
-                        <p>・九族原住民族服裝體驗 📸</p>
-                        <p>・台中有條武漢街 😗</p>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between gap-3">
+                                <p><b>九族原住民族服裝體驗</b></p>
+                                <button type="button" onclick="triggerCameraFlash()" class="highlight-task-button" aria-label="相機閃光">📸</button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <p>・台中有條武漢街</p>
+                            <button type="button" class="highlight-task-button" aria-label="武漢街彩蛋">😗</button>
+                        </div>
                     </div>
                 </details>
 
@@ -2256,6 +2309,10 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] space-y-1">
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>午後小任務</b></p>
+                            <button type="button" class="highlight-task-button" aria-label="午後小任務">🫧</button>
+                        </div>
                         <p>・一鍵格式化把消息清零</p>
                         <p>・咖啡店客製拉花 ☕️</p>
                     </div>
@@ -2384,6 +2441,10 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>今晚的特別任務</b></p>
+                            <button type="button" class="highlight-task-button" aria-label="今晚特別任務">🐠</button>
+                        </div>
                         <p>・傳說中你為愛甘心被擱淺</p>
                     </div>
                 </details>
@@ -2875,7 +2936,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     <div class="text-xs text-gray-500 mb-1">🍽️ 台灣胃養成進度</div>
                     <div id="food-achievement-title" class="font-bold text-sm text-[#2C3E35]">邵奶奶尚未開吃</div>
                 </div>
-                <div id="food-achievement-count" class="text-xs font-bold text-[#C66914] shrink-0">0 / 40</div>
+                <div id="food-achievement-count" class="text-xs font-bold text-[#C66914] shrink-0">0 / 41</div>
             </div>
             <div class="w-full h-2 bg-[#E2DDD5] rounded-full mt-3 overflow-hidden">
                 <div id="food-achievement-bar" class="h-full bg-[#C66914] rounded-full transition-all duration-500" style="width:0%"></div>
@@ -2992,8 +3053,12 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <span><b>魚皮湯</b>（王氏魚皮）</span>
 </label>
 <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
-    <input type="checkbox" data-id="food-v3-28" class="w-5 h-5 accent-[#C66914]">
-    <span><b>客製拉花咖啡</b>（性格咖啡）</span>
+    <input type="checkbox" data-id="food-v3-41" class="w-5 h-5 accent-[#C66914]">
+    <span><b>豬血湯</b></span>
+</label>
+<label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+    <input type="checkbox" data-id="food-v3-42" class="w-5 h-5 accent-[#C66914]">
+    <span><b>甜不辣</b></span>
 </label>
 <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
     <input type="checkbox" data-id="food-v3-29" class="w-5 h-5 accent-[#C66914]">
@@ -5043,6 +5108,15 @@ function updateAchievementWall() {
             updateSecretItineraries();
             setInterval(updateSecretItineraries, 30000);
         });
+
+        function triggerCameraFlash() {
+            const overlay = document.getElementById('camera-flash-overlay');
+            if (!overlay) return;
+            overlay.classList.remove('flash-active');
+            void overlay.offsetWidth;
+            overlay.classList.add('flash-active');
+            window.setTimeout(() => overlay.classList.remove('flash-active'), 380);
+        }
 </script>
 
 <div id="achievement-unlock-modal" class="fixed inset-0 z-[160] hidden items-center justify-center p-5 bg-black/45 backdrop-blur-sm">

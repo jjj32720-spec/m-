@@ -1410,6 +1410,18 @@ to { width: 150vw; height: 150vw; opacity: 0; }
         body.dark-mode #test-console { background:rgba(24,33,29,.98); color:#EAE7E0; border-color:#3A4A42; }
         body.dark-mode .test-btn, body.dark-mode .test-select { background:#202B26; color:#EAE7E0; border-color:#3A4A42; }
 
+
+        .secret-locked-copy,
+        .secret-revealed-copy {
+            color: #B85F16 !important;
+            font-weight: 700;
+            letter-spacing: .015em;
+        }
+        body.dark-mode .secret-locked-copy,
+        body.dark-mode .secret-revealed-copy {
+            color: #F1A15B !important;
+        }
+
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -1632,8 +1644,8 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                             </div>
                         </div>
                         <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
-                            <p data-secret-key="d1-route">桃園國際機場 ➔ 台北住宿 ➔ 西門町手作 ➔ 中山／圓山／信義區（三選一）</p>
-                            <p data-secret-key="d1-route-note" class="text-xs text-gray-500 mt-1">※西門町手作完成後，再依精神狀況選一個區域續逛</p>
+                            <p data-secret-key="d1-route">桃園國際機場 ➔ 台北住宿 ➔ 台北手作時研室 ➔ 西門町／中山／圓山／信義區（四選一～二）</p>
+                            <p data-secret-key="d1-route-note" class="text-xs text-gray-500 mt-1">※手作結束後，再依精神狀況從西門町／中山／圓山／信義區選一～二個續逛</p>
                         </div>
                     </div>
                 </details>
@@ -1644,8 +1656,8 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <div><b>14:30</b> 抵達桃園國際機場</div>
                         <div><b>14:30 - 16:00</b> 入境、領行李、交通準備</div>
                         <div><b>約 16:00 - 17:15</b> 桃園機場 ➔ 台北住宿</div>
-                        <div data-secret-key="d1-time"><b>17:30後</b> 西門町晚餐＋手作（Fan Craft Lab）</div>
-                        <div data-secret-key="d1-after"><b>手作結束後</b> 中山／圓山／信義區 三選一續逛</div>
+                        <div data-secret-key="d1-time"><b>18:00-19:00</b> 台北手作時研室（登陸少年陪你登陸台北）</div>
+                        <div data-secret-key="d1-after"><b>19:00後</b> 西門町／中山／圓山／信義區 四選一～二續逛</div>
                     </div>
                 </div>
 
@@ -1654,7 +1666,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>中山：</b>百貨、選物店、咖啡店、餐廳與寧夏夜市。</div>
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>圓山：</b>花博園區、市集與餐酒館較多，適合輕鬆散步、喝酒聊天。</div>
-                        <div data-secret-key="d1-intro" class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>西門町：</b>第一晚先來做一份屬於自己的手作紀念，再逛台北代表性的年輕商圈。</div>
+                        <div data-secret-key="d1-intro" class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>台北手作時研室：</b>第一晚先完成一份屬於自己的手作紀念，再依精神狀況從西門町／中山／圓山／信義區選一～二個續逛。</div>
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>信義區／台北101：</b>現代城市景觀，夜間百貨、酒吧及101夜景集中。</div>
                     </div>
                 </div>
@@ -1942,7 +1954,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
                         <div class="flex items-center justify-between gap-3">
-                            <p><b>跟我吃飯</b></p>
+                            <p><b>與美女約會</b></p>
                             <button type="button" onclick="triggerHeartExplosion()" class="flex items-center justify-center bg-[#C66914] text-white w-10 h-10 rounded-full text-base hover:bg-[#B05B11] shadow transition shrink-0" aria-label="愛心彩蛋">❤️</button>
                         </div>
                         <p>・伸手也能 touch the sky</p>
@@ -3580,7 +3592,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260921-test-r3';
+            const BUILD_KEY = '20260921-test-r4';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -3644,7 +3656,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         const SECRET_ITINERARIES = {
             ximenCraft: {
                 revealAt: '2026-09-27T17:00:00+08:00',
-                hint: '登陸少年陪你登陸台北！'
+                hint: '登陸台北！'
             },
             theTop: {
                 revealAt: '2026-09-29T17:15:00+08:00',
@@ -3665,12 +3677,12 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         };
 
         const SECRET_TEXTS = {
-            'd1-route': { id:'ximenCraft', locked:'桃園國際機場 ➔ 台北住宿 ➔ 🔒 第一晚安排 ➔ 中山／圓山／信義區（三選一）' },
-            'd1-route-note': { id:'ximenCraft', locked:'※第一晚的安排會在接近出發時間揭曉。' },
-            'd1-time': { id:'ximenCraft', locked:'<b>17:30後</b> <span class="secret-lock-copy">🔒 登陸少年陪你登陸台北！</span>' },
-            'd1-after': { id:'ximenCraft', locked:'<b>第一站結束後</b> 中山／圓山／信義區 三選一續逛' },
+            'd1-route': { id:'ximenCraft', locked:'桃園國際機場 ➔ 台北住宿 ➔ 🔒 第一晚安排 ➔ 西門町／中山／圓山／信義區（四選一～二）' },
+            'd1-route-note': { id:'ximenCraft', locked:'※第一晚的安排會在接近出發時間揭曉；結束後可從西門町／中山／圓山／信義區選一～二個續逛。' },
+            'd1-time': { id:'ximenCraft', locked:'<b>18:00-19:00</b> <span class="secret-lock-copy">🔒 登陸台北！</span>' },
+            'd1-after': { id:'ximenCraft', locked:'<b>19:00後</b> 西門町／中山／圓山／信義區 四選一～二續逛' },
             'd1-intro': { id:'ximenCraft', locked:'<b>🔒 第一晚：</b>有一個特別安排，接近出發時間再揭曉。' },
-            'd1-special-note': { id:'ximenCraft', locked:'・第一晚先完成鎖定安排，再從中山、圓山、信義區三選一續逛即可。' },
+            'd1-special-note': { id:'ximenCraft', locked:'・第一晚先完成鎖定安排，再從西門町、中山、圓山、信義區四選一～二續逛即可。' },
 
             'd3-time': { id:'theTop', locked:'<b>18:00-19:30</b> <span class="secret-lock-copy">🔒 今晚有約</span>' },
             'd3-transport': { id:'theTop', locked:'<b>市區移動：</b>台北捷運＋步行。<b>東門 ➔ 故宮：</b>捷運至士林站，轉公車／計程車。<b>士林 ➔ 晚間目的地：</b>交通方式將於解鎖後顯示。' },
@@ -3679,7 +3691,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             'd4-badge': { id:'dessertDIY', locked:'9/30（三）｜台北 → 日月潭' },
             'd4-title': { id:'dessertDIY', locked:'第四天：台北出發・日月潭湖景' },
             'd4-route': { id:'dessertDIY', locked:'台北住宿 ➔ 🔒 上午安排 ➔ 台北車站 ➔ 高鐵台中站 ➔ 日月潭／水社 ➔ 遊湖船 ➔ 伊達邵 ➔ 日月潭湖景住宿' },
-            'd4-time': { id:'dessertDIY', locked:'<b>09:30-11:30</b> <span class="secret-lock-copy">🔒 上午任務</span>' },
+            'd4-time': { id:'dessertDIY', locked:'<b>09:30-11:30</b> <span class="secret-lock-copy">🔒 邵奶奶出任務</span>' },
 
             'd7-route': { id:'hairWash', locked:'台南住宿 ➔ 四草綠色隧道 ➔ 安平區 ➔ 🔒 下午安排 ➔ 性格咖啡 ➔ 愛・月熱氣球節 ➔ 高雄美麗島住宿' },
             'd7-time': { id:'hairWash', locked:'<b>13:00-14:00</b> <span class="secret-lock-copy">🔒 中場休息</span>' },
@@ -3754,7 +3766,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function getOverviewHighlightsForDay(day, original) {
             if (day === 1 && !secretIsRevealed('ximenCraft')) {
-                return ['✈️ 桃園機場抵達','🔒 登陸少年陪你登陸台北！'];
+                return ['✈️ 桃園機場抵達','🔒 登陸台北！'];
             }
             if (day === 3 && !secretIsRevealed('theTop')) {
                 return ['🥣 阜杭豆漿・中正紀念堂','🏛️ 故宮・士林・🔒 伸手也能 touch the sky'];

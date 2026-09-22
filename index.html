@@ -3705,7 +3705,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v15-itinerary-overview-first';
+            const BUILD_KEY = '20260922-test-v17-overview-dynamic-label';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4193,6 +4193,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             if (currentTabId !== 'overview') {
                 closeMobileSheets(false);
                 switchTab('overview');
+                updateMobileItineraryLabel('overview');
                 setMobileNavActive('day');
                 return;
             }
@@ -4271,6 +4272,15 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             else setMobileNavActive(null);
         }
 
+
+        function updateMobileItineraryLabel(tabId) {
+            const label = document.getElementById('mobile-current-day-label');
+            if (!label) return;
+
+            const match = String(tabId || '').match(/^d(\d+)-/);
+            label.textContent = match ? `Day ${match[1]}` : '總覽';
+        }
+
         function updateMobileDayNav(dayNum) {
             const label = document.getElementById('mobile-current-day-label');
             if (label) label.textContent = `Day ${dayNum}`;
@@ -4328,6 +4338,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function switchTab(tabId, shouldScroll = true) {
             currentTabId = tabId;
+            updateMobileItineraryLabel(tabId);
             window.location.hash = tabId;
 
             const contents = document.querySelectorAll('.tab-content');
@@ -5509,7 +5520,7 @@ function updateAchievementWall() {
     <div class="grid grid-cols-5 gap-1">
         <button onclick="handleMobileItineraryTap()" id="mobile-nav-day" class="mobile-nav-item">
             <span class="text-xl leading-none">📅</span>
-            <span id="mobile-current-day-label" class="mobile-nav-label">行程</span>
+            <span id="mobile-current-day-label" class="mobile-nav-label">總覽</span>
         </button>
         <button onclick="mobileNavTo('food')" id="mobile-nav-food" class="mobile-nav-item">
             <span class="text-xl leading-none">🍜</span>

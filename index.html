@@ -1876,7 +1876,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             margin: 0;
             color: #334A43;
             font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
-            font-size: .86rem;
+            font-size: .73rem;
             line-height: 1.18;
             font-weight: 800;
             letter-spacing: .014em;
@@ -1921,7 +1921,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             }
 
             #site-hero .hero-date {
-                font-size: .50rem;
+                font-size: .425rem;
                 letter-spacing: .012em;
                 font-weight: 800;
             }
@@ -3366,11 +3366,10 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 <button class="hidden bg-white text-[#2C3E35] border border-[#2C3E35]/20 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#F0EDEA] transition" id="reset-trip-btn" onclick="resetTaiwanTripCompletion()" type="button">取消完成</button>
 </div>
 </div>
-<div class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/45 backdrop-blur-[2px] px-5" id="finish-trip-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="finish-trip-confirm-title">
+<div class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/45 backdrop-blur-[2px] px-5 py-[max(1.25rem,env(safe-area-inset-top))]" id="finish-trip-confirm-modal" style="height:100dvh;" role="dialog" aria-modal="true" aria-labelledby="finish-trip-confirm-title">
 <div class="w-full max-w-sm rounded-2xl bg-[#F7F5F0] border border-[#E2DDD5] shadow-2xl p-5 text-center">
 <div class="text-3xl mb-2">✨</div>
-<h3 class="text-lg font-bold text-[#2C3E35]" id="finish-trip-confirm-title">確定要完成這趟旅程嗎？</h3>
-<p class="mt-2 text-xs leading-relaxed text-gray-600">完成後會解鎖旅程完成頁面與最終成就。</p>
+<h3 class="text-lg font-bold text-[#2C3E35]" id="finish-trip-confirm-title">確定已經完成這趟旅程了嗎？</h3>
 <div class="mt-5 flex gap-2">
 <button type="button" class="flex-1 bg-white border border-[#D7D1C8] text-[#2C3E35] px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#F0EDEA] transition" onclick="closeFinishTripConfirm()">再等等</button>
 <button type="button" class="flex-1 bg-[#2C3E35] text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow" onclick="confirmFinishTripAttempt()">確認完成 ✨</button>
@@ -3378,7 +3377,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 </div>
 </div>
 
-<div class="fixed inset-0 z-[121] hidden items-center justify-center bg-black/50 backdrop-blur-[2px] px-5" id="finish-trip-lock-modal" role="dialog" aria-modal="true" aria-labelledby="finish-trip-lock-title">
+<div class="fixed inset-0 z-[121] hidden items-center justify-center bg-black/50 backdrop-blur-[2px] px-5 py-[max(1.25rem,env(safe-area-inset-top))]" id="finish-trip-lock-modal" style="height:100dvh;" role="dialog" aria-modal="true" aria-labelledby="finish-trip-lock-title">
 <div class="w-full max-w-sm rounded-2xl bg-[#F7F5F0] border border-[#E2DDD5] shadow-2xl p-5 text-center">
 <div class="text-4xl mb-2">⚠️</div>
 <h3 class="text-lg font-bold text-[#2C3E35]" id="finish-trip-lock-title">抓到！請不要偷按 🚨</h3>
@@ -4056,7 +4055,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260923-v36-finish-two-step-time-lock';
+            const BUILD_KEY = '20260923-v38-header-date-minus15';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -5880,6 +5879,11 @@ function updateAchievementWall() {
 
         const modal = document.getElementById('finish-trip-confirm-modal');
         if (!modal) return;
+
+        if (modal.parentElement !== document.body) {
+            document.body.appendChild(modal);
+        }
+
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
@@ -5896,6 +5900,11 @@ function updateAchievementWall() {
     function openFinishTripLockModal() {
         const modal = document.getElementById('finish-trip-lock-modal');
         if (!modal) return;
+
+        if (modal.parentElement !== document.body) {
+            document.body.appendChild(modal);
+        }
+
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';

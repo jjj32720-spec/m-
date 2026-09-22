@@ -4049,7 +4049,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v21-near-final';
+            const BUILD_KEY = '20260922-test-v22-hotfix';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4248,20 +4248,6 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             }
             if (day === 7 && !secretIsRevealed('hairWash')) {
                 return ['🚤 四草・安平','🔒 一鍵格式化把消息清零','☕ 性格咖啡・🎈 月世界 → 高雄'];
-            }
-            if (day === 8 && !secretIsRevealed('aquariumNight')) {
-                return ['🚗 墾丁海岸包車','🔒 傳說中你為愛甘心被擱淺'];
-            }
-            return original;
-        }
-            if (day === 3 && !secretIsRevealed('theTop')) {
-                return ['🥣 阜杭豆漿・中正紀念堂','🏛️ 故宮・士林・🔒 伸手也能 touch the sky'];
-            }
-            if (day === 4 && !secretIsRevealed('dessertDIY')) {
-                return ['🔒 你嘴上說很累其實早就準備','🚄 高鐵台中 → 🌊 日月潭'];
-            }
-            if (day === 7 && !secretIsRevealed('hairWash')) {
-                return ['🚤 四草・安平','🔒 一鍵格式化把消息清零・☕ 性格','🎈 月世界 → 高雄'];
             }
             if (day === 8 && !secretIsRevealed('aquariumNight')) {
                 return ['🚗 墾丁海岸包車','🔒 傳說中你為愛甘心被擱淺'];
@@ -4861,8 +4847,6 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             if (icon) icon.textContent = '🏠';
         }
 
-            label.textContent = String(tabId || '') === 'overview' ? '行程' : '總覽';
-        }
 
         function updateMobileDayNav(dayNum) {
             const label = document.getElementById('mobile-current-day-label');

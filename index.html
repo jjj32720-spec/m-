@@ -1488,6 +1488,52 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             border-color: #7B5531 !important;
         }
 
+
+        /* ===== v12：底部固定導覽遮擋修正 ===== */
+        #mobile-day-sheet,
+        #mobile-more-sheet {
+            max-height: calc(100dvh - 18px);
+            overflow: hidden;
+        }
+
+        #mobile-day-list,
+        #mobile-more-list {
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            touch-action: pan-y;
+            scrollbar-width: none;
+        }
+
+        #mobile-day-list::-webkit-scrollbar,
+        #mobile-more-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Day 9 / Day 10 不再落在底部導覽後面 */
+        #mobile-day-list {
+            scroll-padding-bottom: calc(32px + env(safe-area-inset-bottom));
+        }
+
+        /* 交通急救包頁面最後一張卡片不會被固定底欄遮住 */
+        #tab-sos {
+            padding-bottom: calc(118px + env(safe-area-inset-bottom)) !important;
+        }
+
+        /* 其他頁面也保留最低安全距離，避免最後一顆按鈕貼到底欄 */
+        .tab-content {
+            scroll-margin-bottom: calc(100px + env(safe-area-inset-bottom));
+        }
+
+        /* Bottom sheet 開啟時要完全蓋在底部主導覽上方 */
+        #mobile-day-sheet-backdrop {
+            z-index: 1080 !important;
+        }
+
+        #mobile-day-sheet,
+        #mobile-more-sheet {
+            z-index: 1090 !important;
+        }
+
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -3705,7 +3751,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v17-overview-dynamic-label';
+            const BUILD_KEY = '20260922-test-v18-bottom-overlap-fix';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4183,6 +4229,8 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             closeMobileSheets();
             document.getElementById('mobile-day-sheet-backdrop')?.classList.remove('hidden');
             document.getElementById('mobile-day-sheet')?.classList.remove('translate-y-full');
+            const bottomNav = document.getElementById('mobile-bottom-nav');
+            if (bottomNav) bottomNav.style.pointerEvents = 'none';
             setMobileNavActive('day');
         }
 
@@ -5519,7 +5567,7 @@ function updateAchievementWall() {
 <div id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 z-[100] bg-[#FFFDF9] border-t border-[#E2DDD5] shadow-[0_-6px_24px_rgba(44,62,53,0.10)] px-2 pb-[max(env(safe-area-inset-bottom),8px)] pt-2">
     <div class="grid grid-cols-5 gap-1">
         <button onclick="handleMobileItineraryTap()" id="mobile-nav-day" class="mobile-nav-item">
-            <span class="text-xl leading-none">📅</span>
+            <span class="text-xl leading-none">🧭</span>
             <span id="mobile-current-day-label" class="mobile-nav-label">總覽</span>
         </button>
         <button onclick="mobileNavTo('food')" id="mobile-nav-food" class="mobile-nav-item">
@@ -5542,8 +5590,8 @@ function updateAchievementWall() {
 </div>
 
 <!-- Day 1-10 bottom sheet -->
-<div id="mobile-day-sheet-backdrop" class="fixed inset-0 z-[109] hidden bg-black/30 backdrop-blur-[2px]" onclick="closeMobileSheets()"></div>
-<div id="mobile-day-sheet" class="fixed left-0 right-0 bottom-0 z-[110] translate-y-full transition-transform duration-300 ease-out bg-[#FFFDF9] rounded-t-[1.8rem] border-t border-[#E2DDD5] shadow-2xl pb-[max(env(safe-area-inset-bottom),18px)]">
+<div id="mobile-day-sheet-backdrop" class="fixed inset-0 z-[1080] hidden bg-black/30 backdrop-blur-[2px]" onclick="closeMobileSheets()"></div>
+<div id="mobile-day-sheet" class="fixed left-0 right-0 bottom-0 z-[1090] translate-y-full transition-transform duration-300 ease-out bg-[#FFFDF9] rounded-t-[1.8rem] border-t border-[#E2DDD5] shadow-2xl pb-[max(env(safe-area-inset-bottom),18px)]">
     <div class="w-10 h-1 bg-[#D6D1C8] rounded-full mx-auto mt-3 mb-4"></div>
     <div class="px-5 pb-3 flex items-center justify-between">
         <div>
@@ -5552,7 +5600,7 @@ function updateAchievementWall() {
         </div>
         <button onclick="closeMobileSheets()" class="w-9 h-9 rounded-full bg-[#F0EDEA] text-[#2C3E35] font-bold">✕</button>
     </div>
-    <div class="grid grid-cols-2 gap-2 px-4 max-h-[58vh] overflow-y-auto pb-2">
+    <div id="mobile-day-list" class="grid grid-cols-2 gap-2 px-4 max-h-[62dvh] overflow-y-auto pb-[calc(28px+env(safe-area-inset-bottom))]">
         <button onclick="mobileSelectDay(1)" class="mobile-day-item">Day 1　台北</button>
         <button onclick="mobileSelectDay(2)" class="mobile-day-item">Day 2　北海岸</button>
         <button onclick="mobileSelectDay(3)" class="mobile-day-item">Day 3　故宮陽明</button>
@@ -5570,7 +5618,7 @@ function updateAchievementWall() {
 
 
 <!-- More bottom sheet -->
-<div id="mobile-more-sheet" class="fixed left-0 right-0 bottom-0 z-[110] translate-y-full transition-transform duration-300 ease-out bg-[#FFFDF9] rounded-t-[1.8rem] border-t border-[#E2DDD5] shadow-2xl pb-[max(env(safe-area-inset-bottom),18px)]">
+<div id="mobile-more-sheet" class="fixed left-0 right-0 bottom-0 z-[1090] translate-y-full transition-transform duration-300 ease-out bg-[#FFFDF9] rounded-t-[1.8rem] border-t border-[#E2DDD5] shadow-2xl pb-[max(env(safe-area-inset-bottom),18px)]">
     <div class="w-10 h-1 bg-[#D6D1C8] rounded-full mx-auto mt-3 mb-4"></div>
     <div class="px-5 pb-3 flex items-center justify-between">
         <div>
@@ -5579,7 +5627,7 @@ function updateAchievementWall() {
         </div>
         <button onclick="closeMobileSheets()" class="w-9 h-9 rounded-full bg-[#F0EDEA] text-[#2C3E35] font-bold">✕</button>
     </div>
-    <div class="px-4 space-y-2">
+    <div id="mobile-more-list" class="px-4 space-y-2 pb-[calc(26px+env(safe-area-inset-bottom))]">
         <button onclick="toggleDarkMode()" class="mobile-more-item">
             <span id="dark-mode-icon">🌙</span>
             <span id="dark-mode-label">深色模式</span>

@@ -1776,6 +1776,19 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             padding-bottom: calc(42px + env(safe-area-inset-bottom)) !important;
         }
 
+
+        /* ===== v15：總覽／行程 emoji 動態切換 ===== */
+        #mobile-current-day-icon {
+            min-width: 24px;
+            text-align: center;
+            font-variant-emoji: emoji;
+        }
+
+        #mobile-nav-day .mobile-nav-label {
+            min-width: 34px;
+            text-align: center;
+        }
+
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -4036,7 +4049,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v20-overview-trip-weather-compact';
+            const BUILD_KEY = '20260922-test-v21-near-final';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4227,6 +4240,20 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             if (day === 1 && !secretIsRevealed('ximenCraft')) {
                 return ['✈️ 桃園機場抵達','🔒 登陸台北！'];
             }
+            if (day === 3 && !secretIsRevealed('theTop')) {
+                return ['🥣 阜杭豆漿・中正紀念堂','🏛️ 故宮・士林','🔒 伸手也能 touch the sky'];
+            }
+            if (day === 4 && !secretIsRevealed('dessertDIY')) {
+                return ['🔒 你嘴上說很累其實早就準備','🚄 台北 → 🌊 日月潭'];
+            }
+            if (day === 7 && !secretIsRevealed('hairWash')) {
+                return ['🚤 四草・安平','🔒 一鍵格式化把消息清零','☕ 性格咖啡・🎈 月世界 → 高雄'];
+            }
+            if (day === 8 && !secretIsRevealed('aquariumNight')) {
+                return ['🚗 墾丁海岸包車','🔒 傳說中你為愛甘心被擱淺'];
+            }
+            return original;
+        }
             if (day === 3 && !secretIsRevealed('theTop')) {
                 return ['🥣 阜杭豆漿・中正紀念堂','🏛️ 故宮・士林・🔒 伸手也能 touch the sky'];
             }
@@ -4812,13 +4839,27 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function updateMobileItineraryLabel(tabId) {
             const label = document.getElementById('mobile-current-day-label');
+            const icon = document.getElementById('mobile-current-day-icon');
             if (!label) return;
 
-            const match = String(tabId || '').match(/^d(\d+)-/);
+            const tab = String(tabId || '');
+            const match = tab.match(/^d(\d+)-/);
+
             if (match) {
                 label.textContent = `Day ${match[1]}`;
+                if (icon) icon.textContent = '📅';
                 return;
             }
+
+            if (tab === 'overview') {
+                label.textContent = '行程';
+                if (icon) icon.textContent = '📅';
+                return;
+            }
+
+            label.textContent = '總覽';
+            if (icon) icon.textContent = '🏠';
+        }
 
             label.textContent = String(tabId || '') === 'overview' ? '行程' : '總覽';
         }
@@ -6071,7 +6112,7 @@ function updateAchievementWall() {
         </button>
 
         <button onclick="handleMobileItineraryTap()" id="mobile-nav-day" class="mobile-nav-item mobile-home-nav" aria-label="旅程總覽">
-            <span class="mobile-home-icon">🏠</span>
+            <span id="mobile-current-day-icon" class="mobile-home-icon">🏠</span>
             <span id="mobile-current-day-label" class="mobile-nav-label">總覽</span>
         </button>
 

@@ -3362,8 +3362,31 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         抵達高雄機場、完成報到後再按下。
                     </div>
 <div class="mt-4 flex flex-wrap justify-center gap-2">
-<button class="bg-[#2C3E35] text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow" id="finish-trip-btn" onclick="finishTaiwanTrip()" type="button">完成旅程 ✨</button>
+<button class="bg-[#2C3E35] text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow" id="finish-trip-btn" onclick="openFinishTripConfirm()" type="button">完成旅程 ✨</button>
 <button class="hidden bg-white text-[#2C3E35] border border-[#2C3E35]/20 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#F0EDEA] transition" id="reset-trip-btn" onclick="resetTaiwanTripCompletion()" type="button">取消完成</button>
+</div>
+</div>
+<div class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/45 backdrop-blur-[2px] px-5" id="finish-trip-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="finish-trip-confirm-title">
+<div class="w-full max-w-sm rounded-2xl bg-[#F7F5F0] border border-[#E2DDD5] shadow-2xl p-5 text-center">
+<div class="text-3xl mb-2">✨</div>
+<h3 class="text-lg font-bold text-[#2C3E35]" id="finish-trip-confirm-title">確定要完成這趟旅程嗎？</h3>
+<p class="mt-2 text-xs leading-relaxed text-gray-600">完成後會解鎖旅程完成頁面與最終成就。</p>
+<div class="mt-5 flex gap-2">
+<button type="button" class="flex-1 bg-white border border-[#D7D1C8] text-[#2C3E35] px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#F0EDEA] transition" onclick="closeFinishTripConfirm()">再等等</button>
+<button type="button" class="flex-1 bg-[#2C3E35] text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow" onclick="confirmFinishTripAttempt()">確認完成 ✨</button>
+</div>
+</div>
+</div>
+
+<div class="fixed inset-0 z-[121] hidden items-center justify-center bg-black/50 backdrop-blur-[2px] px-5" id="finish-trip-lock-modal" role="dialog" aria-modal="true" aria-labelledby="finish-trip-lock-title">
+<div class="w-full max-w-sm rounded-2xl bg-[#F7F5F0] border border-[#E2DDD5] shadow-2xl p-5 text-center">
+<div class="text-4xl mb-2">⚠️</div>
+<h3 class="text-lg font-bold text-[#2C3E35]" id="finish-trip-lock-title">抓到！請不要偷按 🚨</h3>
+<p class="mt-3 text-sm leading-relaxed text-gray-700">偷按無效，請稍後再試</p>
+<div class="mt-5 flex gap-2">
+<button type="button" class="flex-1 bg-white border border-[#D7D1C8] text-[#2C3E35] px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#F0EDEA] transition" onclick="closeFinishTripLockModal()">知道了</button>
+<button type="button" class="flex-1 bg-[#2C3E35] text-white px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow" onclick="closeFinishTripLockModal()">我正在盯著你👀</button>
+</div>
 </div>
 </div>
 <div class="hidden mt-5 bg-[#2C3E35] text-[#F7F5F0] rounded-2xl p-5 overflow-hidden relative" id="trip-finale-card">
@@ -4033,7 +4056,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260923-v31-hero-shift-up';
+            const BUILD_KEY = '20260923-v36-finish-two-step-time-lock';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4566,10 +4589,11 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             changeDay(Math.min(10, Math.max(1, day)));
         }
 
-        // Hide bottom nav while the page is actively scrolling.
-        // Show it again automatically shortly after scrolling stops.
-        let mobileNavScrollTimer = null;
+        // Bottom nav follows scroll direction:
+        // scrolling down = hide; scrolling up = show.
+        // When scrolling stops, keep the state determined by the latest direction.
         let mobileNavLastY = window.scrollY;
+        let mobileNavLastDirection = 'up';
 
         function hideMobileBottomNavForScroll() {
             const nav = document.getElementById('mobile-bottom-nav');
@@ -4585,16 +4609,20 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         window.addEventListener('scroll', () => {
             const currentY = window.scrollY;
+            const delta = currentY - mobileNavLastY;
 
-            if (Math.abs(currentY - mobileNavLastY) > 3) {
+            // Ignore tiny browser / rubber-band movements to prevent flicker.
+            if (Math.abs(delta) < 3) return;
+
+            if (delta > 0) {
+                mobileNavLastDirection = 'down';
                 hideMobileBottomNavForScroll();
-                mobileNavLastY = currentY;
+            } else {
+                mobileNavLastDirection = 'up';
+                revealMobileBottomNav();
             }
 
-            clearTimeout(mobileNavScrollTimer);
-            mobileNavScrollTimer = setTimeout(() => {
-                revealMobileBottomNav();
-            }, 260);
+            mobileNavLastY = currentY;
         }, { passive:true });
 
         function selectRegion(region) {
@@ -5822,7 +5850,7 @@ function updateAchievementWall() {
             btn.textContent = '已完成旅程 ✓';
             btn.classList.remove('bg-[#2C3E35]');
             btn.classList.add('bg-[#C66914]');
-            if (note) note.textContent = '抵達高雄機場、完成報到後再按下。';
+            if (note) note.textContent = '這趟旅程已經正式完成。';
             return;
         }
 
@@ -5832,7 +5860,71 @@ function updateAchievementWall() {
         if (note) note.textContent = '抵達高雄機場、完成報到後再按下。';
     }
 
-    function finishTaiwanTrip() {
+    const FINAL_TRIP_UNLOCK_AT = new Date('2026-10-06T07:30:00+08:00').getTime();
+
+    function isFinishTripUnlocked() {
+        if (window.__TEST_SECRET_MODE === 'locked') return false;
+        if (window.__TEST_SECRET_MODE === 'unlocked') return true;
+
+        if (Number.isInteger(window.__TEST_TRIP_DAY)) {
+            if (window.__TEST_TRIP_DAY === 0) return false;
+            return window.__TEST_TRIP_DAY >= 10;
+        }
+
+        return Date.now() >= FINAL_TRIP_UNLOCK_AT;
+    }
+
+    function openFinishTripConfirm() {
+        const finalDone = localStorage.getItem(ACH_KEYS.final) === 'true';
+        if (finalDone) return;
+
+        const modal = document.getElementById('finish-trip-confirm-modal');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeFinishTripConfirm() {
+        const modal = document.getElementById('finish-trip-confirm-modal');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
+
+    function openFinishTripLockModal() {
+        const modal = document.getElementById('finish-trip-lock-modal');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeFinishTripLockModal() {
+        const modal = document.getElementById('finish-trip-lock-modal');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    }
+
+    function confirmFinishTripAttempt() {
+        closeFinishTripConfirm();
+
+        if (!isFinishTripUnlocked()) {
+            openFinishTripLockModal();
+            return;
+        }
+
+        finishTaiwanTrip();
+    }
+
+    function finishTaiwanTrip(force = false) {
+        if (!force && !isFinishTripUnlocked()) {
+            openFinishTripLockModal();
+            return;
+        }
         localStorage.setItem(ACH_KEYS.final, 'true');
         const finale = document.getElementById('trip-finale-card');
         const food = document.getElementById('final-food-count');
@@ -5868,6 +5960,19 @@ function updateAchievementWall() {
     }
 
 
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        closeFinishTripConfirm();
+        closeFinishTripLockModal();
+    });
+
+    document.addEventListener('click', (event) => {
+        const confirmModal = document.getElementById('finish-trip-confirm-modal');
+        const lockModal = document.getElementById('finish-trip-lock-modal');
+        if (confirmModal && event.target === confirmModal) closeFinishTripConfirm();
+        if (lockModal && event.target === lockModal) closeFinishTripLockModal();
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
         // 音樂按鈕在頁面載入完成時就建立，不等待切換到 Day 6
@@ -6154,7 +6259,7 @@ function updateAchievementWall() {
 <button class="test-btn" onclick="triggerHeartExplosion()">❤️ 愛心</button>
 <button class="test-btn" onclick="triggerCameraFlash()">📸 截圖效果</button>
 <button class="test-btn" onclick="testAchievementModal()">🏆 成就彈窗</button>
-<button class="test-btn" onclick="finishTaiwanTrip()">完成旅程</button>
+<button class="test-btn" onclick="finishTaiwanTrip(true)">完成旅程</button>
 </div>
 <div class="mt-3 text-[11px] font-bold">🧹 測試資料</div>
 <div class="test-row">

@@ -1534,6 +1534,231 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             z-index: 1090 !important;
         }
 
+
+        /* ===== v13：中間「🏠 總覽」主入口 ===== */
+        #mobile-bottom-nav {
+            overflow: visible !important;
+        }
+
+        #mobile-bottom-nav .grid {
+            overflow: visible;
+        }
+
+        #mobile-nav-day.mobile-home-nav {
+            min-height: 58px;
+            margin-top: -9px;
+            color: #55615B;
+            background: transparent;
+            overflow: visible;
+        }
+
+        #mobile-nav-day .mobile-home-icon {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            margin-top: -5px;
+            border: 1px solid #DDD4C8;
+            border-radius: 999px;
+            background: #F7F1E8;
+            box-shadow:
+                0 7px 18px rgba(44,62,53,.12),
+                0 1px 0 rgba(255,255,255,.8) inset;
+            font-size: 22px;
+            line-height: 1;
+            transition:
+                transform .2s ease,
+                background .2s ease,
+                border-color .2s ease,
+                box-shadow .2s ease;
+        }
+
+        #mobile-nav-day.mobile-nav-active {
+            background: transparent !important;
+            color: #C66914;
+        }
+
+        #mobile-nav-day.mobile-nav-active .mobile-home-icon {
+            transform: translateY(-1px) scale(1.04);
+            border-color: rgba(198,105,20,.30);
+            background: #F7E6D4;
+            box-shadow:
+                0 9px 22px rgba(198,105,20,.17),
+                0 1px 0 rgba(255,255,255,.85) inset;
+        }
+
+        #mobile-nav-day.mobile-nav-active::after {
+            bottom: 0px;
+        }
+
+        #mobile-nav-day:active .mobile-home-icon {
+            transform: scale(.95);
+        }
+
+        body.dark-mode #mobile-nav-day .mobile-home-icon {
+            background: #26332D;
+            border-color: #43544B;
+            box-shadow: 0 7px 18px rgba(0,0,0,.24);
+        }
+
+        body.dark-mode #mobile-nav-day.mobile-nav-active .mobile-home-icon {
+            background: #4B3425;
+            border-color: rgba(241,161,91,.34);
+        }
+
+        /* ===== v13：總覽即時／當日天氣 ===== */
+        .overview-weather-widget {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 92% 2%, rgba(232,147,68,.16), transparent 40%),
+                linear-gradient(145deg, #FBF8F2 0%, #F4F0E8 100%);
+        }
+
+        .overview-weather-main {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .overview-weather-place-row {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-top: 4px;
+            color: #2C3E35;
+            font-size: 18px;
+            font-weight: 850;
+        }
+
+        .overview-weather-live {
+            display: inline-flex;
+            align-items: center;
+            min-height: 20px;
+            padding: 2px 7px;
+            border: 1px solid rgba(198,105,20,.18);
+            border-radius: 999px;
+            background: rgba(198,105,20,.08);
+            color: #B85F16;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .overview-weather-desc {
+            margin-top: 5px;
+            color: #747B77;
+            font-size: 11px;
+            font-weight: 650;
+        }
+
+        .overview-weather-right {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .overview-weather-icon {
+            font-size: 30px;
+            line-height: 1;
+        }
+
+        .overview-weather-temp {
+            color: #2C3E35;
+            font-size: 31px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -.04em;
+        }
+
+        .overview-weather-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .overview-weather-stats > div {
+            padding: 9px 7px;
+            border: 1px solid rgba(72,102,88,.10);
+            border-radius: 13px;
+            background: rgba(255,255,255,.62);
+            text-align: center;
+        }
+
+        .overview-weather-stats span {
+            display: block;
+            color: #8A8178;
+            font-size: 8px;
+            font-weight: 750;
+        }
+
+        .overview-weather-stats strong {
+            display: block;
+            margin-top: 2px;
+            color: #3A4E43;
+            font-size: 13px;
+            font-weight: 850;
+        }
+
+        .overview-weather-note {
+            margin-top: 9px;
+            color: #8A8178;
+            font-size: 9px;
+            line-height: 1.45;
+        }
+
+        .overview-weather-widget.is-loading {
+            opacity: .82;
+        }
+
+        body.dark-mode .overview-weather-widget {
+            background:
+                radial-gradient(circle at 92% 2%, rgba(241,161,91,.10), transparent 42%),
+                #202B26;
+            border-color: #3A4A42;
+        }
+
+        body.dark-mode .overview-weather-place-row,
+        body.dark-mode .overview-weather-temp,
+        body.dark-mode .overview-weather-stats strong {
+            color: #F1EEE8;
+        }
+
+        body.dark-mode .overview-weather-desc,
+        body.dark-mode .overview-weather-note,
+        body.dark-mode .overview-weather-stats span {
+            color: #A9B5AE;
+        }
+
+        body.dark-mode .overview-weather-stats > div {
+            background: #18211D;
+            border-color: #34443B;
+        }
+
+        /* 選天 / 更多 sheet 蓋住底欄本身，不必再停用底欄 pointer-events */
+        #mobile-day-sheet-backdrop { z-index: 1080 !important; }
+        #mobile-day-sheet,
+        #mobile-more-sheet { z-index: 1090 !important; }
+
+        #mobile-day-list,
+        #mobile-more-list {
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+        }
+
+
+        #tab-sos {
+            padding-bottom: calc(128px + env(safe-area-inset-bottom)) !important;
+        }
+        #mobile-day-list {
+            padding-bottom: calc(44px + env(safe-area-inset-bottom)) !important;
+            scroll-padding-bottom: calc(50px + env(safe-area-inset-bottom));
+        }
+        #mobile-more-list {
+            padding-bottom: calc(42px + env(safe-area-inset-bottom)) !important;
+        }
+
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -3200,6 +3425,43 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     </button>
                 </section>
 
+                <!-- Weather widget：只有打開總覽時才連線更新 -->
+                <section id="overview-weather-widget" class="overview-widget overview-weather-widget">
+                    <div class="overview-weather-main">
+                        <div class="overview-weather-left">
+                            <div class="overview-widget-label">TODAY'S WEATHER</div>
+                            <div class="overview-weather-place-row">
+                                <span id="overview-weather-place">台北</span>
+                                <span id="overview-weather-status" class="overview-weather-live">即時</span>
+                            </div>
+                            <div id="overview-weather-desc" class="overview-weather-desc">正在更新天氣…</div>
+                        </div>
+                        <div class="overview-weather-right">
+                            <div id="overview-weather-icon" class="overview-weather-icon">⛅</div>
+                            <div id="overview-weather-temp" class="overview-weather-temp">--°</div>
+                        </div>
+                    </div>
+
+                    <div class="overview-weather-stats">
+                        <div>
+                            <span>體感／低溫</span>
+                            <strong id="overview-weather-feels">--°</strong>
+                        </div>
+                        <div>
+                            <span>最高</span>
+                            <strong id="overview-weather-high">--°</strong>
+                        </div>
+                        <div>
+                            <span>降雨</span>
+                            <strong id="overview-weather-rain">--%</strong>
+                        </div>
+                    </div>
+
+                    <div id="overview-weather-note" class="overview-weather-note">
+                        開啟總覽時自動更新當日天氣。
+                    </div>
+                </section>
+
                 <!-- Progress widget -->
                 <section class="overview-widget overview-progress-widget">
                     <div class="overview-widget-topline">
@@ -3751,7 +4013,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v18-bottom-overlap-fix';
+            const BUILD_KEY = '20260922-test-v19-center-home-weather-fixed';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4025,6 +4287,199 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             return { status:'during', day:Math.floor((todayUTC - startUTC)/86400000)+1 };
         }
 
+
+        const OVERVIEW_WEATHER_LOCATIONS = {
+            1:  { name:'台北',   lat:25.0330, lon:121.5654 },
+            2:  { name:'台北',   lat:25.0330, lon:121.5654 },
+            3:  { name:'台北',   lat:25.0330, lon:121.5654 },
+            4:  { name:'日月潭', lat:23.8659, lon:120.9155 },
+            5:  { name:'台中',   lat:24.1477, lon:120.6736 },
+            6:  { name:'台南',   lat:22.9999, lon:120.2270 },
+            7:  { name:'台南',   lat:22.9999, lon:120.2270 },
+            8:  { name:'墾丁',   lat:21.9460, lon:120.7980 },
+            9:  { name:'高雄',   lat:22.6273, lon:120.3014 },
+            10: { name:'高雄',   lat:22.6273, lon:120.3014 }
+        };
+
+        function overviewTripDateForDay(day) {
+            const d = new Date(Date.UTC(2026, 8, 26 + Number(day)));
+            const y = d.getUTCFullYear();
+            const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+            const dd = String(d.getUTCDate()).padStart(2, '0');
+            return `${y}-${m}-${dd}`;
+        }
+
+        function getTaiwanISODateNow() {
+            const p = getTaiwanDateParts();
+            return `${p.year}-${String(p.month).padStart(2,'0')}-${String(p.day).padStart(2,'0')}`;
+        }
+
+        function weatherVisual(code, isDay = 1) {
+            const c = Number(code);
+            if (c === 0) return { icon: isDay ? '☀️' : '🌙', text:'晴朗' };
+            if ([1,2].includes(c)) return { icon: isDay ? '🌤️' : '☁️', text:'晴時多雲' };
+            if (c === 3) return { icon:'☁️', text:'多雲' };
+            if ([45,48].includes(c)) return { icon:'🌫️', text:'有霧' };
+            if ([51,53,55,56,57].includes(c)) return { icon:'🌦️', text:'毛毛雨' };
+            if ([61,63,65,66,67,80,81,82].includes(c)) return { icon:'🌧️', text:'有雨' };
+            if ([71,73,75,77,85,86].includes(c)) return { icon:'🌨️', text:'降雪' };
+            if ([95,96,99].includes(c)) return { icon:'⛈️', text:'雷雨' };
+            return { icon:'⛅', text:'天氣變化' };
+        }
+
+        function setOverviewWeatherState({
+            place='—', status='天氣', icon='⛅', temp='--°',
+            feels='--°', high='--°', rain='--%', desc='正在更新天氣…',
+            note='開啟總覽時自動更新當日天氣。'
+        } = {}) {
+            const map = {
+                'overview-weather-place': place,
+                'overview-weather-status': status,
+                'overview-weather-icon': icon,
+                'overview-weather-temp': temp,
+                'overview-weather-feels': feels,
+                'overview-weather-high': high,
+                'overview-weather-rain': rain,
+                'overview-weather-desc': desc,
+                'overview-weather-note': note
+            };
+            Object.entries(map).forEach(([id,value]) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = value;
+            });
+        }
+
+        let overviewWeatherRequestToken = 0;
+
+        async function refreshOverviewWeather(trip = getRealTripDay()) {
+            const widget = document.getElementById('overview-weather-widget');
+            if (!widget) return;
+
+            if (trip.status === 'after') {
+                widget.classList.add('hidden');
+                return;
+            }
+            widget.classList.remove('hidden');
+
+            const day = trip.status === 'before' ? 1 : Math.max(1, Math.min(10, trip.day));
+            const loc = OVERVIEW_WEATHER_LOCATIONS[day] || OVERVIEW_WEATHER_LOCATIONS[1];
+            const targetDate = overviewTripDateForDay(day);
+            const todayTW = getTaiwanISODateNow();
+            const isToday = targetDate === todayTW;
+
+            const token = ++overviewWeatherRequestToken;
+            widget.classList.add('is-loading');
+
+            setOverviewWeatherState({
+                place: loc.name,
+                status: isToday ? '即時' : (trip.status === 'before' ? '出發日預報' : `Day ${day}`),
+                icon:'⛅',
+                temp:'--°',
+                feels:'--°',
+                high:'--°',
+                rain:'--%',
+                desc:'正在更新天氣…',
+                note:'天氣資料載入中'
+            });
+
+            try {
+                const params = new URLSearchParams({
+                    latitude: String(loc.lat),
+                    longitude: String(loc.lon),
+                    current: 'temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code',
+                    daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max',
+                    timezone: 'Asia/Taipei',
+                    forecast_days: '16'
+                });
+
+                const controller = new AbortController();
+                const timer = setTimeout(() => controller.abort(), 7000);
+                const res = await fetch(`https://api.open-meteo.com/v1/forecast?${params.toString()}`, {
+                    signal: controller.signal,
+                    cache: 'no-store'
+                });
+                clearTimeout(timer);
+
+                if (!res.ok) throw new Error('weather response error');
+                const data = await res.json();
+                if (token !== overviewWeatherRequestToken) return;
+
+                const dates = data?.daily?.time || [];
+                let idx = dates.indexOf(targetDate);
+
+                // 預報範圍之外時，以 API 回傳的最近一天作為 fallback。
+                let forecastLabel = '';
+                if (idx < 0 && dates.length) {
+                    idx = Math.min(dates.length - 1, Math.max(0, day - 1));
+                    forecastLabel = '目前可取得的近期預報';
+                }
+
+                const dailyCode = idx >= 0 ? data.daily.weather_code?.[idx] : data.current?.weather_code;
+                const visual = weatherVisual(dailyCode, data.current?.is_day ?? 1);
+
+                const max = idx >= 0 ? Math.round(data.daily.temperature_2m_max?.[idx]) : null;
+                const min = idx >= 0 ? Math.round(data.daily.temperature_2m_min?.[idx]) : null;
+                const rain = idx >= 0 ? Math.round(data.daily.precipitation_probability_max?.[idx] ?? 0) : null;
+
+                const currentTemp = Number.isFinite(data.current?.temperature_2m)
+                    ? Math.round(data.current.temperature_2m)
+                    : null;
+                const apparent = Number.isFinite(data.current?.apparent_temperature)
+                    ? Math.round(data.current.apparent_temperature)
+                    : null;
+
+                const primaryTemp = isToday && currentTemp !== null
+                    ? `${currentTemp}°`
+                    : (max !== null && min !== null ? `${max}°` : '--°');
+
+                const feelsText = isToday && apparent !== null
+                    ? `${apparent}°`
+                    : (min !== null ? `${min}°` : '--°');
+
+                let note = '';
+                if (isToday) {
+                    const humidity = data.current?.relative_humidity_2m;
+                    note = Number.isFinite(humidity)
+                        ? `目前濕度 ${Math.round(humidity)}%・資料於開啟總覽時更新`
+                        : '資料於開啟總覽時更新';
+                } else if (forecastLabel) {
+                    note = `${forecastLabel}・越接近旅程日期越準確`;
+                } else {
+                    note = `${targetDate.replaceAll('-','.')} 預報・越接近日期越準確`;
+                }
+
+                setOverviewWeatherState({
+                    place: loc.name,
+                    status: isToday ? '即時' : (trip.status === 'before' ? '出發日預報' : `Day ${day}`),
+                    icon: visual.icon,
+                    temp: primaryTemp,
+                    feels: feelsText,
+                    high: max !== null ? `${max}°` : '--°',
+                    rain: rain !== null ? `${rain}%` : '--%',
+                    desc: isToday ? `${visual.text}・今日 ${min ?? '--'}–${max ?? '--'}°` : `${visual.text}・預報 ${min ?? '--'}–${max ?? '--'}°`,
+                    note
+                });
+
+            } catch (err) {
+                if (token !== overviewWeatherRequestToken) return;
+                setOverviewWeatherState({
+                    place: loc.name,
+                    status:'暫無資料',
+                    icon:'☁️',
+                    temp:'--°',
+                    feels:'--°',
+                    high:'--°',
+                    rain:'--%',
+                    desc:'目前無法取得天氣',
+                    note:'網路恢復後重新進入「總覽」就會再更新。'
+                });
+            } finally {
+                if (token === overviewWeatherRequestToken) {
+                    widget.classList.remove('is-loading');
+                }
+            }
+        }
+
         function refreshJourneyOverview() {
             const trip = getRealTripDay();
             const emoji = document.getElementById('overview-day-emoji');
@@ -4082,6 +4537,9 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 : `NT$${expense.toLocaleString()}`;
 
             if (ach) ach.textContent = getOverviewAchievementCount();
+
+            // 只有旅程總覽真的出現時才抓天氣，不拖慢整個網站初始載入。
+            if (currentTabId === 'overview') refreshOverviewWeather(trip);
         }
 
         function openOverviewDay() {
@@ -4221,6 +4679,11 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             document.getElementById('mobile-day-sheet')?.classList.add('translate-y-full');
             document.getElementById('mobile-more-sheet')?.classList.add('translate-y-full');
             document.getElementById('mobile-day-sheet-backdrop')?.classList.add('hidden');
+
+            // v13：確保底部五顆按鈕永遠恢復可點，避免 iOS 上看得到卻點不到。
+            const bottomNav = document.getElementById('mobile-bottom-nav');
+            if (bottomNav) bottomNav.style.pointerEvents = '';
+
             if (restoreActive) setTimeout(syncMobileNavToCurrentTab, 0);
         }
 
@@ -4229,16 +4692,13 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             closeMobileSheets();
             document.getElementById('mobile-day-sheet-backdrop')?.classList.remove('hidden');
             document.getElementById('mobile-day-sheet')?.classList.remove('translate-y-full');
-            const bottomNav = document.getElementById('mobile-bottom-nav');
-            if (bottomNav) bottomNav.style.pointerEvents = 'none';
             setMobileNavActive('day');
         }
 
         function handleMobileItineraryTap() {
-            if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
-
-            // 第一層：不在旅程總覽時，先進旅程總覽。
+            // 第一層：不在旅程總覽時，先回旅程首頁／總覽。
             if (currentTabId !== 'overview') {
+                if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
                 closeMobileSheets(false);
                 switchTab('overview');
                 updateMobileItineraryLabel('overview');
@@ -4246,7 +4706,8 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 return;
             }
 
-            // 第二層：已經在旅程總覽，再按一次才開 Day 1–10 選單。
+            // 第二層：已在總覽，再按一次才開 Day 1–10。
+            // emoji 只由 openMobileDaySheet 觸發一次，避免手機上感覺卡頓。
             openMobileDaySheet();
         }
 
@@ -5565,23 +6026,27 @@ function updateAchievementWall() {
 
 <!-- ==================== 📱 手機底部主導覽 ==================== -->
 <div id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 z-[100] bg-[#FFFDF9] border-t border-[#E2DDD5] shadow-[0_-6px_24px_rgba(44,62,53,0.10)] px-2 pb-[max(env(safe-area-inset-bottom),8px)] pt-2">
-    <div class="grid grid-cols-5 gap-1">
-        <button onclick="handleMobileItineraryTap()" id="mobile-nav-day" class="mobile-nav-item">
-            <span class="text-xl leading-none">🧭</span>
-            <span id="mobile-current-day-label" class="mobile-nav-label">總覽</span>
-        </button>
+    <div class="grid grid-cols-5 gap-1 items-end">
         <button onclick="mobileNavTo('food')" id="mobile-nav-food" class="mobile-nav-item">
             <span class="text-xl leading-none">🍜</span>
             <span class="mobile-nav-label">美食</span>
         </button>
+
         <button onclick="mobileNavTo('budget')" id="mobile-nav-budget" class="mobile-nav-item">
             <span class="text-xl leading-none">💰</span>
             <span class="mobile-nav-label">記帳</span>
         </button>
+
+        <button onclick="handleMobileItineraryTap()" id="mobile-nav-day" class="mobile-nav-item mobile-home-nav" aria-label="旅程總覽">
+            <span class="mobile-home-icon">🏠</span>
+            <span id="mobile-current-day-label" class="mobile-nav-label">總覽</span>
+        </button>
+
         <button onclick="mobileNavTo('achievements')" id="mobile-nav-achievements" class="mobile-nav-item">
             <span class="text-xl leading-none">🏆</span>
             <span class="mobile-nav-label">成就</span>
         </button>
+
         <button onclick="openMobileMoreSheet()" id="mobile-nav-more" class="mobile-nav-item">
             <span class="text-xl leading-none">☰</span>
             <span class="mobile-nav-label">更多</span>

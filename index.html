@@ -1796,7 +1796,11 @@ to { width: 150vw; height: 150vw; opacity: 0; }
         
         /* ===== v25：高擬真 HTML/CSS 標題排版 ===== */
         #site-hero {
-            background-image: url("header_travel_frame.PNG");
+            background-image: url("header_travel_frame.webp");
+            background-image: image-set(
+                url("header_travel_frame.webp") type("image/webp"),
+                url("header_travel_frame.PNG") type("image/png")
+            );
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center center;
@@ -1927,6 +1931,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             }
         }
 </style>
+<link rel="preload" as="image" href="header_travel_frame.webp" type="image/webp" fetchpriority="high"/>
 <!-- Add to Home Screen / PWA -->
 <meta content="#2C3E35" name="theme-color"/>
 <meta content="light dark" name="color-scheme"/>
@@ -4055,7 +4060,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260923-v38-header-date-minus15';
+            const BUILD_KEY = '20260923-v39-header-webp-preload';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 

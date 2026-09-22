@@ -1488,202 +1488,6 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             border-color: #7B5531 !important;
         }
 
-
-        /* ===== 完成旅程後：動態旅遊小書 ===== */
-        .travel-book-sheet {
-            min-height: 66vh;
-            border: 1px solid #D8D0C4;
-            border-radius: 22px;
-            background:
-                radial-gradient(circle at 10% 8%, rgba(185,101,50,.08), transparent 24%),
-                radial-gradient(circle at 90% 92%, rgba(72,102,88,.08), transparent 24%),
-                #FFFDF8;
-            padding: 24px 20px;
-            box-shadow: 0 10px 26px rgba(44,62,53,.08);
-            color: #2C3E35;
-        }
-        .travel-book-cover {
-            display: flex;
-            min-height: 66vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border: 6px double #CDBEAA;
-            background:
-                linear-gradient(rgba(255,253,248,.90), rgba(255,253,248,.94)),
-                repeating-linear-gradient(45deg, rgba(72,102,88,.07) 0 12px, rgba(185,101,50,.06) 12px 24px);
-        }
-        .travel-book-kicker {
-            font-size: 9px;
-            font-weight: 800;
-            letter-spacing: .24em;
-            color: #B85F16;
-        }
-        .travel-book-title {
-            margin-top: 14px;
-            font-family: 'Noto Serif TC', serif;
-            font-size: 30px;
-            font-weight: 700;
-            line-height: 1.28;
-        }
-        .travel-book-subtitle {
-            margin-top: 8px;
-            font-size: 14px;
-            color: #68736D;
-        }
-        .travel-book-rule {
-            width: 58px;
-            height: 1px;
-            margin: 18px auto;
-            background: #B85F16;
-            opacity: .6;
-        }
-        .travel-book-day {
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: .16em;
-            color: #B85F16;
-        }
-        .travel-book-day-title {
-            margin-top: 5px;
-            font-family: 'Noto Serif TC', serif;
-            font-size: 23px;
-            font-weight: 700;
-        }
-        .travel-book-section-title {
-            margin-top: 18px;
-            margin-bottom: 8px;
-            font-size: 12px;
-            font-weight: 800;
-            color: #486658;
-        }
-        .travel-book-list {
-            display: grid;
-            gap: 7px;
-            font-size: 12px;
-            line-height: 1.65;
-            color: #55615B;
-        }
-        .travel-book-chip-wrap {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-            margin-top: 10px;
-        }
-        .travel-book-chip {
-            border: 1px solid #DED6CA;
-            border-radius: 999px;
-            background: #F8F4EC;
-            padding: 5px 9px;
-            font-size: 10px;
-            font-weight: 700;
-            color: #48564F;
-        }
-        .travel-book-stat-grid {
-            display: grid;
-            grid-template-columns: repeat(2,minmax(0,1fr));
-            gap: 9px;
-            margin-top: 14px;
-        }
-        .travel-book-stat {
-            border: 1px solid #DED6CA;
-            border-radius: 15px;
-            background: #F8F4EC;
-            padding: 13px;
-            text-align: center;
-        }
-        .travel-book-stat strong {
-            display: block;
-            font-size: 19px;
-            color: #B85F16;
-        }
-        .travel-book-stat span {
-            margin-top: 3px;
-            display: block;
-            font-size: 9px;
-            color: #758079;
-        }
-        body.dark-mode #travel-book-modal > div {
-            background: #18211D !important;
-            border-color: #3A4A42 !important;
-        }
-        body.dark-mode #travel-book-modal > div > div:first-child,
-        body.dark-mode #travel-book-modal > div > div:last-child {
-            background: #202B26 !important;
-            border-color: #3A4A42 !important;
-        }
-        body.dark-mode .travel-book-sheet {
-            background: #202B26 !important;
-            color: #EAE7E0 !important;
-            border-color: #3A4A42 !important;
-        }
-        body.dark-mode .travel-book-list,
-        body.dark-mode .travel-book-subtitle { color: #B9C2BD !important; }
-        body.dark-mode .travel-book-chip,
-        body.dark-mode .travel-book-stat {
-            background: #18211D !important;
-            border-color: #3A4A42 !important;
-            color: #EAE7E0 !important;
-        }
-
-
-        .travel-photo-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 8px;
-        }
-        .travel-photo-thumb {
-            position: relative;
-            overflow: hidden;
-            border-radius: 14px;
-            border: 1px solid rgba(255,255,255,.12);
-            background: rgba(255,255,255,.06);
-            aspect-ratio: 1 / 1;
-        }
-        .travel-photo-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .travel-photo-remove {
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 24px;
-            height: 24px;
-            border: none;
-            border-radius: 999px;
-            background: rgba(0,0,0,.58);
-            color: #fff;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        .travel-photo-hint {
-            margin-top: 8px;
-            font-size: 10px;
-            color: #D1D8D2;
-        }
-        .travel-book-photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-            margin-top: 12px;
-        }
-        .travel-book-photo-grid img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 16px;
-            border: 1px solid #DED6CA;
-            background: #F8F4EC;
-        }
-        body.dark-mode .travel-photo-thumb {
-            background: rgba(255,255,255,.03) !important;
-            border-color: rgba(255,255,255,.10) !important;
-        }
-
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -3259,30 +3063,6 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         </section>
                         <p class="mt-3 text-[10px] text-[#D1D8D2] tracking-wide">東台灣 等待下一次解鎖 🔒</p>
                         <p class="mt-2 text-[9px] text-[#BFC9C3]">🔍 點按證書放大・長按圖片可儲存</p>
-
-                        <div id="travel-book-ready" class="hidden mt-5 rounded-2xl border border-white/15 bg-white/5 p-4 text-center">
-                            <div class="text-3xl">📖</div>
-                            <p class="mt-2 text-sm font-bold">邵奶奶的台灣旅遊小書已生成</p>
-                            <p class="mt-1 text-[10px] text-[#D1D8D2]">把這 10 天的行程、美食、花費與成就收進一本小書。</p>
-
-                            <div class="mt-4 rounded-2xl border border-white/12 bg-black/10 p-3 text-left">
-                                <div class="flex items-center justify-between gap-3">
-                                    <div>
-                                        <p class="text-xs font-bold text-white">📸 加入旅程照片</p>
-                                        <p class="mt-1 text-[10px] text-[#D1D8D2]">先上傳幾張照片，旅遊小書會自動多出相簿頁。</p>
-                                    </div>
-                                    <button type="button" onclick="triggerTravelPhotoUpload()" class="rounded-xl bg-[#F7F5F0] px-3 py-2 text-[11px] font-bold text-[#2C3E35]">
-                                        上傳照片
-                                    </button>
-                                </div>
-                                <input id="travel-photo-input" type="file" accept="image/*" multiple class="hidden" onchange="handleTravelPhotoUpload(event)">
-                                <div id="travel-photo-preview" class="mt-3 hidden"></div>
-                            </div>
-
-                            <button type="button" onclick="openTravelBook()" class="mt-4 rounded-xl bg-[#F7F5F0] px-4 py-2 text-xs font-bold text-[#2C3E35]">
-                                翻開旅遊小書 →
-                            </button>
-                        </div>
                     </div>
                 </div>
 </div>
@@ -3925,7 +3705,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v13-photo-book';
+            const BUILD_KEY = '20260922-test-v15-itinerary-overview-first';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4406,6 +4186,21 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             setMobileNavActive('day');
         }
 
+        function handleMobileItineraryTap() {
+            if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
+
+            // 第一層：不在旅程總覽時，先進旅程總覽。
+            if (currentTabId !== 'overview') {
+                closeMobileSheets(false);
+                switchTab('overview');
+                setMobileNavActive('day');
+                return;
+            }
+
+            // 第二層：已經在旅程總覽，再按一次才開 Day 1–10 選單。
+            openMobileDaySheet();
+        }
+
         
 
         
@@ -4460,6 +4255,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             else if (type === 'food') id = 'mobile-nav-food';
             else if (type === 'budget') id = 'mobile-nav-budget';
             else if (type === 'achievements') id = 'mobile-nav-achievements';
+            else if (type === 'overview') id = 'mobile-nav-day';
             else if (type === 'more' || type === 'sos') id = 'mobile-nav-more';
 
             if (id) document.getElementById(id)?.classList.add('mobile-nav-active');
@@ -4470,7 +4266,8 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             else if (currentTabId === 'food') setMobileNavActive('food');
             else if (currentTabId === 'budget') setMobileNavActive('budget');
             else if (currentTabId === 'achievements') setMobileNavActive('achievements');
-            else if (currentTabId === 'sos' || currentTabId === 'overview') setMobileNavActive('more');
+            else if (currentTabId === 'overview') setMobileNavActive('day');
+            else if (currentTabId === 'sos') setMobileNavActive('more');
             else setMobileNavActive(null);
         }
 
@@ -4559,7 +4356,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 subNavContainer.style.display = 'none';
             } else if (specialBtns.includes(tabId)) {
                 if (tabId === 'overview') refreshJourneyOverview();
-                setMobileNavActive(tabId);
+                setMobileNavActive(tabId === 'overview' ? 'day' : tabId);
                 setTopNavActive(tabId);
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -5095,7 +4892,6 @@ function addLastDanceEasterEgg() {
     function unlockHiddenAchievement(key) {
         localStorage.setItem(key, 'true');
         updateAchievementWall();
-        renderTravelPhotoPreview();
     }
 
     function getVisitedDays() {
@@ -5481,322 +5277,6 @@ function updateAchievementWall() {
         if (note) note.textContent = '抵達高雄機場、完成報到後再按下。';
     }
 
-
-
-    const TRAVEL_BOOK_PHOTO_KEY = 'travel_book_uploaded_photos_v1';
-
-    function getTravelBookPhotos() {
-        try {
-            return JSON.parse(sessionStorage.getItem(TRAVEL_BOOK_PHOTO_KEY) || '[]');
-        } catch (e) {
-            return [];
-        }
-    }
-
-    function saveTravelBookPhotos(photos) {
-        sessionStorage.setItem(TRAVEL_BOOK_PHOTO_KEY, JSON.stringify(photos));
-    }
-
-    function triggerTravelPhotoUpload() {
-        document.getElementById('travel-photo-input')?.click();
-    }
-
-    function resizeImageToDataUrl(file) {
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    const maxSide = 1200;
-                    const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
-                    const canvas = document.createElement('canvas');
-                    canvas.width = Math.round(img.width * scale);
-                    canvas.height = Math.round(img.height * scale);
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-                    resolve(canvas.toDataURL('image/jpeg', 0.84));
-                };
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-
-    async function handleTravelPhotoUpload(event) {
-        const files = Array.from(event.target.files || []);
-        if (!files.length) return;
-
-        let photos = getTravelBookPhotos();
-        for (const file of files) {
-            if (!file.type.startsWith('image/')) continue;
-            if (photos.length >= 8) break;
-            const dataUrl = await resizeImageToDataUrl(file);
-            photos.push(dataUrl);
-        }
-        saveTravelBookPhotos(photos);
-        renderTravelPhotoPreview();
-        event.target.value = '';
-    }
-
-    function removeTravelPhoto(index) {
-        const photos = getTravelBookPhotos();
-        photos.splice(index, 1);
-        saveTravelBookPhotos(photos);
-        renderTravelPhotoPreview();
-    }
-
-    function renderTravelPhotoPreview() {
-        const wrap = document.getElementById('travel-photo-preview');
-        if (!wrap) return;
-
-        const photos = getTravelBookPhotos();
-        if (!photos.length) {
-            wrap.classList.add('hidden');
-            wrap.innerHTML = '';
-            return;
-        }
-
-        wrap.classList.remove('hidden');
-        wrap.innerHTML = `
-            <div class="travel-photo-preview-grid">
-                ${photos.map((src, index) => `
-                    <div class="travel-photo-thumb">
-                        <img src="${src}" alt="旅程照片 ${index + 1}">
-                        <button type="button" class="travel-photo-remove" onclick="removeTravelPhoto(${index})">✕</button>
-                    </div>
-                `).join('')}
-            </div>
-            <p class="travel-photo-hint">已加入 ${photos.length} 張照片，可刪除重選。相片會出現在旅遊小書的相簿頁。</p>
-        `;
-    }
-
-    const TRAVEL_BOOK_DAYS = [
-        {day:1,date:'9/27',title:'初見台北',emoji:'✈️',items:['桃園機場抵達','台北手作時研室','西門町／中山／圓山／信義夜遊'],highlight:'少奶奶的台北第一份紀念'},
-        {day:2,date:'9/28',title:'北海岸・九份・十分',emoji:'🏮',items:['野柳','陰陽海・黃金瀑布','九份山城・十分'],highlight:'北台灣經典山海'},
-        {day:3,date:'9/29',title:'台北經典巡禮',emoji:'❤️',items:['阜杭豆漿','中正紀念堂・永康','故宮・陽明山 The Top'],highlight:'與美女約會'},
-        {day:4,date:'9/30',title:'台北 → 日月潭',emoji:'🍰',items:['Cookinn 台灣糕點 DIY','高鐵台北 → 台中','日月潭湖景'],highlight:'少奶奶的特別任務'},
-        {day:5,date:'10/1',title:'日月潭 → 台中',emoji:'📸',items:['九族文化村','日月潭纜車','高美濕地・春水堂'],highlight:'今天換個身份'},
-        {day:6,date:'10/2',title:'武嶺 → 台南',emoji:'🎧',items:['武嶺日出','龍泉冰店・鹿耳門','漁光島・台南小吃'],highlight:'想見你！莫奶奶冰店'},
-        {day:7,date:'10/3',title:'台南 → 高雄',emoji:'🫧',items:['四草・安平','東來洗髮・性格咖啡','月世界 → 高雄'],highlight:'邵奶奶，少奶奶'},
-        {day:8,date:'10/4',title:'高雄 → 墾丁',emoji:'🐠',items:['墾丁快線','墾丁海岸包車','夜宿海生館'],highlight:'你眼底翻湧著海'},
-        {day:9,date:'10/5',title:'墾丁 → 高雄',emoji:'🌅',items:['海生館晨間活動','西子灣','旗津・高雄港夕陽'],highlight:'西子灣與高雄港夕陽'},
-        {day:10,date:'10/6',title:'高雄 → 機場',emoji:'✈️',items:['美麗島','高雄國際機場','平安返程'],highlight:'旅程最後一頁'}
-    ];
-
-    let travelBookPages = [];
-    let travelBookPageIndex = 0;
-
-    function getCheckedFoodNamesForBook() {
-        return Array.from(document.querySelectorAll('#food-checklist input[type="checkbox"]:checked'))
-            .map(chk => chk.closest('label')?.querySelector('span')?.innerText?.trim())
-            .filter(Boolean);
-    }
-
-    function getExpenseSummaryForBook() {
-        let items = [];
-        try { items = JSON.parse(localStorage.getItem('travel_expenses_v2') || '[]'); } catch(e) {}
-        const total = items.reduce((sum, x) => sum + (Number(x.amount) || 0), 0);
-        const byCategory = {};
-        items.forEach(x => {
-            const key = x.category || '其他';
-            byCategory[key] = (byCategory[key] || 0) + (Number(x.amount) || 0);
-        });
-        return {items,total,byCategory};
-    }
-
-    function getUnlockedAchievementsForBook() {
-        return Array.from(document.querySelectorAll('.achievement-card.unlocked .ach-title'))
-            .map(el => el.textContent.trim())
-            .filter(Boolean);
-    }
-
-    function makeTravelBookPages() {
-        const foods = getCheckedFoodNamesForBook();
-        const exp = getExpenseSummaryForBook();
-        const ach = getUnlockedAchievementsForBook();
-        const photos = getTravelBookPhotos();
-
-        const pages = [];
-
-        pages.push(`
-            <section class="travel-book-sheet travel-book-cover">
-                <div class="travel-book-kicker">TAIWAN GRAND TRAVERSE</div>
-                <div class="text-5xl mt-5">👵🏻🏝️</div>
-                <h2 class="travel-book-title">邵奶奶快樂遊台灣</h2>
-                <p class="travel-book-subtitle">10 日山海縱走旅遊小書</p>
-                <div class="travel-book-rule"></div>
-                <p class="text-xs font-bold">2026.09.27 — 10.06</p>
-                <p class="mt-6 text-xs text-gray-500 leading-relaxed">台北 → 日月潭 → 台中 → 台南 → 墾丁 → 高雄</p>
-                <p class="mt-8 text-[10px] text-gray-400">完成旅程後生成 · Made for 邵奶奶</p>
-            </section>
-        `);
-
-        pages.push(`
-            <section class="travel-book-sheet">
-                <div class="travel-book-kicker">JOURNEY AT A GLANCE</div>
-                <h2 class="travel-book-day-title">這 10 天，我們走過的台灣</h2>
-                <div class="travel-book-stat-grid">
-                    <div class="travel-book-stat"><strong>10</strong><span>DAYS</span></div>
-                    <div class="travel-book-stat"><strong>${foods.length}</strong><span>台灣美食</span></div>
-                    <div class="travel-book-stat"><strong>NT$${exp.total.toLocaleString()}</strong><span>旅程記帳</span></div>
-                    <div class="travel-book-stat"><strong>${ach.length}</strong><span>解鎖成就</span></div>
-                </div>
-                <div class="travel-book-section-title">路線</div>
-                <div class="travel-book-list">
-                    <div>🏙️ 台北 → 🌊 日月潭</div>
-                    <div>🧋 台中 → 🏯 台南</div>
-                    <div>🐠 墾丁 → 🌅 高雄</div>
-                </div>
-            </section>
-        `);
-
-        TRAVEL_BOOK_DAYS.forEach(d => {
-            pages.push(`
-                <section class="travel-book-sheet">
-                    <div class="travel-book-day">DAY ${d.day} · ${d.date}</div>
-                    <div class="text-4xl mt-4">${d.emoji}</div>
-                    <h2 class="travel-book-day-title">${d.title}</h2>
-                    <div class="travel-book-section-title">今日記憶</div>
-                    <div class="travel-book-list">
-                        ${d.items.map(x => `<div>・${x}</div>`).join('')}
-                    </div>
-                    <div class="travel-book-section-title">今日亮點</div>
-                    <div class="rounded-xl border border-[#E5DDD1] bg-[#F8F4EC] p-3 text-xs font-bold text-[#B85F16]">${d.highlight}</div>
-                </section>
-            `);
-        });
-
-        if (photos.length) {
-            for (let i = 0; i < photos.length; i += 4) {
-                const chunk = photos.slice(i, i + 4);
-                pages.push(`
-                    <section class="travel-book-sheet">
-                        <div class="travel-book-kicker">TRAVEL ALBUM</div>
-                        <h2 class="travel-book-day-title">旅程相簿</h2>
-                        <p class="travel-book-subtitle">把這趟拍下來的畫面也收進書裡。</p>
-                        <div class="travel-book-photo-grid">
-                            ${chunk.map(src => `<img src="${src}" alt="旅程照片">`).join('')}
-                        </div>
-                    </section>
-                `);
-            }
-        }
-
-        pages.push(`
-            <section class="travel-book-sheet">
-                <div class="travel-book-kicker">TAIWAN FOOD MEMORY</div>
-                <h2 class="travel-book-day-title">這趟吃過的台灣味</h2>
-                <p class="travel-book-subtitle">共 ${foods.length} 樣</p>
-                <div class="travel-book-chip-wrap">
-                    ${foods.length ? foods.map(x => `<span class="travel-book-chip">${x}</span>`).join('') : '<span class="text-xs text-gray-400">這趟還沒有勾選美食紀錄。</span>'}
-                </div>
-            </section>
-        `);
-
-        pages.push(`
-            <section class="travel-book-sheet">
-                <div class="travel-book-kicker">TRIP LEDGER</div>
-                <h2 class="travel-book-day-title">旅行的小小流水帳</h2>
-                <div class="travel-book-stat-grid">
-                    <div class="travel-book-stat"><strong>NT$${exp.total.toLocaleString()}</strong><span>總支出</span></div>
-                    <div class="travel-book-stat"><strong>${exp.items.length}</strong><span>記帳筆數</span></div>
-                </div>
-                <div class="travel-book-section-title">分類</div>
-                <div class="travel-book-list">
-                    ${Object.keys(exp.byCategory).length
-                        ? Object.entries(exp.byCategory).map(([k,v]) => `<div>・${k}｜NT$${v.toLocaleString()}</div>`).join('')
-                        : '<div>這趟還沒有記帳紀錄。</div>'}
-                </div>
-            </section>
-        `);
-
-        pages.push(`
-            <section class="travel-book-sheet">
-                <div class="travel-book-kicker">ACHIEVEMENTS</div>
-                <h2 class="travel-book-day-title">邵奶奶解鎖的成就</h2>
-                <div class="travel-book-chip-wrap">
-                    ${ach.length ? ach.map(x => `<span class="travel-book-chip">🏆 ${x}</span>`).join('') : '<span class="text-xs text-gray-400">尚未有成就紀錄。</span>'}
-                </div>
-            </section>
-        `);
-
-        pages.push(`
-            <section class="travel-book-sheet travel-book-cover">
-                <div class="travel-book-kicker">TRIP COMPLETE</div>
-                <div class="text-6xl mt-5">🏆</div>
-                <h2 class="travel-book-title">西台灣制霸</h2>
-                <p class="travel-book-subtitle">北・中・南正式通關</p>
-                <div class="travel-book-rule"></div>
-                <p class="text-sm font-bold">邵一玎 女士</p>
-                <p class="mt-6 text-xs leading-relaxed text-gray-500">城市、山景、湖泊、古都與海岸線<br>全部都成為這趟旅程的一頁。</p>
-                <p class="mt-10 text-[10px] text-gray-400">東台灣 · 等待下一次解鎖 🔒</p>
-            </section>
-        `);
-
-        return pages;
-    }
-
-    function prepareTravelBook() {
-        travelBookPages = makeTravelBookPages();
-        const ready = document.getElementById('travel-book-ready');
-        if (ready) ready.classList.remove('hidden');
-    }
-
-    function renderTravelBookPage() {
-        if (!travelBookPages.length) travelBookPages = makeTravelBookPages();
-        travelBookPageIndex = Math.max(0, Math.min(travelBookPageIndex, travelBookPages.length - 1));
-
-        const page = document.getElementById('travel-book-page');
-        const indicator = document.getElementById('travel-book-page-indicator');
-        const prev = document.getElementById('travel-book-prev');
-        const next = document.getElementById('travel-book-next');
-
-        if (page) page.innerHTML = travelBookPages[travelBookPageIndex];
-        if (indicator) indicator.textContent = `${travelBookPageIndex + 1} / ${travelBookPages.length}`;
-        if (prev) prev.disabled = travelBookPageIndex === 0;
-        if (next) next.disabled = travelBookPageIndex === travelBookPages.length - 1;
-
-        if (prev) prev.classList.toggle('opacity-40', travelBookPageIndex === 0);
-        if (next) next.classList.toggle('opacity-40', travelBookPageIndex === travelBookPages.length - 1);
-
-        document.getElementById('travel-book-page-wrap')?.scrollTo({top:0,behavior:'instant'});
-    }
-
-    function openTravelBook() {
-        travelBookPages = makeTravelBookPages();
-        travelBookPageIndex = 0;
-        renderTravelBookPage();
-        const modal = document.getElementById('travel-book-modal');
-        if (modal) {
-            modal.classList.remove('hidden');
-            modal.setAttribute('aria-hidden','false');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    function closeTravelBook() {
-        const modal = document.getElementById('travel-book-modal');
-        if (modal) {
-            modal.classList.add('hidden');
-            modal.setAttribute('aria-hidden','true');
-        }
-        document.body.style.overflow = '';
-    }
-
-    function travelBookPrev() {
-        if (travelBookPageIndex > 0) {
-            travelBookPageIndex--;
-            renderTravelBookPage();
-        }
-    }
-
-    function travelBookNext() {
-        if (travelBookPageIndex < travelBookPages.length - 1) {
-            travelBookPageIndex++;
-            renderTravelBookPage();
-        }
-    }
-
     function finishTaiwanTrip() {
         localStorage.setItem(ACH_KEYS.final, 'true');
         const finale = document.getElementById('trip-finale-card');
@@ -5813,8 +5293,6 @@ function updateAchievementWall() {
         }
         if (resetBtn) resetBtn.classList.remove('hidden');
         updateAchievementWall();
-        prepareTravelBook();
-        renderTravelPhotoPreview();
     }
 
     function resetTaiwanTripCompletion() {
@@ -5830,9 +5308,6 @@ function updateAchievementWall() {
             btn.classList.remove('bg-[#C66914]');
         }
         if (resetBtn) resetBtn.classList.add('hidden');
-        document.getElementById('travel-book-ready')?.classList.add('hidden');
-        sessionStorage.removeItem(TRAVEL_BOOK_PHOTO_KEY);
-        renderTravelPhotoPreview();
         updateFinishTripAvailability();
         updateAchievementWall();
     }
@@ -5857,8 +5332,6 @@ function updateAchievementWall() {
 
         if (finalDone) {
             if (finale) finale.classList.remove('hidden');
-            prepareTravelBook();
-            renderTravelPhotoPreview();
             if (finishBtn) {
                 finishBtn.textContent = '已完成旅程 ✓';
                 finishBtn.classList.remove('bg-[#2C3E35]');
@@ -6034,7 +5507,7 @@ function updateAchievementWall() {
 <!-- ==================== 📱 手機底部主導覽 ==================== -->
 <div id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 z-[100] bg-[#FFFDF9] border-t border-[#E2DDD5] shadow-[0_-6px_24px_rgba(44,62,53,0.10)] px-2 pb-[max(env(safe-area-inset-bottom),8px)] pt-2">
     <div class="grid grid-cols-5 gap-1">
-        <button onclick="openMobileDaySheet()" id="mobile-nav-day" class="mobile-nav-item">
+        <button onclick="handleMobileItineraryTap()" id="mobile-nav-day" class="mobile-nav-item">
             <span class="text-xl leading-none">📅</span>
             <span id="mobile-current-day-label" class="mobile-nav-label">行程</span>
         </button>
@@ -6064,7 +5537,7 @@ function updateAchievementWall() {
     <div class="px-5 pb-3 flex items-center justify-between">
         <div>
             <div class="text-[10px] tracking-[0.2em] text-gray-400 font-bold">SELECT DAY</div>
-            <div class="text-lg font-bold text-[#2C3E35]">選擇行程</div>
+            <div class="text-lg font-bold text-[#2C3E35]">選擇行程</div><div class="text-[10px] text-gray-400 mt-0.5">從旅程總覽進入每日行程</div>
         </div>
         <button onclick="closeMobileSheets()" class="w-9 h-9 rounded-full bg-[#F0EDEA] text-[#2C3E35] font-bold">✕</button>
     </div>
@@ -6096,11 +5569,6 @@ function updateAchievementWall() {
         <button onclick="closeMobileSheets()" class="w-9 h-9 rounded-full bg-[#F0EDEA] text-[#2C3E35] font-bold">✕</button>
     </div>
     <div class="px-4 space-y-2">
-        <button onclick="mobileMoreTo('overview')" class="mobile-more-item">
-            <span>📊</span>
-            <span>旅程總覽</span>
-            <span>›</span>
-        </button>
         <button onclick="toggleDarkMode()" class="mobile-more-item">
             <span id="dark-mode-icon">🌙</span>
             <span id="dark-mode-label">深色模式</span>
@@ -6221,29 +5689,6 @@ document.addEventListener('DOMContentLoaded', () => {
     actualBtn?.classList.add('active');
 });
 </script>
-
-
-<div id="travel-book-modal" class="hidden fixed inset-0 z-[100000] bg-black/80 p-3 sm:p-5" aria-hidden="true">
-    <div class="mx-auto flex h-full max-w-md flex-col overflow-hidden rounded-[24px] border border-white/10 bg-[#EEE8DC] shadow-2xl">
-        <div class="flex items-center justify-between border-b border-[#D8D0C4] bg-[#F7F3EA] px-4 py-3">
-            <div>
-                <div class="text-[9px] font-bold tracking-[0.22em] text-[#B85F16]">TRAVEL MEMORY BOOK</div>
-                <div class="text-sm font-bold text-[#2C3E35]">邵奶奶的台灣旅遊小書</div>
-            </div>
-            <button type="button" onclick="closeTravelBook()" class="rounded-full border border-[#D8D0C4] bg-white px-3 py-1.5 text-xs font-bold text-[#2C3E35]">✕</button>
-        </div>
-
-        <div id="travel-book-page-wrap" class="min-h-0 flex-1 overflow-y-auto p-4">
-            <div id="travel-book-page"></div>
-        </div>
-
-        <div class="flex items-center justify-between gap-2 border-t border-[#D8D0C4] bg-[#F7F3EA] px-4 py-3">
-            <button id="travel-book-prev" type="button" onclick="travelBookPrev()" class="rounded-xl border border-[#D8D0C4] bg-white px-3 py-2 text-xs font-bold text-[#2C3E35]">← 上一頁</button>
-            <div id="travel-book-page-indicator" class="text-[10px] font-bold text-gray-500">1 / 1</div>
-            <button id="travel-book-next" type="button" onclick="travelBookNext()" class="rounded-xl bg-[#2C3E35] px-3 py-2 text-xs font-bold text-white">下一頁 →</button>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>

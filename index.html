@@ -1535,7 +1535,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
         }
 
 
-        /* ===== v13：中間「🏠 總覽」主入口 ===== */
+        /* ===== v14：中間「🏠 總覽／行程」主入口 ===== */
         #mobile-bottom-nav {
             overflow: visible !important;
         }
@@ -1545,167 +1545,185 @@ to { width: 150vw; height: 150vw; opacity: 0; }
         }
 
         #mobile-nav-day.mobile-home-nav {
-            min-height: 58px;
-            margin-top: -9px;
-            color: #55615B;
-            background: transparent;
-            overflow: visible;
+            min-height: 56px;
+            margin: 0 2px;
+            border-radius: 16px;
+            background: #EEE7DC;
+            color: #3E4E45;
+            box-shadow: inset 0 0 0 1px rgba(72,102,88,.08);
+            transition:
+                transform .18s ease,
+                background .18s ease,
+                box-shadow .18s ease;
         }
 
         #mobile-nav-day .mobile-home-icon {
-            display: grid;
-            place-items: center;
-            width: 44px;
-            height: 44px;
-            margin-top: -5px;
-            border: 1px solid #DDD4C8;
-            border-radius: 999px;
-            background: #F7F1E8;
-            box-shadow:
-                0 7px 18px rgba(44,62,53,.12),
-                0 1px 0 rgba(255,255,255,.8) inset;
+            display: block;
+            width: auto;
+            height: auto;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
             font-size: 22px;
             line-height: 1;
-            transition:
-                transform .2s ease,
-                background .2s ease,
-                border-color .2s ease,
-                box-shadow .2s ease;
         }
 
         #mobile-nav-day.mobile-nav-active {
-            background: transparent !important;
-            color: #C66914;
+            background: #E1D6C7 !important;
+            color: #B85F16;
+            box-shadow:
+                inset 0 0 0 1px rgba(184,95,22,.12),
+                0 4px 12px rgba(44,62,53,.06);
         }
 
         #mobile-nav-day.mobile-nav-active .mobile-home-icon {
-            transform: translateY(-1px) scale(1.04);
-            border-color: rgba(198,105,20,.30);
-            background: #F7E6D4;
-            box-shadow:
-                0 9px 22px rgba(198,105,20,.17),
-                0 1px 0 rgba(255,255,255,.85) inset;
+            transform: none;
+            border: none;
+            background: transparent;
+            box-shadow: none;
         }
 
-        #mobile-nav-day.mobile-nav-active::after {
-            bottom: 0px;
+        #mobile-nav-day:active {
+            transform: scale(.97);
         }
 
         #mobile-nav-day:active .mobile-home-icon {
-            transform: scale(.95);
+            transform: none;
         }
 
-        body.dark-mode #mobile-nav-day .mobile-home-icon {
+        body.dark-mode #mobile-nav-day.mobile-home-nav {
             background: #26332D;
-            border-color: #43544B;
-            box-shadow: 0 7px 18px rgba(0,0,0,.24);
+            color: #DDE5E0;
+            box-shadow: inset 0 0 0 1px #3B4B43;
         }
 
-        body.dark-mode #mobile-nav-day.mobile-nav-active .mobile-home-icon {
-            background: #4B3425;
-            border-color: rgba(241,161,91,.34);
+        body.dark-mode #mobile-nav-day.mobile-nav-active {
+            background: #3B342C !important;
+            color: #F1A15B;
+            box-shadow: inset 0 0 0 1px rgba(241,161,91,.15);
         }
 
-        /* ===== v13：總覽即時／當日天氣 ===== */
+        /* ===== v14：精簡天氣卡 ===== */
         .overview-weather-widget {
             position: relative;
             overflow: hidden;
+            padding: 14px 14px 12px;
             background:
-                radial-gradient(circle at 92% 2%, rgba(232,147,68,.16), transparent 40%),
+                radial-gradient(circle at 94% 8%, rgba(232,147,68,.12), transparent 34%),
                 linear-gradient(145deg, #FBF8F2 0%, #F4F0E8 100%);
         }
 
-        .overview-weather-main {
+        .overview-weather-top {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
-            gap: 14px;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .overview-weather-place-block {
+            min-width: 0;
         }
 
         .overview-weather-place-row {
             display: flex;
             align-items: center;
-            gap: 7px;
-            margin-top: 4px;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 2px;
             color: #2C3E35;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 850;
+            min-width: 0;
         }
 
         .overview-weather-live {
             display: inline-flex;
             align-items: center;
-            min-height: 20px;
-            padding: 2px 7px;
+            min-height: 18px;
+            padding: 2px 6px;
             border: 1px solid rgba(198,105,20,.18);
             border-radius: 999px;
             background: rgba(198,105,20,.08);
             color: #B85F16;
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 800;
+            white-space: nowrap;
         }
 
-        .overview-weather-desc {
-            margin-top: 5px;
-            color: #747B77;
-            font-size: 11px;
-            font-weight: 650;
-        }
-
-        .overview-weather-right {
+        .overview-weather-summary {
             display: flex;
             align-items: center;
-            gap: 7px;
+            flex: 0 0 auto;
+            gap: 5px;
         }
 
         .overview-weather-icon {
-            font-size: 30px;
+            font-size: 24px;
             line-height: 1;
         }
 
         .overview-weather-temp {
             color: #2C3E35;
-            font-size: 31px;
+            font-size: 26px;
             line-height: 1;
             font-weight: 900;
-            letter-spacing: -.04em;
+            white-space: nowrap;
         }
 
-        .overview-weather-stats {
+        .overview-weather-desc {
+            margin-top: 6px;
+            color: #747B77;
+            font-size: 10px;
+            font-weight: 650;
+            line-height: 1.35;
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+
+        .overview-weather-mini-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 14px;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 6px;
+            margin-top: 10px;
         }
 
-        .overview-weather-stats > div {
-            padding: 9px 7px;
+        .overview-weather-mini {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            min-width: 0;
+            padding: 7px 4px;
             border: 1px solid rgba(72,102,88,.10);
-            border-radius: 13px;
-            background: rgba(255,255,255,.62);
-            text-align: center;
-        }
-
-        .overview-weather-stats span {
-            display: block;
-            color: #8A8178;
-            font-size: 8px;
-            font-weight: 750;
-        }
-
-        .overview-weather-stats strong {
-            display: block;
-            margin-top: 2px;
+            border-radius: 11px;
+            background: rgba(255,255,255,.60);
             color: #3A4E43;
+            font-size: 10px;
+        }
+
+        .overview-weather-mini span {
+            flex: 0 0 auto;
             font-size: 13px;
+            line-height: 1;
+        }
+
+        .overview-weather-mini b {
+            min-width: 0;
+            font-size: 10px;
             font-weight: 850;
+            white-space: nowrap;
         }
 
         .overview-weather-note {
-            margin-top: 9px;
+            margin-top: 7px;
             color: #8A8178;
-            font-size: 9px;
-            line-height: 1.45;
+            font-size: 8px;
+            line-height: 1.35;
+            white-space: normal;
+            overflow-wrap: anywhere;
         }
 
         .overview-weather-widget.is-loading {
@@ -1714,24 +1732,23 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 
         body.dark-mode .overview-weather-widget {
             background:
-                radial-gradient(circle at 92% 2%, rgba(241,161,91,.10), transparent 42%),
+                radial-gradient(circle at 94% 8%, rgba(241,161,91,.09), transparent 34%),
                 #202B26;
             border-color: #3A4A42;
         }
 
         body.dark-mode .overview-weather-place-row,
         body.dark-mode .overview-weather-temp,
-        body.dark-mode .overview-weather-stats strong {
+        body.dark-mode .overview-weather-mini {
             color: #F1EEE8;
         }
 
         body.dark-mode .overview-weather-desc,
-        body.dark-mode .overview-weather-note,
-        body.dark-mode .overview-weather-stats span {
+        body.dark-mode .overview-weather-note {
             color: #A9B5AE;
         }
 
-        body.dark-mode .overview-weather-stats > div {
+        body.dark-mode .overview-weather-mini {
             background: #18211D;
             border-color: #34443B;
         }
@@ -3425,40 +3442,46 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                     </button>
                 </section>
 
-                <!-- Weather widget：只有打開總覽時才連線更新 -->
+                <!-- Weather widget：精簡版 -->
                 <section id="overview-weather-widget" class="overview-widget overview-weather-widget">
-                    <div class="overview-weather-main">
-                        <div class="overview-weather-left">
+                    <div class="overview-weather-top">
+                        <div class="overview-weather-place-block">
                             <div class="overview-widget-label">TODAY'S WEATHER</div>
                             <div class="overview-weather-place-row">
                                 <span id="overview-weather-place">台北</span>
                                 <span id="overview-weather-status" class="overview-weather-live">即時</span>
                             </div>
-                            <div id="overview-weather-desc" class="overview-weather-desc">正在更新天氣…</div>
                         </div>
-                        <div class="overview-weather-right">
-                            <div id="overview-weather-icon" class="overview-weather-icon">⛅</div>
-                            <div id="overview-weather-temp" class="overview-weather-temp">--°</div>
+
+                        <div class="overview-weather-summary">
+                            <span id="overview-weather-icon" class="overview-weather-icon">⛅</span>
+                            <strong id="overview-weather-temp" class="overview-weather-temp">--°</strong>
                         </div>
                     </div>
 
-                    <div class="overview-weather-stats">
-                        <div>
-                            <span>體感／低溫</span>
-                            <strong id="overview-weather-feels">--°</strong>
+                    <div id="overview-weather-desc" class="overview-weather-desc">正在更新天氣…</div>
+
+                    <div class="overview-weather-mini-grid">
+                        <div class="overview-weather-mini">
+                            <span>🌧️</span>
+                            <b id="overview-weather-rain">--%</b>
                         </div>
-                        <div>
-                            <span>最高</span>
-                            <strong id="overview-weather-high">--°</strong>
+                        <div class="overview-weather-mini">
+                            <span>🌡️</span>
+                            <b id="overview-weather-high">--°</b>
                         </div>
-                        <div>
-                            <span>降雨</span>
-                            <strong id="overview-weather-rain">--%</strong>
+                        <div class="overview-weather-mini">
+                            <span>🌅</span>
+                            <b id="overview-weather-sunrise">--:--</b>
+                        </div>
+                        <div class="overview-weather-mini">
+                            <span>🌇</span>
+                            <b id="overview-weather-sunset">--:--</b>
                         </div>
                     </div>
 
                     <div id="overview-weather-note" class="overview-weather-note">
-                        開啟總覽時自動更新當日天氣。
+                        開啟總覽時自動更新。
                     </div>
                 </section>
 
@@ -4013,7 +4036,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v19-center-home-weather-fixed';
+            const BUILD_KEY = '20260922-test-v20-overview-trip-weather-compact';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4329,7 +4352,8 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function setOverviewWeatherState({
             place='—', status='天氣', icon='⛅', temp='--°',
-            feels='--°', high='--°', rain='--%', desc='正在更新天氣…',
+            high='--°', rain='--%', sunrise='--:--', sunset='--:--',
+            desc='正在更新天氣…',
             note='開啟總覽時自動更新當日天氣。'
         } = {}) {
             const map = {
@@ -4337,9 +4361,10 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 'overview-weather-status': status,
                 'overview-weather-icon': icon,
                 'overview-weather-temp': temp,
-                'overview-weather-feels': feels,
                 'overview-weather-high': high,
                 'overview-weather-rain': rain,
+                'overview-weather-sunrise': sunrise,
+                'overview-weather-sunset': sunset,
                 'overview-weather-desc': desc,
                 'overview-weather-note': note
             };
@@ -4375,7 +4400,6 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 status: isToday ? '即時' : (trip.status === 'before' ? '出發日預報' : `Day ${day}`),
                 icon:'⛅',
                 temp:'--°',
-                feels:'--°',
                 high:'--°',
                 rain:'--%',
                 desc:'正在更新天氣…',
@@ -4387,7 +4411,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                     latitude: String(loc.lat),
                     longitude: String(loc.lon),
                     current: 'temperature_2m,apparent_temperature,relative_humidity_2m,is_day,weather_code',
-                    daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max',
+                    daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset',
                     timezone: 'Asia/Taipei',
                     forecast_days: '16'
                 });
@@ -4420,6 +4444,10 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 const max = idx >= 0 ? Math.round(data.daily.temperature_2m_max?.[idx]) : null;
                 const min = idx >= 0 ? Math.round(data.daily.temperature_2m_min?.[idx]) : null;
                 const rain = idx >= 0 ? Math.round(data.daily.precipitation_probability_max?.[idx] ?? 0) : null;
+                const sunriseRaw = idx >= 0 ? data.daily.sunrise?.[idx] : null;
+                const sunsetRaw = idx >= 0 ? data.daily.sunset?.[idx] : null;
+                const sunrise = sunriseRaw ? String(sunriseRaw).slice(11,16) : '--:--';
+                const sunset = sunsetRaw ? String(sunsetRaw).slice(11,16) : '--:--';
 
                 const currentTemp = Number.isFinite(data.current?.temperature_2m)
                     ? Math.round(data.current.temperature_2m)
@@ -4453,9 +4481,10 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                     status: isToday ? '即時' : (trip.status === 'before' ? '出發日預報' : `Day ${day}`),
                     icon: visual.icon,
                     temp: primaryTemp,
-                    feels: feelsText,
                     high: max !== null ? `${max}°` : '--°',
                     rain: rain !== null ? `${rain}%` : '--%',
+                    sunrise,
+                    sunset,
                     desc: isToday ? `${visual.text}・今日 ${min ?? '--'}–${max ?? '--'}°` : `${visual.text}・預報 ${min ?? '--'}–${max ?? '--'}°`,
                     note
                 });
@@ -4467,7 +4496,6 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                     status:'暫無資料',
                     icon:'☁️',
                     temp:'--°',
-                    feels:'--°',
                     high:'--°',
                     rain:'--%',
                     desc:'目前無法取得天氣',
@@ -4787,7 +4815,12 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             if (!label) return;
 
             const match = String(tabId || '').match(/^d(\d+)-/);
-            label.textContent = match ? `Day ${match[1]}` : '總覽';
+            if (match) {
+                label.textContent = `Day ${match[1]}`;
+                return;
+            }
+
+            label.textContent = String(tabId || '') === 'overview' ? '行程' : '總覽';
         }
 
         function updateMobileDayNav(dayNum) {

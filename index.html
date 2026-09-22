@@ -1791,49 +1791,190 @@ to { width: 150vw; height: 150vw; opacity: 0; }
         }
 
 
-        /* ===== v21：頁首花磚／旅行手帳封底（選項 4） ===== */
+        
+        
+        
+        /* ===== v25：高擬真 HTML/CSS 標題排版 ===== */
         #site-hero {
-            background-image: linear-gradient(rgba(247,245,240,.14), rgba(247,245,240,.14)), url("header_travel_frame.PNG");
-            background-size: cover;
+            background-image: url("header_travel_frame.PNG");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
             background-position: center center;
-            color: #203D35;
-            min-height: 310px;
+            background-color: #F7F3EA;
+            width: 100%;
+            aspect-ratio: 2 / 1;
+            min-height: 0;
             display: flex;
             align-items: center;
-        }
-        #site-hero .hero-kicker {
-            background: rgba(44,62,53,.88);
-            color: #F7F5F0;
-            border: 1px solid rgba(255,255,255,.28);
-            backdrop-filter: blur(2px);
-        }
-        #site-hero h1 {
-            color: #173E3C;
-            text-shadow: 0 1px 0 rgba(255,255,255,.8);
-        }
-        #site-hero .hero-subcopy {
-            color: #315148;
-            text-shadow: 0 1px 0 rgba(255,255,255,.85);
-        }
-        @media (max-width: 640px) {
-            #site-hero {
-                min-height: 300px;
-                padding-top: 2.3rem;
-                padding-bottom: 2.3rem;
-                background-position: center center;
-            }
-            #site-hero h1 {
-                font-size: 2rem;
-                line-height: 1.25;
-            }
-            #site-hero .hero-kicker {
-                font-size: .70rem;
-                letter-spacing: .13em;
-                padding-left: .8rem;
-                padding-right: .8rem;
-            }
+            justify-content: center;
+            position: relative;
+            padding: 0;
+            overflow: hidden;
         }
 
+        #site-hero .hero-inner {
+            width: 66%;
+            max-width: 690px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            transform: translateY(-1.5%);
+        }
+
+        #site-hero .hero-kicker {
+            display: inline-block;
+            background: rgba(87,112,101,.94);
+            color: #F8F6F1;
+            border-radius: 999px;
+            padding: .70rem 2.2rem .66rem;
+            font-family: "Plus Jakarta Sans", "Helvetica Neue", Arial, sans-serif;
+            font-size: .82rem;
+            font-weight: 500;
+            letter-spacing: .13em;
+            line-height: 1;
+            white-space: nowrap;
+            margin-bottom: 1.08rem;
+            box-shadow: 0 1px 0 rgba(255,255,255,.25) inset;
+        }
+
+        #site-hero .hero-title {
+            margin: 0;
+            color: #223F36;
+            font-family: "Noto Serif TC", "Songti TC", "PMingLiU", "Iowan Old Style", serif;
+            font-size: 3.35rem;
+            line-height: 1.06;
+            font-weight: 900;
+            letter-spacing: -.015em;
+            white-space: nowrap;
+            text-shadow: 0 .5px 0 rgba(255,255,255,.65);
+        }
+
+        #site-hero .hero-subtitle {
+            margin: .78rem 0 0;
+            color: #2B423B;
+            font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+            font-size: 1.56rem;
+            line-height: 1.2;
+            font-weight: 600;
+            letter-spacing: .055em;
+        }
+
+        #site-hero .hero-ornament {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .62rem;
+            margin: .62rem auto .68rem;
+            color: #789283;
+        }
+
+        #site-hero .hero-ornament .line {
+            width: 118px;
+            height: 1.5px;
+            background: #879D91;
+            position: relative;
+            opacity: .92;
+        }
+
+        #site-hero .hero-ornament .line.left::after,
+        #site-hero .hero-ornament .line.right::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 11px;
+            height: 6px;
+            border: 1.5px solid #879D91;
+            border-left: 0;
+            border-bottom: 0;
+            border-radius: 60% 0 60% 0;
+            transform: translateY(-50%) rotate(35deg);
+            background: transparent;
+        }
+
+        #site-hero .hero-ornament .line.left::after {
+            right: -4px;
+        }
+
+        #site-hero .hero-ornament .line.right::before {
+            left: -4px;
+            transform: translateY(-50%) rotate(215deg);
+        }
+
+        #site-hero .hero-ornament .flower {
+            font-size: 1.02rem;
+            line-height: 1;
+            letter-spacing: .06em;
+            transform: translateY(-1px);
+        }
+
+        #site-hero .hero-date {
+            margin: 0;
+            color: #334A43;
+            font-family: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+            font-size: .96rem;
+            line-height: 1.25;
+            font-weight: 500;
+            letter-spacing: .015em;
+        }
+
+        @media (max-width: 640px) {
+            #site-hero {
+                aspect-ratio: 2 / 1;
+                background-size: 100% 100%;
+            }
+
+            #site-hero .hero-inner {
+                width: 66.5%;
+                max-width: none;
+                transform: translateY(-1.5%);
+            }
+
+            #site-hero .hero-kicker {
+                padding: .39rem .88rem .37rem;
+                font-size: .44rem;
+                letter-spacing: .09em;
+                margin-bottom: .54rem;
+            }
+
+            #site-hero .hero-title {
+                font-size: 1.72rem;
+                line-height: 1.04;
+                letter-spacing: -.02em;
+            }
+
+            #site-hero .hero-subtitle {
+                margin-top: .40rem;
+                font-size: .84rem;
+                letter-spacing: .035em;
+            }
+
+            #site-hero .hero-ornament {
+                gap: .34rem;
+                margin: .34rem auto .36rem;
+            }
+
+            #site-hero .hero-ornament .line {
+                width: 47px;
+                height: 1px;
+            }
+
+            #site-hero .hero-ornament .line.left::after,
+            #site-hero .hero-ornament .line.right::before {
+                width: 6px;
+                height: 4px;
+                border-width: 1px;
+            }
+
+            #site-hero .hero-ornament .flower {
+                font-size: .55rem;
+            }
+
+            #site-hero .hero-date {
+                font-size: .55rem;
+                letter-spacing: .01em;
+            }
+        }
 </style>
 <!-- Add to Home Screen / PWA -->
 <meta content="#2C3E35" name="theme-color"/>
@@ -1875,14 +2016,17 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
 <!-- 頂部 Header -->
-<header class="py-12 px-4 text-center relative overflow-hidden shadow-lg" id="site-hero">
-<div class="max-w-4xl mx-auto relative z-10">
-<span class="hero-kicker text-xs tracking-widest uppercase px-3.5 py-1.5 rounded-full mb-4 inline-block shadow-sm">SYD’S TAIWAN GRAND TRAVERSE APP 2026</span>
-<h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-4">邵奶奶快樂遊台灣👵🏻🏝️</h1>
-<p class="hero-subcopy text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-                10日山海縱走手札<br/>
-                2026/09/27 － 2026/10/06
-            </p>
+<header id="site-hero" class="relative overflow-hidden shadow-lg">
+<div class="hero-inner">
+    <div class="hero-kicker">SYD’S TAIWAN GRAND TRAVERSE APP 2026</div>
+    <h1 class="hero-title">邵奶奶快樂遊台灣👵🏻🏝️</h1>
+    <p class="hero-subtitle">10日山海縱走手札</p>
+    <div class="hero-ornament" aria-hidden="true">
+        <span class="line left"></span>
+        <span class="flower">✤ ❦ ✤</span>
+        <span class="line right"></span>
+    </div>
+    <p class="hero-date">2026/09/27 － 2026/10/06</p>
 </div>
 </header>
 <!-- 頂部主選單導覽列：保留地圖＋Day 1-10＋全程提醒 -->
@@ -3942,7 +4086,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260923-test-v27-external-assets';
+            const BUILD_KEY = '20260923-test-v30-header-hi-fi-html';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 

@@ -1627,6 +1627,63 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             color: #EAE7E0 !important;
         }
 
+
+        .travel-photo-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+        }
+        .travel-photo-thumb {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,.12);
+            background: rgba(255,255,255,.06);
+            aspect-ratio: 1 / 1;
+        }
+        .travel-photo-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .travel-photo-remove {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 24px;
+            height: 24px;
+            border: none;
+            border-radius: 999px;
+            background: rgba(0,0,0,.58);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .travel-photo-hint {
+            margin-top: 8px;
+            font-size: 10px;
+            color: #D1D8D2;
+        }
+        .travel-book-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+        }
+        .travel-book-photo-grid img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid #DED6CA;
+            background: #F8F4EC;
+        }
+        body.dark-mode .travel-photo-thumb {
+            background: rgba(255,255,255,.03) !important;
+            border-color: rgba(255,255,255,.10) !important;
+        }
+
 </style>
 
     <!-- Add to Home Screen / PWA -->
@@ -3207,7 +3264,22 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                             <div class="text-3xl">📖</div>
                             <p class="mt-2 text-sm font-bold">邵奶奶的台灣旅遊小書已生成</p>
                             <p class="mt-1 text-[10px] text-[#D1D8D2]">把這 10 天的行程、美食、花費與成就收進一本小書。</p>
-                            <button type="button" onclick="openTravelBook()" class="mt-3 rounded-xl bg-[#F7F5F0] px-4 py-2 text-xs font-bold text-[#2C3E35]">
+
+                            <div class="mt-4 rounded-2xl border border-white/12 bg-black/10 p-3 text-left">
+                                <div class="flex items-center justify-between gap-3">
+                                    <div>
+                                        <p class="text-xs font-bold text-white">📸 加入旅程照片</p>
+                                        <p class="mt-1 text-[10px] text-[#D1D8D2]">先上傳幾張照片，旅遊小書會自動多出相簿頁。</p>
+                                    </div>
+                                    <button type="button" onclick="triggerTravelPhotoUpload()" class="rounded-xl bg-[#F7F5F0] px-3 py-2 text-[11px] font-bold text-[#2C3E35]">
+                                        上傳照片
+                                    </button>
+                                </div>
+                                <input id="travel-photo-input" type="file" accept="image/*" multiple class="hidden" onchange="handleTravelPhotoUpload(event)">
+                                <div id="travel-photo-preview" class="mt-3 hidden"></div>
+                            </div>
+
+                            <button type="button" onclick="openTravelBook()" class="mt-4 rounded-xl bg-[#F7F5F0] px-4 py-2 text-xs font-bold text-[#2C3E35]">
                                 翻開旅遊小書 →
                             </button>
                         </div>
@@ -3853,7 +3925,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = '20260922-test-v12-travelbook';
+            const BUILD_KEY = '20260922-test-v13-photo-book';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -5023,6 +5095,7 @@ function addLastDanceEasterEgg() {
     function unlockHiddenAchievement(key) {
         localStorage.setItem(key, 'true');
         updateAchievementWall();
+        renderTravelPhotoPreview();
     }
 
     function getVisitedDays() {
@@ -5409,6 +5482,94 @@ function updateAchievementWall() {
     }
 
 
+
+    const TRAVEL_BOOK_PHOTO_KEY = 'travel_book_uploaded_photos_v1';
+
+    function getTravelBookPhotos() {
+        try {
+            return JSON.parse(sessionStorage.getItem(TRAVEL_BOOK_PHOTO_KEY) || '[]');
+        } catch (e) {
+            return [];
+        }
+    }
+
+    function saveTravelBookPhotos(photos) {
+        sessionStorage.setItem(TRAVEL_BOOK_PHOTO_KEY, JSON.stringify(photos));
+    }
+
+    function triggerTravelPhotoUpload() {
+        document.getElementById('travel-photo-input')?.click();
+    }
+
+    function resizeImageToDataUrl(file) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    const maxSide = 1200;
+                    const scale = Math.min(1, maxSide / Math.max(img.width, img.height));
+                    const canvas = document.createElement('canvas');
+                    canvas.width = Math.round(img.width * scale);
+                    canvas.height = Math.round(img.height * scale);
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    resolve(canvas.toDataURL('image/jpeg', 0.84));
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async function handleTravelPhotoUpload(event) {
+        const files = Array.from(event.target.files || []);
+        if (!files.length) return;
+
+        let photos = getTravelBookPhotos();
+        for (const file of files) {
+            if (!file.type.startsWith('image/')) continue;
+            if (photos.length >= 8) break;
+            const dataUrl = await resizeImageToDataUrl(file);
+            photos.push(dataUrl);
+        }
+        saveTravelBookPhotos(photos);
+        renderTravelPhotoPreview();
+        event.target.value = '';
+    }
+
+    function removeTravelPhoto(index) {
+        const photos = getTravelBookPhotos();
+        photos.splice(index, 1);
+        saveTravelBookPhotos(photos);
+        renderTravelPhotoPreview();
+    }
+
+    function renderTravelPhotoPreview() {
+        const wrap = document.getElementById('travel-photo-preview');
+        if (!wrap) return;
+
+        const photos = getTravelBookPhotos();
+        if (!photos.length) {
+            wrap.classList.add('hidden');
+            wrap.innerHTML = '';
+            return;
+        }
+
+        wrap.classList.remove('hidden');
+        wrap.innerHTML = `
+            <div class="travel-photo-preview-grid">
+                ${photos.map((src, index) => `
+                    <div class="travel-photo-thumb">
+                        <img src="${src}" alt="旅程照片 ${index + 1}">
+                        <button type="button" class="travel-photo-remove" onclick="removeTravelPhoto(${index})">✕</button>
+                    </div>
+                `).join('')}
+            </div>
+            <p class="travel-photo-hint">已加入 ${photos.length} 張照片，可刪除重選。相片會出現在旅遊小書的相簿頁。</p>
+        `;
+    }
+
     const TRAVEL_BOOK_DAYS = [
         {day:1,date:'9/27',title:'初見台北',emoji:'✈️',items:['桃園機場抵達','台北手作時研室','西門町／中山／圓山／信義夜遊'],highlight:'少奶奶的台北第一份紀念'},
         {day:2,date:'9/28',title:'北海岸・九份・十分',emoji:'🏮',items:['野柳','陰陽海・黃金瀑布','九份山城・十分'],highlight:'北台灣經典山海'},
@@ -5453,6 +5614,7 @@ function updateAchievementWall() {
         const foods = getCheckedFoodNamesForBook();
         const exp = getExpenseSummaryForBook();
         const ach = getUnlockedAchievementsForBook();
+        const photos = getTravelBookPhotos();
 
         const pages = [];
 
@@ -5503,6 +5665,22 @@ function updateAchievementWall() {
                 </section>
             `);
         });
+
+        if (photos.length) {
+            for (let i = 0; i < photos.length; i += 4) {
+                const chunk = photos.slice(i, i + 4);
+                pages.push(`
+                    <section class="travel-book-sheet">
+                        <div class="travel-book-kicker">TRAVEL ALBUM</div>
+                        <h2 class="travel-book-day-title">旅程相簿</h2>
+                        <p class="travel-book-subtitle">把這趟拍下來的畫面也收進書裡。</p>
+                        <div class="travel-book-photo-grid">
+                            ${chunk.map(src => `<img src="${src}" alt="旅程照片">`).join('')}
+                        </div>
+                    </section>
+                `);
+            }
+        }
 
         pages.push(`
             <section class="travel-book-sheet">
@@ -5636,6 +5814,7 @@ function updateAchievementWall() {
         if (resetBtn) resetBtn.classList.remove('hidden');
         updateAchievementWall();
         prepareTravelBook();
+        renderTravelPhotoPreview();
     }
 
     function resetTaiwanTripCompletion() {
@@ -5652,6 +5831,8 @@ function updateAchievementWall() {
         }
         if (resetBtn) resetBtn.classList.add('hidden');
         document.getElementById('travel-book-ready')?.classList.add('hidden');
+        sessionStorage.removeItem(TRAVEL_BOOK_PHOTO_KEY);
+        renderTravelPhotoPreview();
         updateFinishTripAvailability();
         updateAchievementWall();
     }
@@ -5677,6 +5858,7 @@ function updateAchievementWall() {
         if (finalDone) {
             if (finale) finale.classList.remove('hidden');
             prepareTravelBook();
+            renderTravelPhotoPreview();
             if (finishBtn) {
                 finishBtn.textContent = '已完成旅程 ✓';
                 finishBtn.classList.remove('bg-[#2C3E35]');

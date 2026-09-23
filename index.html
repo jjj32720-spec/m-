@@ -1979,6 +1979,15 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     };
 })();
 </script>
+
+<style id="secret-content-anti-flash">
+/* 正式版防暴雷：秘密內容在完成鎖定／解鎖判定前不顯示。 */
+html:not(.secret-content-ready) [data-secret-key],
+html:not(.secret-content-ready) [data-secret-hide],
+html:not(.secret-content-ready) [data-secret-emoji] {
+    visibility: hidden !important;
+}
+</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
 <!-- 頂部 Header -->
@@ -4133,7 +4142,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             // 正式模式絕不自動清資料；只有秘密測試模式才會使用測試前綴資料。
             if (!window.__TEST_MODE_ACTIVE__) return;
 
-            const BUILD_KEY = '20260923-production-v1';
+            const BUILD_KEY = '20260923-production-v2';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4314,6 +4323,9 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             });
 
             if (typeof refreshJourneyOverview === 'function') refreshJourneyOverview();
+
+            // 所有秘密內容完成鎖定／解鎖判定後才顯示，避免載入瞬間暴雷。
+            document.documentElement.classList.add('secret-content-ready');
         }
 
         function getOverviewHighlightsForDay(day, original) {
@@ -4364,8 +4376,8 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 ? getExpenseSummary()
                 : { total:getOverviewExpenseTotal(), count:0 };
 
-            [5000,15000,20000].forEach(n => { if(exp.total >= n) count++; });
-            [6,15,25].forEach(n => { if(exp.count >= n) count++; });
+            [5000,15000].forEach(n => { if(exp.total >= n) count++; });
+            [15,25].forEach(n => { if(exp.count >= n) count++; });
 
             if (typeof ACH_KEYS !== 'undefined') {
                 Object.values(ACH_KEYS).forEach(key => {

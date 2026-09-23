@@ -5872,6 +5872,11 @@ const ACHIEVEMENT_RESET_SEED = 'formal-reset-v19';
         document.getElementById('achievement-modal-title').textContent = meta.title || '成就解鎖';
         document.getElementById('achievement-modal-desc').textContent = meta.desc || '';
 
+        const soundHint = document.getElementById('achievement-modal-sound-hint');
+        if (soundHint) {
+            soundHint.classList.toggle('hidden', meta.title !== '想見你的人');
+        }
+
         modal.classList.remove('hidden');
         modal.classList.add('flex');
 
@@ -6503,6 +6508,7 @@ function updateAchievementWall() {
 <div class="text-[10px] tracking-[0.28em] font-bold text-[#C66914] mb-2">ACHIEVEMENT UNLOCKED</div>
 <h3 class="text-2xl font-bold text-[#2C3E35]" id="achievement-modal-title"></h3>
 <p class="text-sm text-gray-600 leading-relaxed mt-3" id="achievement-modal-desc"></p>
+<p class="hidden text-sm font-bold text-[#C66914] leading-relaxed mt-3" id="achievement-modal-sound-hint">🔊請開啟聲音，回到1998⋯⋯</p>
 <div class="mt-5 text-xs font-bold text-[#C66914]">✨ UNLOCKED</div>
 <button class="mt-6 w-full bg-[#2C3E35] text-white py-3 rounded-xl text-xs font-bold hover:bg-[#C66914] transition" onclick="closeAchievementUnlockModal()" type="button">收下成就</button>
 </div>

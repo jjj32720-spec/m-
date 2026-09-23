@@ -1945,38 +1945,17 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 <!-- manifest 暫不載入：目前 GitHub repo 尚未放 manifest.webmanifest；iOS 仍使用 apple-touch-icon -->
 <script>
 (function () {
-    const PREFIX = '__SHAO_TAIWAN_TEST__::';
     const MODE_KEY = '__SHAO_TAIWAN_PRIVATE_TEST_MODE__';
-    const raw = {
-        getItem: Storage.prototype.getItem,
-        setItem: Storage.prototype.setItem,
-        removeItem: Storage.prototype.removeItem,
-        key: Storage.prototype.key
-    };
+    const BACKUP_KEY = '__SHAO_TAIWAN_PRIVATE_TEST_BACKUP__';
 
-    const testModeActive = raw.getItem.call(window.localStorage, MODE_KEY) === '1';
+    // v6：不再改寫 Storage.prototype。
+    // iOS Safari 對 Storage prototype monkey-patch 可能造成主程式初始化異常，
+    // 因此測試模式改用「正式資料快照 → 測試 → 退出時完整還原」。
+    const testModeActive = window.localStorage.getItem(MODE_KEY) === '1';
 
-    window.__TEST_STORAGE_RAW__ = raw;
-    window.__TEST_STORAGE_PREFIX__ = PREFIX;
     window.__TEST_MODE_KEY__ = MODE_KEY;
+    window.__TEST_BACKUP_KEY__ = BACKUP_KEY;
     window.__TEST_MODE_ACTIVE__ = testModeActive;
-
-    // 正式版預設使用正常 localStorage。
-    // 只有秘密開啟測試模式後，才把 localStorage 導向獨立測試空間。
-    if (!testModeActive) return;
-
-    Storage.prototype.getItem = function (key) {
-        if (this === window.localStorage) return raw.getItem.call(this, PREFIX + key);
-        return raw.getItem.call(this, key);
-    };
-    Storage.prototype.setItem = function (key, value) {
-        if (this === window.localStorage) return raw.setItem.call(this, PREFIX + key, value);
-        return raw.setItem.call(this, key);
-    };
-    Storage.prototype.removeItem = function (key) {
-        if (this === window.localStorage) return raw.removeItem.call(this, PREFIX + key);
-        return raw.removeItem.call(this, key);
-    };
 })();
 </script>
 
@@ -4207,36 +4186,8 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <script>
 
         function resetTestStateForThisHtmlOnce() {
-            // 正式模式絕不自動清資料；只有秘密測試模式才會使用測試前綴資料。
-            if (!window.__TEST_MODE_ACTIVE__) return;
-
-            const BUILD_KEY = '20260923-production-v5-performance-packing-cleanup';
-            const marker = `opened_${BUILD_KEY}`;
-            if (sessionStorage.getItem(marker) === 'yes') return;
-
-            [
-                'ach_hidden_dessert_v1',
-                'ach_hidden_music_v1',
-                'ach_hidden_east_v1',
-                'ach_hidden_night_v1',
-                'ach_hidden_solo_v1',
-                'ach_hidden_week_v1',
-                'ach_hidden_photo_v1',
-                'ach_hidden_prank_v1',
-                'ach_hidden_final_v1',
-                'taiwan_trip_finished_v1',
-                'visited_days_v2',
-                'travel_expenses_v2',
-                'camera_flash_count_v1',
-                'packing_checklist_v1'
-            ].forEach(key => localStorage.removeItem(key));
-
-            for (let i = 1; i <= 80; i++) {
-                localStorage.removeItem(`food-v3-${i}`);
-                localStorage.removeItem(`food-${i}`);
-            }
-
-            sessionStorage.setItem(marker, 'yes');
+            // v6：測試模式保留完整正式版內容與當下狀態。
+            // 不在載入時自動刪除任何資料；測試變更會在退出測試模式時完整還原。
         }
 
         resetTestStateForThisHtmlOnce();
@@ -6449,7 +6400,7 @@ function updateAchievementWall() {
 </div>
 <button class="hidden" id="test-console-toggle" onclick="toggleTestConsole()" type="button">🧪 TEST</button>
 <div aria-label="測試版控制台" class="hidden" id="test-console">
-<div class="text-[10px] leading-relaxed text-gray-500 mb-2">測試模式只增加控制工具，正式版所有內容與功能都完整保留。</div>
+<div class="text-[10px] leading-relaxed text-gray-500 mb-2">測試模式＝完整正式版＋測試控制工具；所有頁面、內容與按鍵都完整保留。</div>
 <div class="text-[10px] tracking-[0.18em] font-bold text-[#C66914]">PRIVATE TEST BUILD</div>
 <div class="font-bold mt-1">功能測試控制台</div>
 <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">測試資料使用獨立儲存空間，不會覆蓋正式版紀錄。模擬 Day 會同步推進時間鎖；選「旅程後」會全部解鎖。</p>
@@ -6543,36 +6494,88 @@ function testCheckAllFood() {
     if (typeof refreshJourneyOverview === 'function') refreshJourneyOverview();
 }
 
-function testResetData() {
-    if (!window.__TEST_MODE_ACTIVE__) return;
-    if (!confirm('只清除測試模式資料，正式版紀錄不會受影響。確定嗎？')) return;
-
-    const raw = window.__TEST_STORAGE_RAW__;
-    const prefix = window.__TEST_STORAGE_PREFIX__;
-    const keys = [];
+function getCurrentLocalStorageSnapshot() {
+    const snapshot = {};
+    const modeKey = window.__TEST_MODE_KEY__;
+    const backupKey = window.__TEST_BACKUP_KEY__;
 
     for (let i = 0; i < localStorage.length; i++) {
-        const key = raw.key.call(localStorage, i);
-        if (key && key.startsWith(prefix)) keys.push(key);
+        const key = localStorage.key(i);
+        if (!key || key === modeKey || key === backupKey) continue;
+        snapshot[key] = localStorage.getItem(key);
+    }
+    return snapshot;
+}
+
+function restoreProductionSnapshot({ keepTestMode = false } = {}) {
+    const modeKey = window.__TEST_MODE_KEY__;
+    const backupKey = window.__TEST_BACKUP_KEY__;
+    const rawBackup = localStorage.getItem(backupKey);
+
+    if (!rawBackup) return false;
+
+    let snapshot;
+    try {
+        snapshot = JSON.parse(rawBackup);
+    } catch (err) {
+        console.error('Test backup parse failed:', err);
+        return false;
     }
 
-    keys.forEach(key => raw.removeItem.call(localStorage, key));
+    // 清掉目前網站資料，但保留測試控制旗標與備份本身。
+    const keysToRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key || key === modeKey || key === backupKey) continue;
+        keysToRemove.push(key);
+    }
+    keysToRemove.forEach(key => localStorage.removeItem(key));
+
+    Object.entries(snapshot).forEach(([key, value]) => {
+        localStorage.setItem(key, value);
+    });
+
+    if (!keepTestMode) {
+        localStorage.removeItem(modeKey);
+        localStorage.removeItem(backupKey);
+    }
+
+    return true;
+}
+
+function testResetData() {
+    if (!window.__TEST_MODE_ACTIVE__) return;
+    if (!confirm('清除這次測試造成的變更，回到進入測試模式前的正式資料狀態。確定嗎？')) return;
+
+    restoreProductionSnapshot({ keepTestMode: true });
     location.reload();
 }
 
 function enterPrivateTestMode() {
-    const raw = window.__TEST_STORAGE_RAW__;
     const modeKey = window.__TEST_MODE_KEY__;
-    raw.setItem.call(window.localStorage, modeKey, '1');
+    const backupKey = window.__TEST_BACKUP_KEY__;
+
+    if (window.__TEST_MODE_ACTIVE__) return;
+
+    // 只在第一次進入測試模式時建立正式資料快照。
+    const snapshot = getCurrentLocalStorageSnapshot();
+    localStorage.setItem(backupKey, JSON.stringify(snapshot));
+    localStorage.setItem(modeKey, '1');
     location.reload();
 }
 
 function exitPrivateTestMode() {
     if (!window.__TEST_MODE_ACTIVE__) return;
 
-    const raw = window.__TEST_STORAGE_RAW__;
-    const modeKey = window.__TEST_MODE_KEY__;
-    raw.removeItem.call(window.localStorage, modeKey);
+    // 離開測試模式：丟掉測試期間所有變更，完整還原正式資料。
+    const restored = restoreProductionSnapshot({ keepTestMode: false });
+
+    if (!restored) {
+        // 即使備份意外不存在，也至少確保能退出測試模式。
+        localStorage.removeItem(window.__TEST_MODE_KEY__);
+        localStorage.removeItem(window.__TEST_BACKUP_KEY__);
+    }
+
     location.reload();
 }
 
@@ -6586,6 +6589,18 @@ function initPrivateTestAccess() {
         const actualBtn = Array.from(document.querySelectorAll('#test-console .test-btn'))
             .find(b => b.textContent.trim() === '實際時間');
         actualBtn?.classList.add('active');
+
+        // 測試模式只增加工具，不改變主網站顯示邏輯。
+        // 若主頁尚未選中任何 tab，立即依網址 hash 或預設地圖初始化。
+        const hasVisibleTab = Array.from(document.querySelectorAll('.tab-content'))
+            .some(el => !el.classList.contains('hidden'));
+
+        if (!hasVisibleTab && typeof switchTab === 'function') {
+            const hash = window.location.hash.replace('#', '');
+            const validTarget = hash && document.getElementById('tab-' + hash);
+            switchTab(validTarget ? hash : 'map', false);
+        }
+
         return;
     }
 

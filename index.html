@@ -5774,6 +5774,32 @@ function addLastDanceEasterEgg() {
 
     let achievementRuntimeState = null;
     const ACHIEVEMENT_NOTIFIED_KEY = 'achievement_notified_v1';
+    const TRIP_START_TIME = new Date('2026-09-27T00:00:00+08:00').getTime();
+
+    function resetPreTripFoodProgressOnPageLoad() {
+        // 正式旅程開始前：每次完整載入都讓美食挑戰回到「從未開始」。
+        // 9/27 00:00（台灣時間）起停止歸零，之後刷新會永久保留真實旅程紀錄。
+        if (Date.now() >= TRIP_START_TIME) return;
+
+        localStorage.removeItem('food_checklist_v2');
+
+        try {
+            const notified = JSON.parse(localStorage.getItem(ACHIEVEMENT_NOTIFIED_KEY) || '[]');
+            if (Array.isArray(notified)) {
+                const foodAchievementIds = new Set(['ach-food-1', 'ach-food-2', 'ach-food-3', 'ach-food-4']);
+                const kept = notified.filter(id => !foodAchievementIds.has(id));
+                localStorage.setItem(ACHIEVEMENT_NOTIFIED_KEY, JSON.stringify(kept));
+            }
+        } catch (e) {
+            localStorage.removeItem(ACHIEVEMENT_NOTIFIED_KEY);
+        }
+
+        // 本頁 runtime 也重新從未達成狀態開始，避免旅前測試殘留。
+        achievementRuntimeState = null;
+    }
+
+    resetPreTripFoodProgressOnPageLoad();
+
 
     function getNotifiedAchievements() {
         try {

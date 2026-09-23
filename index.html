@@ -3234,7 +3234,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 </div>
 <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
 <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
-<span>✨ 【今日亮點】（）</span>
+<span>✨ 【今日亮點】</span>
 <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
 </summary>
 <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
@@ -3247,7 +3247,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 </details>
 <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
 <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
-<span>⚠️ 【今日特殊備註】（）</span>
+<span>⚠️ 【今日特殊備註】</span>
 <span class="summary-arrow text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
 </summary>
 <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
@@ -3295,7 +3295,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 </details>
 <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open="">
 <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
-<span>🏨 推薦住宿區域（）</span>
+<span>🏨 推薦住宿區域</span>
 <span class="summary-arrow text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">收合 ▲</span>
 </summary>
 <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
@@ -3350,7 +3350,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 </div>
 <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
 <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
-<span>✨ 【今日亮點】（）</span>
+<span>✨ 【今日亮點】</span>
 <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
 </summary>
 <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
@@ -3363,7 +3363,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 </details>
 <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
 <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
-<span>⚠️ 【今日特殊備註】（）</span>
+<span>⚠️ 【今日特殊備註】</span>
 <span class="summary-arrow text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
 </summary>
 <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
@@ -3478,7 +3478,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 </details>
 <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open="">
 <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
-<span>🏨 推薦住宿區域（）</span>
+<span>🏨 推薦住宿區域</span>
 <span class="summary-arrow text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">收合 ▲</span>
 </summary>
 <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
@@ -3623,9 +3623,9 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <h3 class="font-bold text-base text-[#2C3E35] mb-3">🎒 行李與穿著</h3>
 <div id="packing-checklist" class="space-y-4 leading-relaxed">
 
-<div>
+<div class="packing-category" data-pack-category="carry">
 <div class="text-[11px] font-bold tracking-wide text-[#C66914] mb-2">隨身與電子</div>
-<div class="space-y-2">
+<div class="space-y-2 packing-items">
 <label class="flex items-start gap-2 cursor-pointer">
 <input type="checkbox" data-pack-id="documents" class="mt-0.5 accent-[#C66914]">
 <span>證件、錢包、手機</span>
@@ -3642,12 +3642,17 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <input type="checkbox" data-pack-id="water-bottle" class="mt-0.5 accent-[#C66914]">
 <span>水壺</span>
 </label>
+<div class="packing-custom-list space-y-2" data-custom-list="carry"></div>
+</div>
+<div class="mt-2 flex gap-2">
+<input type="text" data-pack-input="carry" class="min-w-0 flex-1 bg-white border border-[#D7D1C8] rounded-lg px-3 py-2 text-sm" placeholder="其他隨身物品">
+<button type="button" class="shrink-0 px-3 py-2 rounded-lg bg-white border border-[#D7D1C8] text-[#C66914] text-xs font-bold" onclick="addCustomPackingItem('carry')">＋ 新增</button>
 </div>
 </div>
 
-<div>
+<div class="packing-category" data-pack-category="outdoor">
 <div class="text-[11px] font-bold tracking-wide text-[#C66914] mb-2">穿著與戶外</div>
-<div class="space-y-2">
+<div class="space-y-2 packing-items">
 <label class="flex items-start gap-2 cursor-pointer">
 <input type="checkbox" data-pack-id="walking-shoes" class="mt-0.5 accent-[#C66914]">
 <span>好走的運動鞋</span>
@@ -3676,12 +3681,17 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <input type="checkbox" data-pack-id="mosquito-repellent" class="mt-0.5 accent-[#C66914]">
 <span>防蚊液</span>
 </label>
+<div class="packing-custom-list space-y-2" data-custom-list="outdoor"></div>
+</div>
+<div class="mt-2 flex gap-2">
+<input type="text" data-pack-input="outdoor" class="min-w-0 flex-1 bg-white border border-[#D7D1C8] rounded-lg px-3 py-2 text-sm" placeholder="其他穿著／戶外用品">
+<button type="button" class="shrink-0 px-3 py-2 rounded-lg bg-white border border-[#D7D1C8] text-[#C66914] text-xs font-bold" onclick="addCustomPackingItem('outdoor')">＋ 新增</button>
 </div>
 </div>
 
-<div>
+<div class="packing-category" data-pack-category="care">
 <div class="text-[11px] font-bold tracking-wide text-[#C66914] mb-2">盥洗與休息</div>
-<div class="space-y-2">
+<div class="space-y-2 packing-items">
 <label class="flex items-start gap-2 cursor-pointer">
 <input type="checkbox" data-pack-id="toiletries" class="mt-0.5 accent-[#C66914]">
 <span>個人盥洗用品</span>
@@ -3706,25 +3716,35 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <input type="checkbox" data-pack-id="eye-mask" class="mt-0.5 accent-[#C66914]">
 <span>眼罩</span>
 </label>
+<div class="packing-custom-list space-y-2" data-custom-list="care"></div>
+</div>
+<div class="mt-2 flex gap-2">
+<input type="text" data-pack-input="care" class="min-w-0 flex-1 bg-white border border-[#D7D1C8] rounded-lg px-3 py-2 text-sm" placeholder="其他盥洗／休息用品">
+<button type="button" class="shrink-0 px-3 py-2 rounded-lg bg-white border border-[#D7D1C8] text-[#C66914] text-xs font-bold" onclick="addCustomPackingItem('care')">＋ 新增</button>
 </div>
 </div>
 
-<div>
-<div class="text-[11px] font-bold tracking-wide text-[#C66914] mb-2">過夜小包</div>
-<div class="space-y-2">
+<div class="packing-category" data-pack-category="other">
+<div class="text-[11px] font-bold tracking-wide text-[#C66914] mb-2">其他</div>
+<div class="space-y-2 packing-items">
 <label class="flex items-start gap-2 cursor-pointer">
 <input type="checkbox" data-pack-id="overnight-bag" class="mt-0.5 accent-[#C66914]">
 <span>可裝一晚用品的 <b>小旅行包</b></span>
 </label>
+<div class="packing-custom-list space-y-2" data-custom-list="other"></div>
+</div>
+<div class="mt-2 flex gap-2">
+<input type="text" data-pack-input="other" class="min-w-0 flex-1 bg-white border border-[#D7D1C8] rounded-lg px-3 py-2 text-sm" placeholder="其他物品">
+<button type="button" class="shrink-0 px-3 py-2 rounded-lg bg-white border border-[#D7D1C8] text-[#C66914] text-xs font-bold" onclick="addCustomPackingItem('other')">＋ 新增</button>
 </div>
 </div>
 
-</div></div>
+</div></div></div>
 </div>
 
 <div class="bg-[#F0EDEA] p-4 rounded-xl">
 <h3 class="font-bold text-base text-[#2C3E35] mb-3">🧥 移動與天氣</h3>
-<div class="space-y-1.5 leading-relaxed">
+<div class="space-y-1.5 leading-relaxed text-sm">
 <p>・山區、清晨或早晚溫差大的行程，記得帶保暖外套</p>
 <p>・容易暈車／暈船的話，藥放在隨身包</p>
 <p>・有集合、預約或固定班次的行程，盡量提早 10–15 分鐘</p>
@@ -3735,7 +3755,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 
 <div class="bg-[#F0EDEA] p-4 rounded-xl">
 <h3 class="font-bold text-base text-[#2C3E35] mb-3">💡 旅行小提醒</h3>
-<div class="space-y-2 leading-relaxed">
+<div class="space-y-2 leading-relaxed text-sm">
 <p><b>貫徹P人精神：</b>旅程中有任何不舒服或想調整都可以隨時跟我說，不用擔心會打亂行程，也不要自己硬撐。</p>
 <p><b>最重要的行李：</b>一顆快樂的心 ❤️</p>
 </div>
@@ -3947,14 +3967,14 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <h3 class="font-bold text-base text-[#2C3E35] mb-3">公開成就</h3>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
 <div class="achievement-card" id="ach-food-1"><div class="ach-icon">🧋</div><div><div class="ach-title">初級台灣胃</div><div class="ach-desc">吃滿 5 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
-<div class="achievement-card achievement-stage-hidden" id="ach-food-2"><div class="ach-icon">🍠</div><div><div class="ach-title">邵奶奶融入</div><div class="ach-desc">吃滿 10 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
-<div class="achievement-card achievement-stage-hidden" id="ach-food-3"><div class="ach-icon">🥢</div><div><div class="ach-title">這不是旅遊，是進食</div><div class="ach-desc">吃滿 18 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
-<div class="achievement-card achievement-stage-hidden" id="ach-food-4"><div class="ach-icon">🏆</div><div><div class="ach-title">台灣胃永久居民</div><div class="ach-desc">吃滿 25 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
+<div class="achievement-card achievement-stage-hidden" id="ach-food-2"><div class="ach-icon">🍠</div><div><div class="ach-title">中級台灣胃</div><div class="ach-desc">吃滿 10 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
+<div class="achievement-card achievement-stage-hidden" id="ach-food-3"><div class="ach-icon">🥢</div><div><div class="ach-title">在地台灣胃</div><div class="ach-desc">吃滿 18 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
+<div class="achievement-card achievement-stage-hidden" id="ach-food-4"><div class="ach-icon">😋</div><div><div class="ach-title">台灣胃永久居民</div><div class="ach-desc">吃滿 25 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card" id="ach-spend-1"><div class="ach-icon">💸</div><div><div class="ach-title">台灣經濟熱身中</div><div class="ach-desc">累計記帳超過 NT$5,000</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card achievement-stage-hidden" id="ach-spend-2"><div class="ach-icon">💸</div><div><div class="ach-title">台灣經濟推進器</div><div class="ach-desc">累計記帳超過 NT$15,000</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card" id="ach-log-2"><div class="ach-icon">🧾</div><div><div class="ach-title">邵奶奶的流水帳</div><div class="ach-desc">新增 15 筆記帳</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card achievement-stage-hidden" id="ach-log-3"><div class="ach-icon">🧾</div><div><div class="ach-title">每一塊錢都有紀錄</div><div class="ach-desc">新增 25 筆記帳</div></div><div class="achievement-lock">🔒</div></div>
-<div class="achievement-card" id="ach-public-solo"><div class="ach-icon">🧳</div><div><div class="ach-title">獨旅模式通關</div><div class="ach-desc">前三天單人副本完成｜方向感、行動力、體力全部合格</div></div><div class="achievement-lock">🔒</div></div>
+<div class="achievement-card" id="ach-public-solo"><div class="ach-icon">🧳</div><div><div class="ach-title">獨旅模式通關</div><div class="ach-desc">前三天單人副本完成</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card achievement-stage-hidden" id="ach-public-week"><div class="ach-icon">🗺️</div><div><div class="ach-title">台灣一周目達成</div><div class="ach-desc">在台灣生存滿七天｜已成功融入，副作用是變胖</div></div><div class="achievement-lock">🔒</div></div>
 </div>
 </div>
@@ -3966,7 +3986,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <div class="achievement-card" id="ach-hidden-music"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card" id="ach-hidden-night"><div class="ach-icon">😎</div><div><div class="ach-title">我還年輕，我還年輕！</div><div class="ach-desc">條件不明</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card" id="ach-hidden-photo"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
-<div class="achievement-card" id="ach-hidden-prank"><div class="ach-icon">🚨</div><div><div class="ach-title">調皮搗蛋鬼</div><div class="ach-desc">條件不明</div></div><div class="achievement-lock">🔒</div></div>
+<div class="achievement-card" id="ach-hidden-prank"><div class="ach-icon">👻</div><div><div class="ach-title">調皮搗蛋鬼</div><div class="ach-desc">條件不明</div></div><div class="achievement-lock">🔒</div></div>
 <div class="achievement-card md:col-span-2" id="ach-hidden-final"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
 </div>
 </div>
@@ -5492,19 +5512,9 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 }
             });
 
-            const hash = window.location.hash.replace('#', '');
-            if (hash) {
-                if (hash.startsWith('d')) {
-                    const match = hash.match(/d(\d+)-/);
-                    if (match) {
-                        currentDayNum = parseInt(match[1]);
-                        updateDayMenuUI(currentDayNum);
-                    }
-                }
-                switchTab(hash, false);
-            } else {
-                switchTab('map');
-            }
+            // 每次完整載入／重新整理都從「總覽」開始。
+            // 這段只在 DOMContentLoaded 跑一次，之後正常切換頁面不會被拉回總覽。
+            switchTab('overview', false);
         });
     
 function addLastDanceEasterEgg() {
@@ -5763,12 +5773,29 @@ function addLastDanceEasterEgg() {
 
 
     let achievementRuntimeState = null;
+    const ACHIEVEMENT_NOTIFIED_KEY = 'achievement_notified_v1';
+
+    function getNotifiedAchievements() {
+        try {
+            const saved = JSON.parse(localStorage.getItem(ACHIEVEMENT_NOTIFIED_KEY) || '[]');
+            return new Set(Array.isArray(saved) ? saved : []);
+        } catch (e) {
+            return new Set();
+        }
+    }
+
+    function markAchievementsNotified(ids) {
+        if (!ids || !ids.length) return;
+        const notified = getNotifiedAchievements();
+        ids.forEach(id => notified.add(id));
+        localStorage.setItem(ACHIEVEMENT_NOTIFIED_KEY, JSON.stringify([...notified]));
+    }
 
     const ACHIEVEMENT_PUBLIC_META = {
         'ach-food-1': { icon:'🧋', title:'初級台灣胃', desc:'吃滿 5 樣台灣美食' },
-        'ach-food-2': { icon:'🍠', title:'邵奶奶融入', desc:'吃滿 10 樣台灣美食' },
-        'ach-food-3': { icon:'🥢', title:'這不是旅遊，是進食', desc:'吃滿 18 樣台灣美食' },
-        'ach-food-4': { icon:'🏆', title:'台灣胃永久居民', desc:'吃滿 25 樣台灣美食' },
+        'ach-food-2': { icon:'🍠', title:'中級台灣胃', desc:'吃滿 10 樣台灣美食' },
+        'ach-food-3': { icon:'🥢', title:'在地台灣胃', desc:'吃滿 18 樣台灣美食' },
+        'ach-food-4': { icon:'😋', title:'台灣胃永久居民', desc:'吃滿 25 樣台灣美食' },
         'ach-spend-1': { icon:'💸', title:'台灣經濟熱身中', desc:'累計記帳超過 NT$5,000' },
         'ach-spend-2': { icon:'💸', title:'台灣經濟推進器', desc:'累計記帳超過 NT$15,000' },
         'ach-log-2': { icon:'🧾', title:'邵奶奶的流水帳', desc:'新增 15 筆記帳' },
@@ -5820,19 +5847,29 @@ function addLastDanceEasterEgg() {
     }
 
     function detectNewAchievementUnlocks(nextState, metaMap) {
+        const notified = getNotifiedAchievements();
+
         if (achievementRuntimeState === null) {
+            // 重新整理／重新開啟網站時：目前已經達成的成就只作為基準，
+            // 不重新跳出「收下成就」。同時寫入一次性通知紀錄，完成舊版資料遷移。
             achievementRuntimeState = { ...nextState };
+            const alreadyUnlocked = Object.keys(nextState).filter(key => nextState[key] === true);
+            markAchievementsNotified(alreadyUnlocked);
             return;
         }
 
         const newlyUnlocked = Object.keys(nextState).filter(key =>
-            nextState[key] === true && achievementRuntimeState[key] !== true
+            nextState[key] === true &&
+            achievementRuntimeState[key] !== true &&
+            !notified.has(key)
         );
 
         achievementRuntimeState = { ...nextState };
 
-        // 一次若跨過多個門檻，依序顯示第一個；其餘排隊
+        // 一旦判定為新解鎖，先永久記錄成「已通知」再排入彈窗，
+        // 避免短時間重複 refresh 或重新整理造成同一成就再次跳出。
         if (newlyUnlocked.length) {
+            markAchievementsNotified(newlyUnlocked);
             queueAchievementUnlocks(newlyUnlocked.map(key => metaMap[key]).filter(Boolean));
         }
     }
@@ -5892,7 +5929,7 @@ function updateAchievementWall() {
             ['ach-hidden-music', ACH_KEYS.music, { icon:'🎧', title:'想見你的人', desc:'有些歌一響起，就開始穿越', target:'day6', linkLabel:'回到 Day 6 →' }],
             ['ach-hidden-night', ACH_KEYS.night, { icon:'😎', title:'我還年輕，我還年輕！', desc:'天還沒亮就出發，25歲還是很可以。', target:'day6', linkLabel:'查看 Day 6 →', semiHidden:true }],
             ['ach-hidden-photo', ACH_KEYS.photo, { icon:'📸', title:'出片率100%', desc:'今天很會拍，出片率直接拉滿。', target:'day5', linkLabel:'回到 Day 5 →' }],
-            ['ach-hidden-prank', ACH_KEYS.prank, { icon:'🚨', title:'調皮搗蛋鬼', desc:'偷按無效，但被我抓到了。', semiHidden:true }],
+            ['ach-hidden-prank', ACH_KEYS.prank, { icon:'👻', title:'調皮搗蛋鬼', desc:'偷按無效，但被我抓到了。', semiHidden:true }],
             ['ach-hidden-final', ACH_KEYS.final, { icon:'👵🏻🏝️', title:'西台灣制霸證書', desc:'恭喜完成這趟台灣生日之旅｜10 個公開成就＋7 個隱藏成就｜生日密碼配對成功🎂', target:'day10', linkLabel:'查看旅程完成頁 →' }]
         ];
 
@@ -6101,17 +6138,65 @@ function updateAchievementWall() {
     
     // ===== Persistent packing checklist =====
     const PACKING_STORAGE_KEY = 'packing_checklist_v1';
+    const PACKING_CUSTOM_STORAGE_KEY = 'packing_custom_items_v1';
 
-    function loadPackingChecklist() {
-        let saved = {};
+    function getPackingCheckedState() {
         try {
-            saved = JSON.parse(localStorage.getItem(PACKING_STORAGE_KEY) || '{}') || {};
+            return JSON.parse(localStorage.getItem(PACKING_STORAGE_KEY) || '{}') || {};
         } catch (e) {
-            saved = {};
+            return {};
         }
+    }
 
-        document.querySelectorAll('#packing-checklist input[type="checkbox"][data-pack-id]').forEach(chk => {
-            chk.checked = saved[chk.dataset.packId] === true;
+    function loadCustomPackingItems() {
+        try {
+            const saved = JSON.parse(localStorage.getItem(PACKING_CUSTOM_STORAGE_KEY) || '{}') || {};
+            return {
+                carry: Array.isArray(saved.carry) ? saved.carry : [],
+                outdoor: Array.isArray(saved.outdoor) ? saved.outdoor : [],
+                care: Array.isArray(saved.care) ? saved.care : [],
+                other: Array.isArray(saved.other) ? saved.other : []
+            };
+        } catch (e) {
+            return { carry: [], outdoor: [], care: [], other: [] };
+        }
+    }
+
+    function saveCustomPackingItems(items) {
+        localStorage.setItem(PACKING_CUSTOM_STORAGE_KEY, JSON.stringify(items));
+    }
+
+    function escapePackingText(value) {
+        return String(value)
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#039;');
+    }
+
+    function renderCustomPackingItems() {
+        const items = loadCustomPackingItems();
+        const checkedState = getPackingCheckedState();
+
+        Object.entries(items).forEach(([category, rows]) => {
+            const container = document.querySelector(`[data-custom-list="${category}"]`);
+            if (!container) return;
+
+            container.innerHTML = rows.map(row => {
+                const checked = checkedState[row.id] === true ? 'checked' : '';
+                return `
+                    <div class="flex items-start gap-2 group" data-custom-pack-row="${row.id}">
+                        <label class="flex min-w-0 flex-1 items-start gap-2 cursor-pointer">
+                            <input type="checkbox" data-pack-id="${row.id}" class="mt-0.5 accent-[#C66914]" ${checked}>
+                            <span class="break-words">${escapePackingText(row.text)}</span>
+                        </label>
+                        <button type="button"
+                            class="shrink-0 text-[11px] text-gray-400 px-1.5 py-0.5 rounded-md"
+                            aria-label="刪除此項"
+                            onclick="removeCustomPackingItem('${category}','${row.id}')">✕</button>
+                    </div>`;
+            }).join('');
         });
     }
 
@@ -6123,10 +6208,69 @@ function updateAchievementWall() {
         localStorage.setItem(PACKING_STORAGE_KEY, JSON.stringify(saved));
     }
 
-    function initPackingChecklist() {
-        loadPackingChecklist();
+    function bindPackingCheckboxes() {
         document.querySelectorAll('#packing-checklist input[type="checkbox"][data-pack-id]').forEach(chk => {
+            if (chk.dataset.packBound === '1') return;
+            chk.dataset.packBound = '1';
             chk.addEventListener('change', savePackingChecklist);
+        });
+    }
+
+    function loadPackingChecklist() {
+        const saved = getPackingCheckedState();
+        document.querySelectorAll('#packing-checklist input[type="checkbox"][data-pack-id]').forEach(chk => {
+            chk.checked = saved[chk.dataset.packId] === true;
+        });
+    }
+
+    function addCustomPackingItem(category) {
+        const input = document.querySelector(`[data-pack-input="${category}"]`);
+        if (!input) return;
+
+        const value = input.value.trim();
+        if (!value) return;
+
+        const items = loadCustomPackingItems();
+        if (!items[category]) items[category] = [];
+
+        const id = `custom-${category}-${Date.now()}-${Math.random().toString(36).slice(2,7)}`;
+        items[category].push({ id, text: value });
+        saveCustomPackingItems(items);
+
+        input.value = '';
+        renderCustomPackingItems();
+        loadPackingChecklist();
+        bindPackingCheckboxes();
+        input.focus();
+    }
+
+    function removeCustomPackingItem(category, id) {
+        const items = loadCustomPackingItems();
+        if (!items[category]) return;
+
+        items[category] = items[category].filter(row => row.id !== id);
+        saveCustomPackingItems(items);
+
+        const checked = getPackingCheckedState();
+        delete checked[id];
+        localStorage.setItem(PACKING_STORAGE_KEY, JSON.stringify(checked));
+
+        renderCustomPackingItems();
+        loadPackingChecklist();
+        bindPackingCheckboxes();
+    }
+
+    function initPackingChecklist() {
+        renderCustomPackingItems();
+        loadPackingChecklist();
+        bindPackingCheckboxes();
+
+        document.querySelectorAll('[data-pack-input]').forEach(input => {
+            input.addEventListener('keydown', event => {
+                if (event.key !== 'Enter') return;
+                event.preventDefault();
+                addCustomPackingItem(input.dataset.packInput);
+            });
         });
     }
 
@@ -6190,9 +6334,9 @@ function updateAchievementWall() {
         if (barEl) barEl.style.width = `${total ? (checked / total) * 100 : 0}%`;
 
         let currentTitle = '邵奶奶尚未開吃';
-        if (checked >= 25) currentTitle = '🏆 台灣胃永久居民';
-        else if (checked >= 18) currentTitle = '🥢 這不是旅遊，是進食';
-        else if (checked >= 10) currentTitle = '🍠 邵奶奶融入';
+        if (checked >= 25) currentTitle = '😋 台灣胃永久居民';
+        else if (checked >= 18) currentTitle = '🥢 在地台灣胃';
+        else if (checked >= 10) currentTitle = '🍠 中級台灣胃';
         else if (checked >= 5) currentTitle = '🧋 初級台灣胃';
         else if (checked > 0) currentTitle = '🥢 台灣胃載入中...';
 
@@ -6206,35 +6350,14 @@ function updateAchievementWall() {
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.replace('#','');
-            const match = hash.match(/^d(\d+)-/);
-            if (match) {
-                updateCompactDayPicker(Number(match[1]));
-            } else if (hash && ['tips','food','achievements','budget','sos','map'].includes(hash)) {
-                setTopNavActive(hash);
-            } else {
-                setTopNavActive('map');
-            }
+            setTopNavActive('overview');
         });
 
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash.replace('#','');
-            const match = hash.match(/^d(\d+)-/);
-
-            if (match) {
-                updateMobileDayNav(Number(match[1]));
-            } else if (hash === 'food') {
-                setMobileNavActive('food');
-            } else if (hash === 'budget') {
-                setMobileNavActive('budget');
-            } else if (hash === 'achievements') {
-                setMobileNavActive('achievements');
-            } else {
-                // 地圖／提醒／急救包不佔底部四顆按鈕的 active 狀態
-                setMobileNavActive(null);
-            }
+            // 總覽屬於底部「行程」入口。
+            setMobileNavActive('day');
         });
 
 
@@ -6596,9 +6719,7 @@ function initPrivateTestAccess() {
             .some(el => !el.classList.contains('hidden'));
 
         if (!hasVisibleTab && typeof switchTab === 'function') {
-            const hash = window.location.hash.replace('#', '');
-            const validTarget = hash && document.getElementById('tab-' + hash);
-            switchTab(validTarget ? hash : 'map', false);
+            switchTab('overview', false);
         }
 
         return;

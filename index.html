@@ -1988,6 +1988,17 @@ html:not(.secret-content-ready) [data-secret-emoji] {
     visibility: hidden !important;
 }
 </style>
+
+<style id="formal-hidden-safety">
+/* 正式版核心顯示安全：即使 Tailwind CDN 尚未載入，hidden 仍然可靠。 */
+.hidden {
+    display: none !important;
+}
+#test-console-toggle.hidden,
+#test-console.hidden {
+    display: none !important;
+}
+</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
 <!-- 頂部 Header -->
@@ -4142,7 +4153,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
             // 正式模式絕不自動清資料；只有秘密測試模式才會使用測試前綴資料。
             if (!window.__TEST_MODE_ACTIVE__) return;
 
-            const BUILD_KEY = '20260923-production-v2';
+            const BUILD_KEY = '20260923-production-v3-display-click-fix';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -4322,10 +4333,17 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                     : (el.dataset.lockedEmoji || el.textContent);
             });
 
-            if (typeof refreshJourneyOverview === 'function') refreshJourneyOverview();
-
-            // 所有秘密內容完成鎖定／解鎖判定後才顯示，避免載入瞬間暴雷。
+            // 秘密內容本身已完成鎖定／解鎖替換，現在就可安全顯示。
+            // 不等待其他總覽更新，避免無關錯誤讓秘密內容一直保持隱藏。
             document.documentElement.classList.add('secret-content-ready');
+
+            if (typeof refreshJourneyOverview === 'function') {
+                try {
+                    refreshJourneyOverview();
+                } catch (err) {
+                    console.error('Journey overview refresh failed:', err);
+                }
+            }
         }
 
         function getOverviewHighlightsForDay(day, original) {
@@ -6518,6 +6536,20 @@ function initPrivateTestAccess() {
 }
 
 document.addEventListener('DOMContentLoaded', initPrivateTestAccess);
+</script>
+
+<script id="secret-content-boot-safety">
+window.addEventListener('DOMContentLoaded', () => {
+    // 正常流程會由主程式呼叫；這裡只作保險，不改變解鎖規則。
+    setTimeout(() => {
+        if (!document.documentElement.classList.contains('secret-content-ready') &&
+            typeof updateSecretItineraries === 'function') {
+            try { updateSecretItineraries(); } catch (err) {
+                console.error('Secret itinerary initialization failed:', err);
+            }
+        }
+    }, 50);
+});
 </script>
 </body>
 </html>

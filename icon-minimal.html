@@ -5626,6 +5626,23 @@ function addLastDanceEasterEgg() {
         final: 'ach_hidden_final_v1'
     };
 
+const ACHIEVEMENT_RESET_SEED = 'formal-reset-v19';
+
+    function resetAchievementProgressOnce() {
+        try {
+            const markerKey = 'achievement_reset_seed';
+            if (localStorage.getItem(markerKey) === ACHIEVEMENT_RESET_SEED) return;
+            Object.values(ACH_KEYS).forEach(key => localStorage.removeItem(key));
+            localStorage.removeItem('visited_days_v2');
+            localStorage.removeItem('camera_flash_count_v1');
+            localStorage.removeItem(ACHIEVEMENT_NOTIFIED_KEY);
+            localStorage.setItem(markerKey, ACHIEVEMENT_RESET_SEED);
+        } catch (e) {
+            console.warn('Achievement reset skipped', e);
+        }
+    }
+
+
     function unlockHiddenAchievement(key) {
         localStorage.setItem(key, 'true');
         updateAchievementWall();
@@ -5787,8 +5804,10 @@ function addLastDanceEasterEgg() {
 
 
     let achievementRuntimeState = null;
-    const ACHIEVEMENT_NOTIFIED_KEY = 'achievement_notified_v1';
+    const ACHIEVEMENT_NOTIFIED_KEY = 'achievement_notified_v2';
     const TRIP_START_TIME = new Date('2026-09-27T13:00:00+08:00').getTime();
+
+    resetAchievementProgressOnce();
 
     function resetPreTripFoodProgressOnPageLoad() {
         // 正式旅程開始前：每次完整載入都讓美食挑戰回到「從未開始」。
@@ -6580,19 +6599,19 @@ function updateAchievementWall() {
 </div>
 <div class="px-4 pb-[calc(26px+env(safe-area-inset-bottom))] grid grid-cols-3 gap-3">
 <a href="icon-road.html" class="block text-center">
-<img src="syd-icon-road.png" alt="預設簡約桌面圖示" class="w-full aspect-square object-cover rounded-[22%] shadow-sm border border-black/5">
-<div class="mt-2 text-xs font-bold text-[#2C3E35]">簡約台灣</div>
-<div class="text-[10px] text-[#C66914] mt-0.5 font-bold">預設</div>
-</a>
-<a href="icon-watercolor.html" class="block text-center">
-<img src="syd-icon-watercolor.png" alt="水彩台灣桌面圖示" class="w-full aspect-square object-cover rounded-[22%] shadow-sm border border-black/5">
-<div class="mt-2 text-xs font-bold text-[#2C3E35]">水彩台灣</div>
-<div class="text-[10px] text-gray-400 mt-0.5">使用此款</div>
+<img src="syd-icon-road.png" alt="預設（幾何款）桌面圖示" class="w-full aspect-square object-contain shadow-sm">
+<div class="mt-2 text-[11px] leading-none text-gray-500">圖示</div>
+<div class="mt-1 text-xs font-bold text-[#2C3E35]">預設（幾何款）</div>
 </a>
 <a href="icon-minimal.html" class="block text-center">
-<img src="syd-icon-minimal.png" alt="幾何台灣桌面圖示" class="w-full aspect-square object-cover rounded-[22%] shadow-sm border border-black/5">
-<div class="mt-2 text-xs font-bold text-[#2C3E35]">幾何台灣</div>
-<div class="text-[10px] text-gray-400 mt-0.5">使用此款</div>
+<img src="syd-icon-minimal.png" alt="簡約款桌面圖示" class="w-full aspect-square object-contain shadow-sm">
+<div class="mt-2 text-[11px] leading-none text-gray-500">圖示</div>
+<div class="mt-1 text-xs font-bold text-[#2C3E35]">簡約款</div>
+</a>
+<a href="icon-watercolor.html" class="block text-center">
+<img src="syd-icon-watercolor.png" alt="水彩款桌面圖示" class="w-full aspect-square object-contain shadow-sm">
+<div class="mt-2 text-[11px] leading-none text-gray-500">圖示</div>
+<div class="mt-1 text-xs font-bold text-[#2C3E35]">水彩款</div>
 </a>
 </div>
 </div>

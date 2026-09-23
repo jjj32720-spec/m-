@@ -3680,6 +3680,38 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <span>耳塞</span>
 </label>
 <label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="mask" class="mt-0.5 accent-[#C66914]">
+<span>口罩</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="tissues-wipes" class="mt-0.5 accent-[#C66914]">
+<span>衛生紙／濕紙巾</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="water-bottle" class="mt-0.5 accent-[#C66914]">
+<span>水壺</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="eye-mask" class="mt-0.5 accent-[#C66914]">
+<span>眼罩</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="mosquito-repellent" class="mt-0.5 accent-[#C66914]">
+<span>防蚊液</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="folding-umbrella" class="mt-0.5 accent-[#C66914]">
+<span>折疊傘</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="spare-underwear-socks" class="mt-0.5 accent-[#C66914]">
+<span>備用內衣／襪子</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
+<input type="checkbox" data-pack-id="earphones" class="mt-0.5 accent-[#C66914]">
+<span>耳機</span>
+</label>
+<label class="flex items-start gap-2 cursor-pointer">
 <input type="checkbox" data-pack-id="overnight-bag" class="mt-0.5 accent-[#C66914]">
 <span>可裝一晚用品的 <b>小旅行包</b></span>
 </label>
@@ -4153,7 +4185,7 @@ html:not(.secret-content-ready) [data-secret-emoji] {
             // 正式模式絕不自動清資料；只有秘密測試模式才會使用測試前綴資料。
             if (!window.__TEST_MODE_ACTIVE__) return;
 
-            const BUILD_KEY = '20260923-production-v3-display-click-fix';
+            const BUILD_KEY = '20260923-production-v4-packing-expanded-test-full';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -6377,6 +6409,7 @@ function updateAchievementWall() {
 </div>
 <button class="hidden" id="test-console-toggle" onclick="toggleTestConsole()" type="button">🧪 TEST</button>
 <div aria-label="測試版控制台" class="hidden" id="test-console">
+<div class="text-[10px] leading-relaxed text-gray-500 mb-2">測試模式只增加控制工具，正式版所有內容與功能都完整保留。</div>
 <div class="text-[10px] tracking-[0.18em] font-bold text-[#C66914]">PRIVATE TEST BUILD</div>
 <div class="font-bold mt-1">功能測試控制台</div>
 <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">測試資料使用獨立儲存空間，不會覆蓋正式版紀錄。模擬 Day 會同步推進時間鎖；選「旅程後」會全部解鎖。</p>

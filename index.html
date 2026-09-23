@@ -3617,9 +3617,9 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <span class="text-xs bg-[#C66914]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">IMPORTANT TIPS</span>
 <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">全程重要提醒與應變指南</h2>
 
-<div class="space-y-4 text-sm text-gray-700">
+<div class="space-y-5 text-sm text-gray-700 bg-[#F0EDEA] p-4 rounded-xl">
 
-<div class="bg-[#F0EDEA] p-4 rounded-xl">
+<section class="reminder-peer-section border-b border-[#D9D2CA] pb-5">
 <h3 class="font-bold text-base text-[#2C3E35] mb-3">🎒 行李與穿著</h3>
 <div id="packing-checklist" class="space-y-4 leading-relaxed">
 
@@ -3740,9 +3740,9 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 </div>
 
 </div></div></div>
-</div>
+</section>
 
-<div class="bg-[#F0EDEA] p-4 rounded-xl">
+<section class="reminder-peer-section border-b border-[#D9D2CA] pb-5">
 <h3 class="font-bold text-base text-[#2C3E35] mb-3">🧥 移動與天氣</h3>
 <div class="space-y-1.5 leading-relaxed text-sm">
 <p>・山區、清晨或早晚溫差大的行程，記得帶保暖外套</p>
@@ -3751,15 +3751,15 @@ html:not(.secret-content-ready) [data-secret-emoji] {
 <p>・戶外行程遇到下雨、強風、濃霧或臨時管制，都可能彈性調整</p>
 <p>・長途移動前記得補水，轉乘時間也不要抓得太緊</p>
 </div>
-</div>
+</section>
 
-<div class="bg-[#F0EDEA] p-4 rounded-xl">
+<section class="reminder-peer-section">
 <h3 class="font-bold text-base text-[#2C3E35] mb-3">💡 旅行小提醒</h3>
 <div class="space-y-2 leading-relaxed text-sm">
 <p><b>貫徹P人精神：</b>旅程中有任何不舒服或想調整都可以隨時跟我說，不用擔心會打亂行程，也不要自己硬撐。</p>
 <p><b>最重要的行李：</b>一顆快樂的心 ❤️</p>
 </div>
-</div>
+</section>
 
 </div>
 </div>
@@ -5774,11 +5774,11 @@ function addLastDanceEasterEgg() {
 
     let achievementRuntimeState = null;
     const ACHIEVEMENT_NOTIFIED_KEY = 'achievement_notified_v1';
-    const TRIP_START_TIME = new Date('2026-09-27T00:00:00+08:00').getTime();
+    const TRIP_START_TIME = new Date('2026-09-27T13:00:00+08:00').getTime();
 
     function resetPreTripFoodProgressOnPageLoad() {
         // 正式旅程開始前：每次完整載入都讓美食挑戰回到「從未開始」。
-        // 9/27 00:00（台灣時間）起停止歸零，之後刷新會永久保留真實旅程紀錄。
+        // 9/27 13:00（台灣時間，落地後）起停止歸零，之後刷新會永久保留真實旅程紀錄。
         if (Date.now() >= TRIP_START_TIME) return;
 
         localStorage.removeItem('food_checklist_v2');
